@@ -11,7 +11,7 @@ import { sqlConfig } from '../../Config/sqlConfig';
 export const registerSpecialist = async (req: Request, res: Response) => {
 
     try{
-        const { firstName, lastName, email, password, photo, city, country,postal, phone}:specialistInterface = req.body;
+        const { firstName, lastName, email, password, photo, location, phone, education, languages, skills, role, experience, description, hourlyRate}:specialistInterface = req.body;
         let { error } = specialistSchema.validate(req.body)
         if (error) {
             return res.json({
@@ -37,12 +37,17 @@ export const registerSpecialist = async (req: Request, res: Response) => {
                 .input("firstName", mssql.VarChar, firstName)
                 .input("lastName", mssql.VarChar, lastName)
                 .input("email", mssql.VarChar, email)
-                .input("photo", mssql.VarChar, photo)
                 .input("password", mssql.VarChar, hashPwd)
-                .input("country", mssql.VarChar, country)
-                .input("postal", mssql.VarChar, postal)
-                .input("city", mssql.VarChar, city)
                 .input("phone", mssql.VarChar, phone)
+                .input("photo", mssql.VarChar, photo)
+                .input("education", mssql.VarChar, education)
+                .input("language", mssql.VarChar, languages)
+                .input("skillSet", mssql.VarChar, skills)
+                .input( "role", mssql.VarChar, role)
+                .input( "experience", mssql.VarChar, experience)
+                .input( "location", mssql.VarChar, location)
+                .input("hourlyRate" , mssql.VarChar, hourlyRate)
+                .input("description" , mssql.VarChar, description)
                 .execute('createSpecialist')
                 ).rowsAffected; 
 
@@ -77,3 +82,128 @@ export const registerSpecialist = async (req: Request, res: Response) => {
         return result.recordset[0].count > 0;
     }
     
+ 
+ 
+//getAllSpecialist
+export const getAllSpecialists = async (req: Request, res: Response) => {
+
+    try {  
+        const pool = await mssql.connect(sqlConfig);
+        let allSpecialists = (await pool.request().execute('getAllSpecialist')).recordset
+
+        return res.json({
+            message: allSpecialists
+        })
+    } catch (error) {
+        return res.json({error})
+    }
+};
+
+
+
+//getOneSpecialist
+export const getOneSpecialist = async (req: Request, res: Response) => {
+
+    try {
+        const id = req.params.specialist_id
+        const pool = await mssql.connect(sqlConfig)
+        let specialist = (await pool.request().input("specialist_id", id).execute('getOneSP')).recordset
+        return res.json({
+            specialist
+        })
+    } catch (error) {
+        return res.json({error})
+    }
+};
+
+
+
+//updateUser
+export const updateSpecialist = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.specialist_id
+        const { firstName, lastName, email, password, photo, location, phone, education, languages, skills, role, experience, description, hourlyRate}:specialistInterface = req.body;
+        let { error } = specialistSchema.validate(req.body)
+        if (error) {
+            return res.json({
+                error: error.details[0].message
+            })
+        }
+
+    else{
+       const hashPwd = await bcrypt.hash(password, 5)
+        const pool = await mssql.connect(sqlConfig)
+
+         // Check if user with the provided user_id exists first
+         const userExist = await pool.request()
+         .input("specialist_id", id)
+         .query('SELECT COUNT(*) AS userCount FROM Specialist WHERE specialist_id = @specialist_id');
+     
+     if (userExist.recordset[0].userCount === 0) {
+         return res.json({ error: "No such Specialist." });
+     }
+
+     else{
+        let UpdateResult = (await pool.request()
+        .input("specialist_id", mssql.VarChar, id) 
+        .input("firstName", mssql.VarChar, firstName)
+        .input("lastName", mssql.VarChar, lastName)
+        .input("email", mssql.VarChar, email)
+        .input("password", mssql.VarChar, hashPwd)
+        .input("phone", mssql.VarChar, phone)
+        .input("photo", mssql.VarChar, photo)
+        .input("education", mssql.VarChar, education)
+        .input("language", mssql.VarChar, languages)
+        .input("skillSet", mssql.VarChar, skills)
+        .input( "role", mssql.VarChar, role)
+        .input( "experience", mssql.VarChar, experience)
+        .input( "location", mssql.VarChar, location)
+        .input("hourlyRate" , mssql.VarChar, hourlyRate)
+        .input("description" , mssql.VarChar, description)
+        .execute('updateSp')).rowsAffected
+
+        console.log(UpdateResult);
+        
+        return res.json({
+            message: "specialist updated successfully"
+        })
+       }
+    }
+
+    } catch (error) {
+        return res.json({error})
+    }
+};
+
+//deleteUser
+export const deleteSpecialist = async (req: Request, res: Response) => {
+
+    try {
+        const id = req.params.specialist_id
+
+        const pool = await mssql.connect(sqlConfig)
+
+        let result = (await pool.request()
+        .input("specialist_id", mssql.VarChar, id)
+        .execute('deleteSp')
+        ).rowsAffected
+
+        console.log(result[0]);
+        
+        if(result[0] == 0){
+            return res.json({
+                error: "Specialist not found"
+            })
+            
+        }else{
+            return res.json({
+                message: "Account deleted successfully"
+            })
+        }
+
+
+    } catch (error) {
+        return res.json({error})
+    }
+};
+   

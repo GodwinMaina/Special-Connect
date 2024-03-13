@@ -2,10 +2,11 @@
 import express, {NextFunction, Request, Response, json} from 'express'
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import spRouter from './Routes/SProutes';
+
 import clientRouter from './Routes/clientRoutes';
-import profileRouter from './Routes/spProfilesRoutes';
 import authRouter from './Routes/authRoutes';
+import spRouter from './Routes/specialistRoutes';
+import profileRouter from './Routes/spProfilesRoutes';
 
 
 const app = express()
@@ -23,9 +24,12 @@ app.use('/specialist',spRouter);
 
 app.use('/client',clientRouter);
 
+app.use(authRouter);
+
+
 app.use('/profile', profileRouter);
 
-app.use('/auth', authRouter);
+
 
 
 

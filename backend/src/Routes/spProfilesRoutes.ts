@@ -4,11 +4,8 @@ import { createProfile } from "../Controllers/profile/spProfileController";
 
 const profileRouter = Router();
 
-
 //create profile
-profileRouter.post('/create/:specialist_id',createProfile);
-
-
+profileRouter.post('/create/',createProfile);
 
 
 export default profileRouter;

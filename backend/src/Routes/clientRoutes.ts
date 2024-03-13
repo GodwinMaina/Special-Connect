@@ -1,13 +1,27 @@
 import{Router} from "express";
-import { registerClient } from "../Controllers/Users/clientController";
+import { deleteClient, getAllClients, getOneClient, registerClient, updateClient } from "../Controllers/Users/clientController";
 
 
 
 const clientRouter = Router();
 
 
-//register specialist
+//register client
 clientRouter.post('/register', registerClient);
+
+
+//getAllsClient
+clientRouter.get('/', getAllClients);
+
+// getOneClient
+clientRouter.get('/:client_id', getOneClient);
+
+//update client 
+clientRouter.put('/update/:client_id', updateClient);
+
+
+// delete client by id
+clientRouter.delete('/delete/:client_id', deleteClient);
 
 
 

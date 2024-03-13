@@ -1,10 +1,9 @@
-
-###
+###specialist create profile
 POST http://localhost:4000/profile/create/
 Content-Type: application/json
 
- {
-    "title": "Web designer",
+ {  "specialist_id":"bf8a4b50-1e72-41c2-bec0-51d4d90a2063",
+    "role": "Web designer",
     "experience": "5 years",
     "education": "Degree Computer science",
     "languages": "English, French",
@@ -12,5 +11,3 @@ Content-Type: application/json
     "description": "lorem ispum 50",
     "hourlyRate": "$10"
 }
-
-

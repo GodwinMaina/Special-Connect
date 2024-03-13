@@ -79,32 +79,55 @@ export const checkUserDetails = async(req: ExtendedUserRequest, res: Response)=>
     }
 }
 
-export const resetPassword = async(req:Request, res: Response)=>{
+
+export const resetPassword = async (req: Request, res: Response) => {
     try {
-        const {email, password} = req.body
+        const { email, password } = req.body;
+        const pool = await mssql.connect(sqlConfig);
 
-        const pool = await mssql.connect(sqlConfig)
+        const checkEmail = `
+            SELECT 
+                CASE
+                    WHEN EXISTS (SELECT 1 FROM Specialist WHERE email = @email) THEN 1
+                    WHEN EXISTS (SELECT 1 FROM Clients WHERE email = @email) THEN 1
+                    ELSE 0
+                END AS userExists
+        `;
 
-        let hashedPwd = await bcrypt.hash(password, 5)
+        const emailCheckResult = await pool.request()
+            .input("email", email)
+            .query(checkEmail);
 
-        let result = (await pool.request()
-        .input("email", email)
-        .input("password", hashedPwd)
-        .execute("resetPassword")).rowsAffected
+        const notExists = emailCheckResult.recordset[0].userExists;
 
-        if(result[0] < 1){
+        if (notExists === 0) {
             return res.json({
                 message: "User not found"
-            })
-        }else{
+            });
+        }
+
+        let hashedPwd = await bcrypt.hash(password, 5);
+
+        const updatequery = `EXEC resetPassword @email, @password`;
+
+        const updateResult = await pool.request()
+            .input("email", email)
+            .input("password", hashedPwd)
+            .query(updatequery);
+
+        if (updateResult.rowsAffected[0] < 1) {
+            return res.json({
+                message: "Failed to update password"
+            });
+        } else {
             return res.json({
                 message: "Password updated successfully"
-            })
+            });
         }
-        
+
     } catch (error) {
         return res.status(501).json({
-            error: error
-        })
+            error: 'error catch block'
+        });
     }
-}
+};

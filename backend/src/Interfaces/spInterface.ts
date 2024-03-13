@@ -6,10 +6,15 @@ export interface specialistInterface {
         email: string;
         password: string;
         photo: string;
-        city: string;
-        country: string;
-        postal: string;
+        location:string;
         phone: number;
+        education:string;
+        languages:string;
+        skills:string;
+        role:string;
+        experience:string;
+        hourlyRate:string;
+        description:string;
         isAdmin: boolean;
         isWelcomed: boolean;
         isDeleted: boolean;
