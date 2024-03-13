@@ -1,0 +1,16 @@
+
+<app-navbar></app-navbar>
+
+<form class="formContainer" [formGroup]="hourlyForm" (ngSubmit)="saveHourly()">
+  <div class="formy">
+  <title class="profTitle">Create profile</title>
+
+  <div class="backArrow">&lt;</div>
+  <div class="line"></div>
+  <div class="titlepg">First, add a title to tell the world what you do.</div>
+  <input class="titleInput" type="text" placeholder="eg. web-designer |Caregiver |Cleaner" formControlName="hourlyRate">
+  <button class="nextBtn" type="submit" [disabled]="!hourlyForm.valid">next</button>
+</div>
+</form>
+
+<app-footer></app-footer>

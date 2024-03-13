@@ -1,0 +1,85 @@
+
+
+
+.formContainer{
+  width: 640px;
+  height:400px;
+  padding:10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0.5, 0.5, 0.5, 0.5);
+  margin: 0 auto;
+  margin-bottom:20px;
+  margin-top: 10px;
+}
+
+.formy{
+  margin-inline:40px;
+}
+
+.profTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #4260DA;
+}
+
+
+.nextBtn{
+ background-color: #4260DA;
+ color: white;
+ display: flex;
+ justify-content: center;
+ border: none;
+ margin-top: 40px;
+ cursor: pointer;
+ width: 250px;
+ border-radius: 20px;
+ padding: 3px;
+ margin-left: 75px;
+ font-size: 18px;
+}
+
+.joinAs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 60px;
+}
+
+.joinAs button{
+  cursor: pointer;
+  width:13vw;
+  padding: 7px;
+  border-radius: 10px;
+  border: solid 1px gainsboro;
+}
+
+.clientDiv{
+  border: solid 2px gainsboro;
+  border-radius: 7px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btnClient{
+  background-color: #4260DA;
+  color:#fff;
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+
+.btnSpecialist{
+  background-color:#2B3247;
+  color:#fff;
+  font-size: 18px;
+  margin-left: 15px;
+}

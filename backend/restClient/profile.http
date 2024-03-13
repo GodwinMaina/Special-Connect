@@ -1,0 +1,16 @@
+
+###
+POST http://localhost:4000/profile/create/
+Content-Type: application/json
+
+ {
+    "title": "Web designer",
+    "experience": "5 years",
+    "education": "Degree Computer science",
+    "languages": "English, French",
+    "skills": "web designer in Figma, web developer in Angular",
+    "description": "lorem ispum 50",
+    "hourlyRate": "$10"
+}
+
+
