@@ -7,6 +7,7 @@ import clientRouter from './Routes/clientRoutes';
 import authRouter from './Routes/authRoutes';
 import spRouter from './Routes/specialistRoutes';
 import profileRouter from './Routes/spProfilesRoutes';
+import JobRouter from './Routes/JobRoutes';
 
 
 const app = express()
@@ -26,8 +27,9 @@ app.use('/client',clientRouter);
 
 app.use(authRouter);
 
-
 app.use('/profile', profileRouter);
+
+app.use('/jobs', JobRouter);
 
 
 

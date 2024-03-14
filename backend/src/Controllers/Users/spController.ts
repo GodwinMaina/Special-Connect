@@ -2,7 +2,6 @@ import mssql from 'mssql';
 import { Request, Response } from "express";
 import { v4 } from 'uuid';
 import bcrypt from 'bcrypt';
-
 import { specialistInterface } from '../../Interfaces/spInterface';
 import { specialistSchema } from '../../Validators/specialistValidator';
 import { sqlConfig } from '../../Config/sqlConfig';

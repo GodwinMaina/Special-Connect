@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { allClients, clientRegInterface, oneClient } from '../../interface/clientRegister';
 import { allSpecialists, oneSpecialist, specialistRegInterface } from '../../interface/specialistRegister';
 import { loginInterface, passwordReset } from '../../interface/loginInterface';
+import { alljobs, jobCategory, postJobInterface } from '../../interface/postJobs';
 
 
 @Injectable({
@@ -41,7 +42,7 @@ export class AuthService {
     deleteSpecialist(specialist_id: string){
       return this.http.delete<{message:string, error:string}>(`http://localhost:4000/specialist/delete/${specialist_id}`)
     };
-  
+
 
   //passwordReset
   passwordReset(newPassword:loginInterface){
@@ -53,7 +54,7 @@ export class AuthService {
     return this.http.put<{message:string, error:string}>(`http://localhost:4000/users/update/${client_id}`, userUpdate)
   };
 
-  
+
   //update specialist === editing
   updateSpecialist(specialist_id:string, userUpdate:specialistRegInterface){
     return this.http.put<{message:string, error:string}>(`http://localhost:4000/specialist/update/${specialist_id}`, userUpdate)
@@ -78,5 +79,41 @@ export class AuthService {
   getOneSpecialist(specialist_id:string){
     return this.http.get<oneSpecialist>(`http://localhost:4000/specialist/${specialist_id}`)
   }
+
+
+
+//Jobs authservice
+postJobs(jobData:postJobInterface){
+  return this.http.post<{ message: string, error: string }>('http://localhost:4000/jobs/create', jobData)
+};
+
+getJobs(){
+  return this.http.get<alljobs>('http://localhost:4000/jobs/alljobs')
+}
+
+getJobCategory(category:string){
+  return this.http.get<jobCategory>(`http://localhost:4000/jobs/${category}`)
+}
+
+
+updateJob(job_id:string, jobUpdate:postJobInterface){
+  return this.http.put<{message:string, error:string}>(`http://localhost:4000/jobs/update/${job_id}`, jobUpdate)
+}
+
+deleteJob(job_id:string){
+  return this.http.delete<{message:string, error:string}>(`http://localhost:4000/jobs/delete/${job_id}`)
+}
+
+getOneJob(job_id:string){
+  return this.http.get<alljobs>(`http://localhost:4000/jobs/job/${job_id}`)
+}
+
+getJobsByClient(client_id:string){
+  return this.http.get<alljobs>(`http://localhost:4000/jobs/client/${client_id}`)
+}
+
+getJobsBySpecialist(specialist_id:string){
+  return this.http.get<alljobs>(`http://localhost:4000/jobs/specialist/${specialist_id}`)
+}
 
 }

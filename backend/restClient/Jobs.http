@@ -1,0 +1,64 @@
+###
+# Create a new job
+POST http://localhost:4000/jobs/create
+Content-Type: application/json
+
+{
+    "jobName": "Software Developer",
+    "category": "careTaker",
+    "description": "Developing software applications",
+    "duration": "3 months",
+    "budget": "$5000",
+    "client_id": "51c11b05-377e-4228-8c3a-0c0c0d55d25c",  
+    "specialist_id":"3905546b-255a-4067-90f4-a53a380a62e6"  
+}
+
+### Get all jobs
+GET http://localhost:4000/jobs/alljobs
+Content-Type: application/json
+
+###
+
+# Get jobs by category (e.g., IT)
+GET http://localhost:4000/jobs/careTaker
+Content-Type: application/json
+
+###
+
+# Get a specific job by job_id
+GET http://localhost:4000/jobs/job/db6f7e49-1e3e-403b-8eff-2621a9b5f1cb
+Content-Type: application/json
+
+###
+
+# Update a job by job_id
+PUT http://localhost:4000/jobs/update/db6f7e49-1e3e-403b-8eff-2621a9b5f1cb
+Content-Type: application/json
+
+{
+    "jobName": "Updated Software Developer",
+    "category": "Updated IT",
+    "description": "Updated software development",
+    "duration": "6 months",
+    "budget": "$7000",
+     "client_id": "51c11b05-377e-4228-8c3a-0c0c0d55d25c",  
+    "specialist_id":"3905546b-255a-4067-90f4-a53a380a62e6"   
+}
+
+###
+
+# Delete a job by job_id
+DELETE http://localhost:4000/jobs/delete/a2734f75-9906-428f-a206-9b378e21ddc8 
+Content-Type: application/json
+
+###
+
+# Get jobs by client id
+GET http://localhost:4000/jobs/client/51c11b05-377e-4228-8c3a-0c0c0d55d25c
+Content-Type: application/json
+
+###
+
+# Get jobs by specialist id
+GET http://localhost:4000/jobs/specialist/3905546b-255a-4067-90f4-a53a380a62e6
+Content-Type: application/json
