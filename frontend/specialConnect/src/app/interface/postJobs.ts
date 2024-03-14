@@ -14,6 +14,7 @@ export interface postJobInterface {
 export  interface alljobs {
 
   message: [{
+    job_id: string;
     jobName: string;
     category: string;
     description: string;
@@ -35,6 +36,7 @@ export  interface alljobs {
 export  interface jobCategory {
 
   message: [{
+    job_id: string;
     jobName: string;
     category: string;
     description: string;

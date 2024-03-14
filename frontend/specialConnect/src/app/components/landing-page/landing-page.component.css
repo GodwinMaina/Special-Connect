@@ -1,0 +1,296 @@
+
+.landingContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  box-sizing: border-box;
+  background-size: contain;
+}
+
+app-nav-bar{
+  color:#edf0f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 98vw;
+}
+
+
+
+.hero{
+  /* background-image: url("https://res.cloudinary.com/gurucom/image/upload/w_450,f_auto/static/homepage/bannerguy.png"); */
+  background-size: cover;
+  background-position:inherit;
+  background-repeat: no-repeat;
+  background-color: #2B3247;
+  margin: 0;
+  width: 100%;
+}
+
+.heropiks{
+  position: relative;
+    margin-top:50px;
+    width: 40%;
+    background-image: url("https://res.cloudinary.com/gurucom/image/upload/w_450,f_auto/static/homepage/bannerguy.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+
+
+.search{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  width: 70%;
+  height: 7vh;
+  font-weight: 100;
+  border: #2777c6 3px solid;
+
+}
+
+.search svg{
+  color: gray;
+}
+
+#searchField{
+  border: none;
+  width: 95%;
+}
+
+#searchField:focus{
+  outline: none;
+}
+
+.aboutUs{
+  height: 100vh;
+  display: flex;
+  margin-top: 20px;
+  text-align: center;
+  /* font-size: 45px; */
+  font-weight: 600;
+  width: 100%;
+  color: whitesmoke;
+  /* background-color: rgba(255, 255, 255, 0.589); */
+
+}
+
+.aboutImages{
+  display:flex;
+  flex-direction: column;
+}
+
+.aboutUs button{
+  margin-top: 15px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  /* margin-left: 20px; */
+  margin-right:150px;
+  margin-top: 60px;
+  border-radius: 7px;
+  /* appearance: none; */
+  background-color: #4260da;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  /* line-height: 20px; */
+  /* padding: 6px 16px; */
+  position: relative;
+  text-align: center;
+}
+
+.aboutUs button:hover{
+  background-color: black;
+}
+
+.aboutUsDesc p{
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+
+#aboutTitle{
+  line-height: 45px;
+  text-align: start;
+  font-size: 2rem;
+    font-weight: 500;
+
+}
+#aboutUsTextMobile{
+  display: none;
+}
+
+#aboutTitleMobile{
+  display: none;
+}
+
+
+.aboutUsDesc{
+  /* background-color: rgba(255, 255, 255, 0.589); */
+  margin-top: 10%;
+  padding-inline: 20px;
+  border-radius: 10px;
+  margin-left: 3%;
+  /* padding-top: 50px; */
+  /* width: 100%; */
+
+}
+
+#aboutUsText{
+  font-size: 20px;
+  font-weight: 500;
+  text-align: start;
+}
+
+
+
+#specialistTitle{
+  width: 90%;
+  color: black;
+  font-size: 36px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+
+}
+
+
+.getStarted{
+  height: 60vh;
+  background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  gap: 30px;
+  width: 70vw;
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.getStarted h3{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.getStarted p{
+  font-size: 18px;
+  color: black;
+}
+
+.getStarted button{
+  height: 45px;
+  width: 20%;
+  /* min-width: 300px; */
+  border: none;
+  border-radius: 7px;
+  appearance: none;
+  background-color:#4260da;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  /* box-shadow: rgba(27, 31, 35, .1) 0 1px 0; */
+  /* box-sizing: border-box; */
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  /* text-align: center; */
+  /* text-decoration: none; */
+  /* user-select: none; */
+  /* -webkit-user-select: none; */
+  /* touch-action: manipulation; */
+  /* vertical-align: middle; */
+  /* white-space: nowrap; */
+}
+
+.getStarted button:hover{
+  background-color: black;
+}
+
+
+
+
+@media only screen and (max-width: 430px){
+
+
+  .serviceCards{
+      flex-wrap: wrap;
+  }
+
+  .card{
+      width: 100%;
+  }
+
+  .desc{
+      width: 100vw;
+  }
+
+  .getStarted{
+      margin-top: 180vh;
+      width: 100vw;
+  }
+
+  #landscaping{
+      display: none;
+  }
+
+  #aboutUsTextMobile{
+      display: block;
+      font-size: 16px;
+  }
+
+  #aboutUsText{
+      display: none;
+  }
+
+  #aboutTitleMobile{
+     display: block;
+     /* margin-top: 20px; */
+     font-size: 30px;
+  }
+
+  #aboutTitle{
+      display: none;
+  }
+
+
+  .mobileImg{
+      background-image: url(../../../assets/NotFound.png);
+      background-size: cover;
+      background-position: center;
+      height: 25vh;
+      width: 96vw;
+      width: 100%;
+      /* height: 100%; */
+      margin-top: 15px;
+      margin-bottom: 10px;
+      padding: 0;
+      border-radius: 30px;
+      /* box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8); */
+
+  }
+
+  .aboutUs button{
+      margin-top: 0;
+  }
+
+
+
+}
