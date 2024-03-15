@@ -10,3 +10,9 @@ CREATE TABLE Clients
      isWelcomed BIT DEFAULT 0,
      isDeleted BIT DEFAULT 0
 );
+
+SELECT * FROM Clients
+
+DROP TABLE Clients
+
+DELETE FROM Clients

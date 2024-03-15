@@ -3,9 +3,9 @@ POST http://localhost:4000/client/register
 Content-Type: application/json
 
  {
-    "firstName": "tester",
+    "firstName": "client",
     "lastName": "maina",
-    "email": "tester@gmail.com",
+     "email": "kingangiduncan47@gmail.com",
     "password": "123456",
     "phone":"0723456001"
 }

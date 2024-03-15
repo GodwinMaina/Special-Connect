@@ -1,29 +1,43 @@
-
-import express, {NextFunction, Request, Response, json} from 'express'
-import bodyParser from 'body-parser';
-import cors from 'cors';
-
+import express from 'express'
+import cron from 'node-cron'
+import { welcomeClient, welcomeSpecialist} from './mailServices/welcome'
 
 const app = express()
 
-app.use(json())
- app.use(cors());
+const run = async () => {
+    cron.schedule('*/5 * * * * *', async () => {
+        console.log('checking for a new Specialist');
+        // console.log('checking for a new client');
 
- app.use(bodyParser.urlencoded({ extended: false }));
-
- app.use(express.urlencoded({ extended: true }));
-
- 
-app.use((error: Error, req: Request, res: Response, next: NextFunction)=>{
-    res.json({
-        message: error.message
+    
+        await welcomeSpecialist()
     })
-    next()
-})
+}
 
 
-let port = 8080;
 
-app.listen(port, ()=>{
-    console.log(`Server running on port ${port}`); 
+const run2 = async () => {
+    cron.schedule('*/5 * * * * *', async () => {
+        // console.log('checking for a new Specialist');
+        console.log('checking for a new client');
+
+
+        await welcomeClient()
+    })
+}
+
+
+// const running = async () => {
+//     cron.schedule('*/50 * * * * *', async () => {
+//         console.log('checking for a new task');
+
+//         await welcomeUser()
+//     })
+// }
+
+run()
+run2()
+
+app.listen(4200, () => {
+    console.log("server running ...");
 })

@@ -13,3 +13,6 @@ CREATE TABLE Jobs(
 )
 
 SELECT * FROM Jobs
+
+
+DROP TABLE Jobs

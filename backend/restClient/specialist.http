@@ -1,4 +1,5 @@
 
+
 ###
 POST http://localhost:4000/specialist/register
 Content-Type: application/json
@@ -6,7 +7,7 @@ Content-Type: application/json
  {
     "firstName": "godwin",
     "lastName": "Doe",
-    "email": "master@gmail.com",
+     "email": "kingangiduncan47@gmail.com",
     "password": "1234678",
     "phone": "0112556890",
     "photo": "https://example.com/photo.jpg",

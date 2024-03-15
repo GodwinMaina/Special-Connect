@@ -16,7 +16,6 @@ CREATE TABLE Specialist
      hourlyRate VARCHAR(250) NOT NULL,
      skillSet VARCHAR(250) NOT NULL,
      description VARCHAR(250) NOT NULL,
-
      isAdmin BIT DEFAULT 0,
      isWelcomed BIT DEFAULT 0,
      isDeleted BIT DEFAULT 0
@@ -24,4 +23,7 @@ CREATE TABLE Specialist
 
 SELECT * FROM Specialist
 
+
 DROP TABLE Specialist
+
+DELETE  FROM Specialist
