@@ -5,11 +5,11 @@ CREATE OR ALTER PROCEDURE createJob(
     @description TEXT,
     @duration VARCHAR(250),
     @budget VARCHAR(250),
-    @client_id VARCHAR(250),
-    @specialist_id VARCHAR(250))
+    @client_id VARCHAR(250)
+    -- @specialist_id VARCHAR(250))
 AS
 BEGIN
-    INSERT INTO Jobs (job_id, jobName, category, description, duration, budget, client_id, specialist_id)
-    VALUES (@job_id, @jobName, @category, @description, @duration, @budget, @client_id, @specialist_id)
+    INSERT INTO Jobs (job_id, jobName, category, description, duration, budget, client_id)
+    VALUES (@job_id, @jobName, @category, @description, @duration, @budget, @client_id)
 END
 

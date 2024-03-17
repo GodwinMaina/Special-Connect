@@ -7,18 +7,9 @@ Content-Type: application/json
  {
     "firstName": "godwin",
     "lastName": "Doe",
-     "email": "kingangiduncan47@gmail.com",
+    "email": "kingangiduncan47@gmail.com",
     "password": "1234678",
-    "phone": "0112556890",
-    "photo": "https://example.com/photo.jpg",
-    "education": "Degree Computer science",
-    "languages": "English, French",
-    "skills": "web designer in Figma, web developer in Angular",
-    "role": "Web designer",
-    "experience": "5 years",
-    "location":"Nairobi",
-    "hourlyRate": "$10",
-     "description": "lorem ispum 50"
+    "phone": "0112556890"
 }
 
 
@@ -27,7 +18,7 @@ Content-Type: application/json
  Content-Type: application/json
 
  {
-    "email": "master@gmail.com",
+    "email": "kingangiduncan47@gmail.com",
     "password": "1234678"
     
 }
@@ -38,13 +29,13 @@ GET http://localhost:4000/specialist
 Content-Type: application/json
 
 ###Get one Specialists
-GET http://localhost:4000/specialist/d684de3c-165c-4a05-94d6-848cd04d4749
+GET http://localhost:4000/specialist/a7a42618-9778-4449-802c-e3fc94342e62
 Content-Type: application/json
 
 
 
 ###update Specialist by id
-PUT http://localhost:4000/specialist/update/d684de3c-165c-4a05-94d6-848cd04d4749
+PUT http://localhost:4000/specialist/update/a7a42618-9778-4449-802c-e3fc94342e62
 Content-Type: application/json
 
 {
@@ -52,16 +43,7 @@ Content-Type: application/json
     "lastName": "Doe",
     "email": "godwin@gmail.com",
     "password": "password",
-    "phone": "0112556890",
-    "photo": "https://example.com/photo.jpg",
-    "education": "Degree Computer science",
-    "languages": "English, French",
-    "skills": "web designer in Figma, web developer in Angular",
-    "role": "Web designer",
-    "experience": "5 years",
-    "location":"Nairobi",
-    "hourlyRate": "$10",
-     "description": "lorem ispum 50"
+    "phone": "0112556890"
 }
 
 
@@ -70,7 +52,7 @@ PUT http://localhost:4000/resetPassword
 Content-Type: application/json
 
 {
-    "email": "master@gmail.com",
+    "email": "godwin@gmail.com",
     "password": "1234678"
 }
 

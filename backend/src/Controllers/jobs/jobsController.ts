@@ -8,7 +8,7 @@ import { JobInterface } from '../../Interfaces/jobsInterface';
 // Create Job
 export const createJob = async (req: Request, res: Response) => {
     try {
-        const { jobName, category, description, duration, budget, client_id, specialist_id }: JobInterface = req.body;
+        const { jobName, category, description, duration, budget, client_id }: JobInterface = req.body;
 
         // Validate job data
         const { error } = jobSchema.validate(req.body);
@@ -28,7 +28,7 @@ export const createJob = async (req: Request, res: Response) => {
             .input("duration", mssql.VarChar, duration)
             .input("budget", mssql.VarChar, budget)
             .input("client_id", mssql.VarChar, client_id)
-            .input("specialist_id", mssql.VarChar, specialist_id)
+            // .input("specialist_id", mssql.VarChar, specialist_id)
             .execute('createJob');
 
         return res.json({ message: "Job created successfully", job_id });
@@ -85,7 +85,7 @@ export const getOneJob = async (req: Request, res: Response) => {
 export const updateJob = async (req: Request, res: Response) => {
     try {
         const id  = req.params.job_id;
-        const { jobName, category, description, duration, budget, client_id, specialist_id } : JobInterface = req.body;
+        const { jobName, category, description, duration, budget, client_id} : JobInterface = req.body;
 
         // Validate job data
         const { error } = jobSchema.validate(req.body);
@@ -102,7 +102,7 @@ export const updateJob = async (req: Request, res: Response) => {
             .input("duration", mssql.VarChar, duration)
             .input("budget", mssql.VarChar, budget)
             .input("client_id", mssql.VarChar, client_id)
-            .input("specialist_id", mssql.VarChar, specialist_id)
+            // .input("specialist_id", mssql.VarChar, specialist_id)
             .execute('updateJob');
 
         if (result.rowsAffected[0] === 0) {

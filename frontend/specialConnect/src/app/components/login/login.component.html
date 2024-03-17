@@ -25,14 +25,16 @@
             <div class="forgot-btn">
                 <a routerLink="/settings" class="forgot-href">Forgot Password</a>
             </div>
-            <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
-            <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && !loginForm.get('password')?.errors?.['required']">Password must be at least 6 characters long.</div>
+            <div *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" class="error-message">
+              Password Required...
+            </div>
+            <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && !loginForm.get('password')?.errors?.['required']" class="error-message">Password must be at least 6 characters long.</div>
 
             <div class="email">
-                <button data-cy="login-btn" class="login-btn">Sign in</button>
+                <button data-cy="login-btn" class="login-btn">Login</button>
             </div>
             <div class="forgot-btn">
-                <a class="forgot-href" routerLink="/register">Dont have an account? Click here to sign up</a>
+                <a class="forgot-href" routerLink="/signup">Dont have an account? Click here to sign up</a>
             </div>
         </form>
     </div>

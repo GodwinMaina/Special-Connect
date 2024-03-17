@@ -38,15 +38,6 @@ export const registerSpecialist = async (req: Request, res: Response) => {
                 .input("email", mssql.VarChar, email)
                 .input("password", mssql.VarChar, hashPwd)
                 .input("phone", mssql.VarChar, phone)
-                .input("photo", mssql.VarChar, photo)
-                .input("education", mssql.VarChar, education)
-                .input("language", mssql.VarChar, languages)
-                .input("skillSet", mssql.VarChar, skills)
-                .input( "role", mssql.VarChar, role)
-                .input( "experience", mssql.VarChar, experience)
-                .input( "location", mssql.VarChar, location)
-                .input("hourlyRate" , mssql.VarChar, hourlyRate)
-                .input("description" , mssql.VarChar, description)
                 .execute('createSpecialist')
                 ).rowsAffected; 
 
@@ -121,7 +112,7 @@ export const getOneSpecialist = async (req: Request, res: Response) => {
 export const updateSpecialist = async (req: Request, res: Response) => {
     try {
         const id = req.params.specialist_id
-        const { firstName, lastName, email, password, photo, location, phone, education, languages, skills, role, experience, description, hourlyRate}:specialistInterface = req.body;
+        const { firstName, lastName, email, password, phone}:specialistInterface = req.body;
         let { error } = specialistSchema.validate(req.body)
         if (error) {
             return res.json({
@@ -150,15 +141,6 @@ export const updateSpecialist = async (req: Request, res: Response) => {
         .input("email", mssql.VarChar, email)
         .input("password", mssql.VarChar, hashPwd)
         .input("phone", mssql.VarChar, phone)
-        .input("photo", mssql.VarChar, photo)
-        .input("education", mssql.VarChar, education)
-        .input("language", mssql.VarChar, languages)
-        .input("skillSet", mssql.VarChar, skills)
-        .input( "role", mssql.VarChar, role)
-        .input( "experience", mssql.VarChar, experience)
-        .input( "location", mssql.VarChar, location)
-        .input("hourlyRate" , mssql.VarChar, hourlyRate)
-        .input("description" , mssql.VarChar, description)
         .execute('updateSp')).rowsAffected
 
         console.log(UpdateResult);

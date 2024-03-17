@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE getAllProfiles
+AS
+BEGIN
+    SELECT * FROM Profiles;
+END;

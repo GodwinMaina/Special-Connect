@@ -4,11 +4,11 @@ body {
 }
 
 .container {
-  width: 400px;
+  max-width: 800px;
   margin: 50px auto;
   background-color: #fff;
   padding: 20px;
-  margin-top: 70px;
+  margin-top: 80px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
@@ -16,6 +16,12 @@ body {
 
 h2 {
   text-align: center;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 40px;
 }
 
 .form-group {
@@ -28,13 +34,12 @@ label {
 }
 
 input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 96%;
+textarea,
+select {
+  width: 98%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-
 }
 
 button {
@@ -55,10 +60,4 @@ button:hover {
 
 button:active {
   background-color: #004080;
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    max-width: 90%;
-  }
 }

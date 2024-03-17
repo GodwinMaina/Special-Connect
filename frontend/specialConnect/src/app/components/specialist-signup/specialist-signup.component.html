@@ -1,44 +1,30 @@
 
 <app-navbar></app-navbar>
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form class="formy" enctype="multipart/form-data">
-        <div class="text-center mb-3">
-          <div class="image-preview">
-            <img id="previewImage" src="https://t4.ftcdn.net/jpg/02/17/88/73/360_F_217887350_mDfLv2ootQNeffWXT57VQr8OX7IvZKvB.jpg" alt="Preview">
-          </div>
-          <label for="inputPhoto" class="upload">Upload Photo</label>
-          <input type="file" class="form-control-file d-none" id="inputPhoto" (change)="previewFile($event)">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
-          </div>
-        </div>
 
-        <div class="form-group">
-          <input type="email" class="form-control" id="inputEmail" placeholder="Your Email Address">
-        </div>
+<div class="container">
+  <h2>Specialist SignUp</h2>
+  <form>
 
-        <div class="form-group">
-          <input type="password" class="form-control" id="inputEmail" placeholder="Enter password">
-        </div>
-
-        <div class="form-group">
-          <input type="tel" maxlength="10" class="form-control" id="inputEmail" placeholder="phone no">
-        </div>
-
-        <div class="form-group">
-          <input type="text" class="form-control" id="inputEmail" placeholder="Enter location">
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block" (click)="onsubmit()">Sign in</button>
-      </form>
+    <div class="form-group">
+      <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
     </div>
-  </div>
+
+    <div class="form-group">
+      <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    </div>
+
+    <button type="submit">Sign Up</button>
+
+  </form>
+  <p>Already have an account? <a href="/auth/login">Login</a></p>
 </div>
+
 <app-footer></app-footer>

@@ -1,13 +1,47 @@
 ###specialist create profile
-POST http://localhost:4000/profile/create/
+POST http://localhost:4000/profiles/create/
 Content-Type: application/json
 
- {  "specialist_id":"bf8a4b50-1e72-41c2-bec0-51d4d90a2063",
+ {  "specialist_id":"a7a42618-9778-4449-802c-e3fc94342e62",
+    "photo":"https://www.usaleatherfactory.com/wp-content/uploads/2023/08/top-g-andrew-tate-grey-wool-blazer-700x838.jpg.webp",
     "role": "Web designer",
     "experience": "5 years",
+    "location":"Nairobi",
     "education": "Degree Computer science",
     "languages": "English, French",
     "skills": "web designer in Figma, web developer in Angular",
     "description": "lorem ispum 50",
     "hourlyRate": "$10"
 }
+
+
+###Get All Profiles
+GET http://localhost:4000/profiles
+Content-Type: application/json
+
+
+###
+//get profile by id
+GET http://localhost:4000/profiles/fc4be43e-2088-48b8-a038-fa38023aeb37
+Content-Type: application/json
+
+
+###update profile
+PUT http://localhost:4000/profiles/update/fc4be43e-2088-48b8-a038-fa38023aeb37
+Content-Type: application/json
+
+{
+  "specialist_id":"a7a42618-9778-4449-802c-e3fc94342e62",
+  "photo": "https://example.com/updated_photo.jpg",
+  "role": "Updated Web Developer",
+  "experience": "6 years",
+  "education": "Updated Degree in Computer Science",
+  "languages": "English, Spanish",
+  "location": "New York",
+  "skills": "Updated Web designer in Figma, Web developer in Angular",
+  "description": "Updated Lorem ipsum 50",
+  "hourlyRate": "$15"
+}
+
+###DELETE PROFILE
+DELETE http://localhost:4000/profiles//delete/fc4be43e-2088-48b8-a038-fa38023aeb37

@@ -5,8 +5,8 @@ CREATE OR ALTER PROCEDURE updateJob
     @description TEXT,
     @duration VARCHAR(250),
     @budget VARCHAR(250),
-    @client_id VARCHAR(250),
-    @specialist_id VARCHAR(250)
+    @client_id VARCHAR(250)
+    -- @specialist_id VARCHAR(250)
 AS
 BEGIN
     UPDATE Jobs
@@ -15,8 +15,8 @@ BEGIN
         description = @description,
         duration = @duration,
         budget = @budget,
-        client_id = @client_id,
-        specialist_id = @specialist_id
+        client_id = @client_id
+        -- specialist_id = @specialist_id
 
     WHERE job_id = @job_id
 END

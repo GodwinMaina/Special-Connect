@@ -272,7 +272,7 @@ app-nav-bar{
 
 
   .mobileImg{
-      background-image: url(../../../assets/NotFound.png);
+    background-image: url("https://res.cloudinary.com/gurucom/image/upload/w_450,f_auto/static/homepage/bannerguy.png");
       background-size: cover;
       background-position: center;
       height: 25vh;

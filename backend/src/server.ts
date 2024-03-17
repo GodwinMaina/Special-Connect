@@ -9,6 +9,7 @@ import spRouter from './Routes/specialistRoutes';
 import profileRouter from './Routes/spProfilesRoutes';
 import JobRouter from './Routes/JobRoutes';
 
+import { Server } from "socket.io";
 
 const app = express()
 
@@ -19,25 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: true }));
 
 
-
-
 app.use('/specialist',spRouter);
 
 app.use('/client',clientRouter);
 
 app.use(authRouter);
 
-app.use('/profile', profileRouter);
+app.use('/profiles', profileRouter);
 
 app.use('/jobs', JobRouter);
-
-
-
-
-
-
-
-
  
 app.use((error: Error, req: Request, res: Response, next: NextFunction)=>{
     res.json({
@@ -52,3 +43,16 @@ let port = 4000;
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`); 
 })
+
+
+
+///sockets io
+
+// const io = new Server(3000, { /* options */ });
+
+// io.on("connection", (socket) => {
+//     console.log('connection done', socket)
+//   // ...
+// });
+
+// io.listen(3000);
