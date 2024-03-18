@@ -1,7 +1,7 @@
 
 CREATE OR ALTER PROCEDURE updateProfile
     @profile_id VARCHAR(255),
-    @specialist_id VARCHAR(255),
+    -- @specialist_id VARCHAR(255),
     @photo VARCHAR(255),
     @role VARCHAR(255),
     @experience VARCHAR(255),
@@ -14,8 +14,8 @@ CREATE OR ALTER PROCEDURE updateProfile
 AS
 BEGIN
     UPDATE Profiles
-    SET specialist_id = @specialist_id,
-        photo = @photo,
+    --  specialist_id = @specialist_id,
+     SET photo = @photo,
         role = @role,
         experience = @experience,
         education = @education,

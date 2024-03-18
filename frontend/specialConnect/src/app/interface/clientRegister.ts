@@ -6,9 +6,9 @@ export interface clientRegInterface {
   email: string;
   password: string;
   phone: number;
-  isAdmin: boolean;
-  isWelcomed: boolean;
-  isDeleted: boolean;
+  // isAdmin: boolean;
+  // isWelcomed: boolean;
+  // isDeleted: boolean;
 }
 
 
@@ -25,7 +25,7 @@ export  interface allClients {
   isAdmin: boolean;
   isWelcomed: boolean;
   isDeleted: boolean;
-  
+
   }],
 
    token: [{}],

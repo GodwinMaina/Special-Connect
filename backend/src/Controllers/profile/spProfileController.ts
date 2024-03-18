@@ -10,7 +10,11 @@ import { profileInterface } from '../../Interfaces/profileInterface';
 export const createProfile = async (req: Request, res: Response) => {
 
     try{
-        const {specialist_id,photo,role,experience, education, languages,location, skills, description, hourlyRate }:profileInterface= req.body;
+        const {photo,role,experience, education, languages,location, skills, description,hourlyRate }:profileInterface= req.body;
+       console.log(req.body);
+
+       const specialist_id = req.params.id
+       
         let { error } = profileSchema.validate(req.body)
         if (error) {
             return res.json({
@@ -61,8 +65,31 @@ export const createProfile = async (req: Request, res: Response) => {
 export const getProfiles = async (req: Request, res: Response) => {
     try {
         const pool = await mssql.connect(sqlConfig);
-        const allProfiles = await pool.request().execute('getAllProfiles');
-        return res.json({ profiles: allProfiles.recordset });
+        const query = `
+            SELECT
+                p.profile_id,
+                p.specialist_id,
+                p.photo,
+                p.role,
+                p.experience,
+                p.education,
+                p.location,
+                p.languages,
+                p.skills,
+                p.description,
+                p.hourlyRate,
+                s.firstName,
+                s.email,
+                s.phone
+            FROM
+                Profiles p
+            INNER JOIN
+                Specialist s ON p.specialist_id = s.specialist_id
+            WHERE
+                p.isDeleted = 0;`;
+
+        const allProfiles = await pool.request().query(query);
+        return res.json({ message: allProfiles.recordset });
     } catch (error) {
         console.error("Error fetching profiles:", error);
         return res.status(500).json({ error: "An error occurred while fetching profiles." });
@@ -93,7 +120,7 @@ export const getProfileById = async (req: Request, res: Response) => {
 export const updateProfile = async (req: Request, res: Response) => {
     try {
         const profile_id = req.params.profile_id;
-        const { specialist_id, photo, role, experience, education, languages, location, skills, description, hourlyRate }: profileInterface = req.body;
+        const { photo, role, experience, education, languages, location, skills, description, hourlyRate }: profileInterface = req.body;
         // Validate profile data
         const { error } = profileSchema.validate(req.body);
         if (error) {
@@ -102,7 +129,7 @@ export const updateProfile = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig);
         await pool.request()
             .input("profile_id", mssql.VarChar, profile_id)
-            .input("specialist_id", mssql.VarChar, specialist_id)
+            // .input("specialist_id", mssql.VarChar, specialist_id)
             .input("photo", mssql.VarChar, photo)
             .input("role", mssql.VarChar, role)
             .input("experience", mssql.VarChar, experience)

@@ -4,6 +4,8 @@
         <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="login-title">
                 <h2>SignUp client-Account</h2>
+                <div class="error-message">{{error}}</div>
+                 <div class="success-message">{{successMessage}}</div>
             </div>
 
             <div class="email">
@@ -64,7 +66,7 @@
             </div>
 
             <div class="forgot-btn">
-                <a class="forgot-href" (click)="login()">Already have an account? Login</a>
+                <a class="forgot-href" >Already have an account? Login</a>
             </div>
         </form>
     </div>

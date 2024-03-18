@@ -6,7 +6,7 @@ import { get } from "http";
 const profileRouter = Router();
 
 //create profile
-profileRouter.post('/create/',createProfile);
+profileRouter.post('/create/:id',createProfile);
 
 profileRouter.get('/',getProfiles);
 

@@ -4,6 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/authServices/auth.service';
 
 @Component({
   selector: 'app-client-signup',
@@ -15,11 +16,12 @@ import { CommonModule } from '@angular/common';
 export class ClientSignupComponent {
 
 
-  registerForm!: FormGroup;
+  registerForm: FormGroup;
   successMessage: string = '';
+  error: string = '';
   showSuccessMessage:boolean = false;
 
-  constructor(private fb:FormBuilder, private router: Router){
+  constructor(private fb:FormBuilder, private router: Router, private api:AuthService) {
 
 
     this.registerForm = this.fb.group({
@@ -54,33 +56,40 @@ export class ClientSignupComponent {
       let userData = {
         firstName: this.registerForm.value.firstName,
         lastName: this.registerForm.value.lastName,
-        phone: this.registerForm.value.phone,
         email: this.registerForm.value.email,
-        password: this.registerForm.value.password
+        password: this.registerForm.value.password,
+        phone: this.registerForm.value.phone
       };
 
-      // this.api.registerUser(userData).subscribe(response => {
-      //   console.log(response);
-      // });
+      this.api.registerClient(userData).subscribe(response => {
+        console.log(response.error);
+        console.log(response.message);
+
+        if (response.error) {
+          this.error = response.error;
 
 
-      this.successMessage = 'Signup successful';
-      this.showSuccessMessage = true;
-      this.registerForm.reset();
+          setTimeout(() => {
+            this.registerForm.reset();
+            this.error = '';
+          }, 3000);
 
-        setTimeout(() => {
+        }
+
+        else {
+          this.showSuccessMessage = true;
+          this.successMessage = response.message;
+
+          setTimeout(() => {
             this.showSuccessMessage = false;
-            this.router.navigate(['auth/login']);
-        }, 2000);
-
+            this.registerForm.reset();
+            this.router.navigate(['/auth/login']);
+          }, 2000);
+        }
+      });
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
   }
-   else {
-    this.registerForm.markAllAsTouched();
-  }
-}
-
-login(){
-  this.router.navigate(['auth/login'])
-}
 
 }

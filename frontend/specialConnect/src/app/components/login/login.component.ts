@@ -7,6 +7,9 @@ import { RouterLink } from '@angular/router';
 import { FormBuilder,ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/authServices/auth.service';
+import { Token } from '@angular/compiler';
+import { log } from 'console';
 // import { AuthServiceService } from '../../services/auth-service.service';
 // import { UserIDService } from '../../services/user-id.service';
 
@@ -24,7 +27,11 @@ export class LoginComponent {
   userNotFound!:string
   pwdError!:string
 
-  constructor(private fb:FormBuilder, private router:Router){
+  successMessage: string = '';
+  error: string = '';
+  showSuccessMessage:boolean = false;
+
+  constructor(private fb:FormBuilder, private router:Router,private api:AuthService){
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,48 +42,98 @@ export class LoginComponent {
 
 
     onSubmit() {
-    //   if (this.loginForm.valid) {
-    //     console.log('Form submitted successfully');
+      if (this.loginForm.valid) {
+        console.log('Form submitted successfully');
 
-    //     this.api.loginUser(
-    //       this.loginForm.value.email,
-    //       this.loginForm.value.password).subscribe(
-    //       (response: any) => {
-    //         console.log(response);
+        this.api.loginUser(
+          this.loginForm.value.email,
+          this.loginForm.value.password).subscribe(
 
-    //         if(response.error){
-    //           console.log(response);
-    //           this.userNotFound=response.error
+          (res: any
+            ) => {
+            console.log(res);
 
-    //         }
-
-
-    //         else {
-    //          const user_id = response.user_id;
-    //         const email=response.email
-    //         this.user.setUserId(user_id);
-    //         this.user.setEMail(email)
-    //         console.log('happy');
-    //         console.log(user_id);
-    //         const isAdmin = response.isAdmin;
-
-    //         if (isAdmin) {
-    //           this.router.navigate(['/admin']);
-    //         } else if(!isAdmin) {
-    //           this.router.navigate(['/users']);
-    //         }
-    //         }
-
-    //         this.loginForm.reset();
-    //       },
-    //       (error) => {
-    //         console.error('Error:', error);
-    //       }
-    //     );
+            console.log(res.error);
+            console.log(res.message);
 
 
-    //   } else {
-    //     console.log('Form has errors');
-    //   }
+
+            if(res.error){
+              console.log(res);
+              this.userNotFound=res.error;
+
+              setTimeout(() => {
+                this.loginForm.reset();
+                this.userNotFound = '';
+              }, 3000);
+
+            }
+
+            else {
+
+              this.showSuccessMessage = true;
+              this.successMessage = res.message;
+
+            //const user_id = response.user_id;
+            // this.user.setUserId(user_id);
+            // this.user.setEMail(email)
+            // console.log(client_id);
+            console.log('happy');
+
+            const type= res.UserType
+            console. log("1")
+            console. log(type)
+            console. log("2")
+            const fname= res.firstname
+             res.photo
+             let isProfiled = res.isProfiled
+            const email= res.email
+            const token = res.token
+             res.client_id
+             res.specialist_id
+             const admin = res.isAdmin
+             res.phone
+            const isAdmin = res.isAdmin;
+
+            if (type === "Specialist" && !isProfiled) {
+              this.router.navigate(['/profile']);
+
+            }
+             else if (type === "Specialist" && isProfiled) {
+              this.router.navigate(['/dashboard/specialist']);
+
+            }
+
+
+            else if (type === "Client") {
+              this.router.navigate(['/dashboard/client']);
+            } else if (type === "Client" && isAdmin) {
+              this.router.navigate(['/dashboard/admin']);
+            } else {
+              this.router.navigate(['/NotFound']);
+            }
+
+
+            }
+
+            this.loginForm.reset();
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+
+
+      } else {
+        console.log('Form has errors');
+      }
     }
   }
+
+
+
+
+
+// '/dashboard/admin'
+// '/dashboard/client'
+// '/dashboard/specialist'

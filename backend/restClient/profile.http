@@ -1,13 +1,13 @@
 ###specialist create profile
-POST http://localhost:4000/profiles/create/
+POST http://localhost:4000/profiles/create/3b2cf48e-4957-4749-af61-2b8c73d43b9d
 Content-Type: application/json
 
- {  "specialist_id":"a7a42618-9778-4449-802c-e3fc94342e62",
-    "photo":"https://www.usaleatherfactory.com/wp-content/uploads/2023/08/top-g-andrew-tate-grey-wool-blazer-700x838.jpg.webp",
-    "role": "Web designer",
+  { 
+    "photo":"Deleniti ex minim ma",
+    "role": "Web master",
     "experience": "5 years",
     "location":"Nairobi",
-    "education": "Degree Computer science",
+    "education": "Degree jkuat cs",
     "languages": "English, French",
     "skills": "web designer in Figma, web developer in Angular",
     "description": "lorem ispum 50",

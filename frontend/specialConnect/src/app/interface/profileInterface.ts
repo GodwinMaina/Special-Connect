@@ -20,8 +20,8 @@ export interface profileInterface {
 
 
 export interface profileInterface {
-  profile_id: string;
-  specialist_id: string;
+  // profile_id: string;
+  // specialist_id: string;
   photo:string;
   role: string;
   experience: string;
@@ -31,14 +31,18 @@ export interface profileInterface {
   skills: string;
   description: string;
   hourlyRate: string;
-  isWelcomed: boolean;
-  isDeleted: boolean;
+  // isWelcomed: boolean;
+  // isDeleted: boolean;
 }
 
 export interface getProfileInterface {
 
   message:
   [{
+
+  firstName:string,
+  lastname:string,
+  email:string,
   profile_id: string,
   specialist_id: string,
   photo:string,

@@ -40,20 +40,60 @@
 
   <div id="specialistTitle">
       <p>TOP Services by Specialist</p>
-    </div>
+
       <P> DISPLAY SERVICES OFFERED</P>
+ </div>
+
+<div>
+<!-- specialists -->
+<!-- <P>DISPLAY ALL SPECIALISTS</P> -->
+</div>
+  <div id="specialistTitle">
+    <p class="meetExpert">Meet Our Team of Experts</p>
+    <div class="sp-container" >
+      <div class="profile-card london" *ngFor="let sp of mySpecialists;  let i = index">
+        <div class="profile-content">
+          <img src="{{sp.photo}}" alt="Profile Picture">
+          <button class="hire">Hire me</button>
+          <div class="details">
+            <p>{{sp.firstName}}</p>
+            <h2>{{sp.role}}</h2>
+            <p>{{sp.experience}}</p>
+            <p>{{sp.hourlyRate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 
 
   <div id="specialistTitle">
-    <p>Meet Our Team of Experts</p>
-  </div>
-    <P>DISPLAY ALL SPECIALISTS</P>
 
 
-  <div id="specialistTitle">
-    <P>display REVIEWS</P>
+    <div class="carousel">
+      <p class="meetExpert">REVIEWS From our Clients</p>
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let review of reviews; let i = index" [class.active]="i === activeIndex">
+      <img style="width:20%;border-radius:550px;" [src]="review.imageUrl" alt="Review Image">
+      <div class="review-content">
+        <p>{{ review.comment }}</p>
+        <p style="color:#2777c6">{{ review.author }}</p>
+      </div>
+    </div>
   </div>
-  <P>DISPLAY reviews</P>
+  <a class="carousel-control-prev" (click)="prevSlide()">&#10094;</a>
+  <a class="carousel-control-next" (click)="nextSlide()">&#10095;</a>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
 
   <div class="getStarted">
       <h3>Ready To Get Started? </h3>
@@ -61,7 +101,52 @@
       <button routerLink="signup">Join GigBridge</button>
   </div>
 
-</div>
-
 
 <app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+      <!-- <div class="profile-card paris"> -->
+        <!-- <div class="profile-content"> -->
+          <!-- <img src="profile2.jpg" alt="Profile Picture"> -->
+          <!-- <div class="details"> -->
+            <!-- <h2>Jane Smith</h2> -->
+            <!-- <p>Graphic Designer</p> -->
+            <!-- <p>8 years of experience</p> -->
+            <!-- <p>$60/hour</p> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+
+      <!-- <div class="profile-card tokyo"> -->
+        <!-- <div class="profile-content"> -->
+          <!-- <img src="" alt="Profile Picture"> -->
+          <!-- <div class="details"> -->
+            <!-- <h2>Michael Johnson</h2> -->
+            <!-- <p>Data Scientist</p> -->
+            <!-- <p>3 years of experience</p> -->
+            <!-- <p>$70/hour</p> -->
+          <!-- </div> -->
+        <!-- </div> -->
+
+      <!-- </div> -->
+
+      <!-- Add more profile cards as needed -->
+
+
+
+
+
+
+
+
+
+
+

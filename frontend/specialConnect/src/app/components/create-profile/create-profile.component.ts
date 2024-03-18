@@ -14,6 +14,7 @@ export class CreateProfileComponent {
   constructor(private router: Router) {}
   createProfile(): void {
     // Navigate to the page where the user can create their profile
-    this.router.navigate(['/profile/role']);
+    this.router.navigate(['/profile']);
   }
 }
+ 

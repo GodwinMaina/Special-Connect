@@ -2,7 +2,6 @@
 import joi from 'joi'
 
 export const profileSchema = joi.object({
-    specialist_id:joi.string().max(250).required(),
     photo: joi.string().max(250).required(),
     role: joi.string().max(250).required(),
     experience: joi.string().max(250).required(),

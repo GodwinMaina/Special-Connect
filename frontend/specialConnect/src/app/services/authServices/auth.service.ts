@@ -23,13 +23,13 @@ export class AuthService {
 
   //registerSpecialist
   registerSpeciaList(userData:specialistRegInterface){
-    return this.http.post<{ message: string, error: string }>('http://localhost:4000/specialist/register', userData)
+    return this.http.post<{ message: string, error: string , specialist_id:string}>('http://localhost:4000/specialist/register', userData)
   };
 
   //login client/specialist
   loginUser(email: string, password: string){
     const userLogs:loginInterface ={email:email, password:password};
-    return this.http.post<{ message: string, error: string,userType:string,isAdmin:string,token:string}>('http://localhost:4000/auth/login', userLogs);
+    return this.http.post<{ message: string, error: string,UserType:string,isAdmin:string,token:string}>('http://localhost:4000/auth/login', userLogs);
   };
 
 
@@ -73,7 +73,7 @@ export class AuthService {
 
    //getAllClients
    getAllSpecialists(){
-    return this.http.get<allSpecialists>('http://localhost:4000/specialist')
+    return this.http.get<getProfileInterface>('http://localhost:4000/specialist')
   }
 
   //getOneClient
@@ -113,19 +113,19 @@ getJobsByClient(client_id:string){
   return this.http.get<alljobs>(`http://localhost:4000/jobs/client/${client_id}`)
 }
 
+
 getJobsBySpecialist(specialist_id:string){
   return this.http.get<alljobs>(`http://localhost:4000/jobs/specialist/${specialist_id}`)
 }
 
 
 //profiles services
-createProfile(profileData:profileInterface){
-  return this.http.post<{ message: string, error: string }>('http://localhost:4000/profiles/create', profileData)
+createProfile(profileData:profileInterface, specialist_id:string ){
+  return this.http.post<{ message: string, error: string }>(`http://localhost:4000/profiles/create/${specialist_id}`, profileData)
 }
 
 getProfiles(){
   return this.http.get<getProfileInterface>('http://localhost:4000/profiles')
-
 }
 
 getOneProfile(profile_id:string){

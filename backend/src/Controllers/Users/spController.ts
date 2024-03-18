@@ -46,6 +46,7 @@ export const registerSpecialist = async (req: Request, res: Response) => {
                 if (newSpecialist) {
                     return res.json({
                         message: "Account for new specialist created successfully",
+                        specialist_id: id
                     });
                 } else {
                     return res.json({ error: "An error occurred while registering specialist." });

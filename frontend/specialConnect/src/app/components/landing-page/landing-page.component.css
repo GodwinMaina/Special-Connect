@@ -72,11 +72,10 @@ app-nav-bar{
   display: flex;
   margin-top: 20px;
   text-align: center;
-  /* font-size: 45px; */
+
   font-weight: 600;
   width: 100%;
   color: whitesmoke;
-  /* background-color: rgba(255, 255, 255, 0.589); */
 
 }
 
@@ -90,11 +89,9 @@ app-nav-bar{
   width: 200px;
   height: 40px;
   border: none;
-  /* margin-left: 20px; */
   margin-right:150px;
   margin-top: 60px;
   border-radius: 7px;
-  /* appearance: none; */
   background-color: #4260da;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
@@ -106,8 +103,7 @@ app-nav-bar{
   font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   font-size: 14px;
   font-weight: 600;
-  /* line-height: 20px; */
-  /* padding: 6px 16px; */
+
   position: relative;
   text-align: center;
 }
@@ -159,7 +155,7 @@ app-nav-bar{
 #specialistTitle{
   width: 90%;
   color: black;
-  font-size: 36px;
+  font-size: 26px;
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
@@ -294,3 +290,153 @@ app-nav-bar{
 
 
 }
+
+
+
+/* specialists */
+.sp-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+}
+
+.profile-card {
+  /* background-color: gainsboro; */
+  background: #edf0f1;;
+  box-shadow: 0 1px 0 rgba(255,255,255,.2);
+  border-radius: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.profile-content {
+  position: relative;
+  padding: 20px;
+}
+
+.profile-content img {
+  width: 120px; /* Adjust size as needed */
+  height: 150px; /* Adjust size as needed */
+  border-radius: 50%;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-left:3px ;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.hire{
+  background-color: #2777c6;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 10px;
+  position: absolute;
+  top: 200px;
+  margin-left:30px;
+  left: 0;
+  cursor: pointer;
+}
+
+.profile-content .details {
+  margin-left: 170px; /* Adjust based on image width */
+}
+
+.profile-content .details h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.profile-content .details p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .sp-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+
+.meetExpert{
+  font-size: 30px;
+  background-color: #F2F2F2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #4260da;
+  text-align: center;
+  margin-top: 6vh;
+  margin-bottom: 10vh;
+}
+
+
+
+
+/* REVIEWS */
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 30px;
+
+}
+
+.carousel-inner {
+  display: flex;
+  flex-direction: column;
+  background-color: #edf0f1;
+  height: 70vh;
+  border-radius: 5px;
+  /* align-items: center; */
+  padding: 20px;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  display: none;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+/* img { */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* margin-bottom: 10px; */
+/* } */
+
+.review-content {
+  font-size: 1.2rem;
+  margin-inline: 50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
