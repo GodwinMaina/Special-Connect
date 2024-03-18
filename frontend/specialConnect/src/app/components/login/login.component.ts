@@ -49,14 +49,10 @@ export class LoginComponent {
           this.loginForm.value.email,
           this.loginForm.value.password).subscribe(
 
-          (res: any
-            ) => {
+          (res:any) => {
             console.log(res);
-
             console.log(res.error);
             console.log(res.message);
-
-
 
             if(res.error){
               console.log(res);
@@ -74,50 +70,51 @@ export class LoginComponent {
               this.showSuccessMessage = true;
               this.successMessage = res.message;
 
-            //const user_id = response.user_id;
-            // this.user.setUserId(user_id);
-            // this.user.setEMail(email)
-            // console.log(client_id);
             console.log('happy');
 
             const type= res.UserType
-            console. log("1")
-            console. log(type)
-            console. log("2")
             const fname= res.firstname
              res.photo
              let isProfiled = res.isProfiled
+
+             if (res.email='godwin@gmail.com'){
+              localStorage.setItem('adminEmail', res.email='godwin@gmail.com')
+             }
+
             const email= res.email
+
             const token = res.token
              res.client_id
              res.specialist_id
              const admin = res.isAdmin
+             console.log(admin);
+
              res.phone
-            const isAdmin = res.isAdmin;
+            // const isAdmin = res.isAdmin;
 
-            if (type === "Specialist" && !isProfiled) {
-              this.router.navigate(['/profile']);
-
-            }
-             else if (type === "Specialist" && isProfiled) {
+            if (type === "Specialist") {
               this.router.navigate(['/dashboard/specialist']);
-
             }
 
-
-            else if (type === "Client") {
+            else if (type === "Client" && !admin) {
               this.router.navigate(['/dashboard/client']);
-            } else if (type === "Client" && isAdmin) {
+
+            } else if (type === "Client" && admin) {
               this.router.navigate(['/dashboard/admin']);
+
+              // let adminEmails = localStorage.getItem('adminEmail')
+              // console.log(adminEmails);
+
+
             } else {
               this.router.navigate(['/NotFound']);
             }
-
 
             }
 
             this.loginForm.reset();
           },
+
           (error) => {
             console.error('Error:', error);
           }

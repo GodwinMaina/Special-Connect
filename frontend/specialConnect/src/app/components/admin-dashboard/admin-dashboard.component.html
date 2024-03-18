@@ -6,21 +6,38 @@
       </div>
       <div class="menu">
           <ul class="menu-list">
-              <li routerLink="/admin/dashboard">
+
+              <li routerLink="/dashboard/admin">
                   <i class="fa-solid fa-house fa-lg"></i>
                   Dashboard
               </li>
-              <li routerLink="/admin/settings">
+
+              <li routerLink="/dashboard/admin/createJob">
+                Post Job
+            </li>
+
+            <li routerLink="/dashboard/admin/view-Specialists">
+              View specialists
+          </li>
+
+          <li routerLink="/dashboard/admin/view-Clients">
+            view Clients
+         </li>
+         
+
+            <li routerLink="/admin/settings">
                   <i class="fa-solid fa-gear fa-lg"></i>
                   Settings
-              </li>
+            </li>
           </ul>
       </div>
-      <div class="logout" routerLink="/login">
+
+      <div class="logout" routerLink="/">
           <p>
               <i class="fa-solid fa-right-from-bracket fa-lg"></i>
               Logout
           </p>
+
       </div>
 
   </div>
@@ -34,9 +51,10 @@
                   <input type="text" placeholder="Search" class="search-input">
                   <i class="fa-solid fa-magnifying-glass"></i>
               </div>
+              <h3 class="adminpg">ADMINPAGE</h3>
               <div class="account">
                   <i class="fa-solid fa-user"></i>
-                  Adminemail
+                  {{emailAdmin}}
               </div>
 
           </nav>
@@ -50,7 +68,7 @@
       <div class="modal">
           <div class="menu2">
               <ul class="menu-list">
-                  <li routerLink="/admin/dashboard">
+                  <li routerLink="/dashboard/admin">
                       <i class="fa-solid fa-house fa-lg"></i>
                       Dashboard
                   </li>
@@ -58,7 +76,7 @@
                       <i class="fa-solid fa-gear fa-lg"></i>
                       Settings
                   </li>
-                  <li routerLink="/login">
+                  <li routerLink="/">
                       <i class="fa-solid fa-right-from-bracket fa-lg"></i>
                       Logout
                   </li>

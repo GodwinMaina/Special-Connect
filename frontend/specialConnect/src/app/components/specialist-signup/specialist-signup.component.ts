@@ -42,8 +42,6 @@ import { CommonModule } from '@angular/common';
       console.log(response.message);
       console.log(response.specialist_id);
 
-      localStorage.setItem('specialist_id', response.specialist_id);
-
       if (response.error) {
         this.error = response.error;
 
@@ -51,7 +49,12 @@ import { CommonModule } from '@angular/common';
           this.specialistForm.reset();
           this.error = '';
         }, 3000);
-      } else {
+
+      }
+
+      else {
+
+        localStorage.setItem('specialist_id', response.specialist_id);
         this.successMessage = response.message;
         this.showSuccessMessage = true;
 
@@ -63,7 +66,6 @@ import { CommonModule } from '@angular/common';
       }
     });
 
-    // Moved this else block outside of the subscribe method
     if (!this.specialistForm.valid) {
       this.specialistForm.markAllAsTouched();
     }

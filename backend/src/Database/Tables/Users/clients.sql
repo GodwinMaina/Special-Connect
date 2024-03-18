@@ -13,6 +13,12 @@ CREATE TABLE Clients
 
 SELECT * FROM Clients
 
+UPDATE Clients
+SET isAdmin=1
+WHERE email='godwin@gmail.com'
+
+
+
 DROP TABLE Clients
 
 DELETE FROM Clients

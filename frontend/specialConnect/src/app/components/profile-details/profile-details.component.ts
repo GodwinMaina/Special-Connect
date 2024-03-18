@@ -53,7 +53,7 @@ export class ProfileDetailsComponent {
     //   hourlyRate: this.profileForm.value.hourlyRate
     // }
 
-    let specialist_id:string = localStorage.getItem('specialist_id') || '';
+    let specialist_id= localStorage.getItem('specialist_id') || '';
     this.profileForm.value
     console.log(this.profileForm.value)
 

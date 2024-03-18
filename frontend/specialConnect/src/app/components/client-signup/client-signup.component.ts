@@ -90,6 +90,8 @@ export class ClientSignupComponent {
     } else {
       this.registerForm.markAllAsTouched();
     }
+
+
   }
 
 }

@@ -19,11 +19,14 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 import { AdminUpdateJobsComponent } from './components/admin-update-jobs/admin-update-jobs.component';
-import { AdminViewUsersComponent } from './components/admin-view-users/admin-view-users.component';
+// import { AdminViewUsersComponent } from './components/admin-view-users/admin-view-users.component';
 import { SpecialistDashboardComponent } from './components/specialist-dashboard/specialist-dashboard.component';
 import { SpecialistUpdateProfileComponent } from './components/specialist-update-profile/specialist-update-profile.component';
 
 import { authGuardGuard } from './auth-guard.guard';
+import { OneProfileComponent } from './components/one-profile/one-profile.component';
+import { AdminViewSpecialistsComponent } from './components/admin-view-specialists/admin-view-specialists.component';
+import { AdminViewClientsComponent } from './components/admin-view-clients/admin-view-clients.component';
 
 
 
@@ -40,12 +43,16 @@ export const routes: Routes = [
   { path: 'dashboard/client', component: ClientDashboardComponent },
   {path: 'dashboard/specialist', component:SpecialistDashboardComponent},
   {path: 'dashboard/admin/update', component:AdminUpdateJobsComponent,},
-  {path: 'dashboard/admin/viewUsers', component:AdminViewUsersComponent,canActivate:[authGuardGuard]},
-  {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent,canActivate:[authGuardGuard]},
-  {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent,canActivate:[authGuardGuard]},
-
+  { path: 'profiles/:profile_id', component: OneProfileComponent },
+  {path: 'dashboard/admin/view-Specialists', component:AdminViewSpecialistsComponent},
+  {path: 'dashboard/admin/view-Clients', component:AdminViewClientsComponent},
+  // {path: 'dashboard/admin/viewUsers', component:AdminViewUsersComponent,canActivate:[authGuardGuard]},
+  {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent},
+  {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent},
   { path: '**', component: NotFoundComponent }
 ];
+
+
 
 
 

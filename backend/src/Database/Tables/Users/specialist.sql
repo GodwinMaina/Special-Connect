@@ -15,11 +15,13 @@ CREATE TABLE Specialist
 
 
 SELECT * FROM Specialist
-
+SELECT * FROM Clients
+SELECT * FROM Profiles
 
 DROP TABLE Specialist
 
-DELETE  FROM Specialist;
+DELETE  FROM Specialist
+WHERE specialist_id ='8d2a6ca5-bd25-499f-ba44-cc0521074ec3' 
 
 
 

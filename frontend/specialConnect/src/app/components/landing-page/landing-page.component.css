@@ -302,11 +302,20 @@ app-nav-bar{
 }
 
 .profile-card {
-  /* background-color: gainsboro; */
+
   background: #edf0f1;;
   box-shadow: 0 1px 0 rgba(255,255,255,.2);
   border-radius: 8px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  width: 450px;
+  /* align-items: center; */
+  height: 300px;
+
+}
+
+.details{
+  text-align: start;
+  font-size: 10px;
+  font-weight: 500;
 }
 
 .profile-content {
@@ -340,6 +349,18 @@ app-nav-bar{
   margin-left:30px;
   left: 0;
   cursor: pointer;
+}
+.hireB{
+  background-color: #2777c6;
+  border:white;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 10px;
+  cursor: pointer;
+
 }
 
 .profile-content .details {

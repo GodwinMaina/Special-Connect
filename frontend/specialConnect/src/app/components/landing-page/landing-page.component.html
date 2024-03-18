@@ -56,10 +56,11 @@
           <img src="{{sp.photo}}" alt="Profile Picture">
           <button class="hire">Hire me</button>
           <div class="details">
-            <p>{{sp.firstName}}</p>
-            <h2>{{sp.role}}</h2>
-            <p>{{sp.experience}}</p>
-            <p>{{sp.hourlyRate}}</p>
+            <p>Name:{{sp.firstName}}</p>
+            <p>Role:{{sp.role}}</p>
+            <p>Experience:{{sp.experience}}</p>
+            <p>Rate:{{sp.hourlyRate}}/hr</p>
+            <button class="hireB" (click)="oneProfile(sp.profile_id)">more info</button>
           </div>
         </div>
       </div>
@@ -68,7 +69,6 @@
 
 
   <div id="specialistTitle">
-
 
     <div class="carousel">
       <p class="meetExpert">REVIEWS From our Clients</p>

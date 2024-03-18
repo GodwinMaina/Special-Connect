@@ -22,7 +22,8 @@ export const registerSpecialist = async (req: Request, res: Response) => {
             const emailExists = await checkIfEmailExists(email);
             if (emailExists) {
                 return res.json({
-                    error: 'Email is already registered',
+                    emailError: 'Email is already registered',
+                    error: 'Email is already registered'
                 });
             } 
 
@@ -46,7 +47,7 @@ export const registerSpecialist = async (req: Request, res: Response) => {
                 if (newSpecialist) {
                     return res.json({
                         message: "Account for new specialist created successfully",
-                        specialist_id: id
+                        id
                     });
                 } else {
                     return res.json({ error: "An error occurred while registering specialist." });
@@ -63,7 +64,7 @@ export const registerSpecialist = async (req: Request, res: Response) => {
 };
 
     //check if email exist functionallity
-    async function checkIfEmailExists(email: string): Promise<boolean> {
+    async function checkIfInClients(email: string): Promise<boolean> {
         const pool = await mssql.connect(sqlConfig);
         const result = await pool
             .request()
@@ -72,6 +73,27 @@ export const registerSpecialist = async (req: Request, res: Response) => {
     
         return result.recordset[0].count > 0;
     }
+    
+    async function checkIfInSpecialist(email: string): Promise<boolean> {
+        const pool = await mssql.connect(sqlConfig);
+        const result = await pool
+            .request()
+            .input('email', mssql.VarChar, email)
+            .query('SELECT COUNT(*) AS count FROM Clients WHERE email = @email');
+    
+        return result.recordset[0].count > 0;
+    }
+    
+    async function checkIfEmailExists(email: string) {
+        const InClients = await checkIfInClients(email);
+        const InSpecialists = await checkIfInSpecialist(email);
+        
+        if (InClients || InSpecialists) {
+            return "Email is already registered.";
+        }
+    }
+    
+    
     
  
  

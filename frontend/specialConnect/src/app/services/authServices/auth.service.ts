@@ -4,7 +4,7 @@ import { allClients, clientRegInterface, oneClient } from '../../interface/clien
 import { allSpecialists, oneSpecialist, specialistRegInterface } from '../../interface/specialistRegister';
 import { loginInterface, passwordReset } from '../../interface/loginInterface';
 import { alljobs, jobCategory, postJobInterface } from '../../interface/postJobs';
-import { getProfileInterface, profileInterface } from '../../interface/profileInterface';
+import { getOneProfileInterface, getProfileInterface, profileInterface } from '../../interface/profileInterface';
 
 
 @Injectable({
@@ -18,12 +18,12 @@ export class AuthService {
 
   //registerClient
   registerClient(userData:clientRegInterface){
-    return this.http.post<{ message: string, error: string }>('http://localhost:4000/client/register', userData)
+    return this.http.post<{ message: string, error: string, emailError:string, isAdmin:string }>('http://localhost:4000/client/register', userData)
   };
 
   //registerSpecialist
   registerSpeciaList(userData:specialistRegInterface){
-    return this.http.post<{ message: string, error: string , specialist_id:string}>('http://localhost:4000/specialist/register', userData)
+    return this.http.post<{ message: string, error: string ,emailError:string,specialist_id:string}>('http://localhost:4000/specialist/register', userData)
   };
 
   //login client/specialist
@@ -129,7 +129,7 @@ getProfiles(){
 }
 
 getOneProfile(profile_id:string){
-  return this.http.get<profileInterface>(`http://localhost:4000/profiles/${profile_id}`)
+  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/${profile_id}`)
 
 }
 
@@ -141,5 +141,21 @@ deleteProfile(profile_id:string){
   return this.http.delete<{message:string, error:string}>(`http://localhost:4000/profiles/delete/${profile_id}`)
 
 }
+
+
+
+SetadminEmails(){
+
+}
+
+
+getadminEmails(){
+
+  return localStorage.getItem('adminEmail');
+}
+
+
+
+
 
 }

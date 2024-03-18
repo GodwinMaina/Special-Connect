@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/authServices/auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,7 +11,14 @@ import { RouterLink } from '@angular/router';
 })
 export class AdminDashboardComponent {
 
-constructor() { }
+  emailAdmin:string=''
+
+constructor(private api:AuthService) {
+
+
+  this.emailAdmin= this.api.getadminEmails() || '';
+}
+
 
   showModalMenuAdmin() {
     let modalBg = document.querySelector('.modal-bg');

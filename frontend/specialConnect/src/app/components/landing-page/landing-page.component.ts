@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/authServices/auth.service';
 import { CommonModule } from '@angular/common';
 import { getProfileInterface } from '../../interface/profileInterface';
@@ -16,14 +16,54 @@ import { getProfileInterface } from '../../interface/profileInterface';
 export class LandingPageComponent {
 
   mySpecialists:any[]=[]
-  constructor(private api:AuthService){
 
+  constructor(private api:AuthService, private router:Router){
+
+
+   //get all profiles or display all
     this.api.getProfiles().subscribe(res=>{
       this.mySpecialists=res.message
       console.log(this.mySpecialists)
 
     })
+
   }
+
+  oneProfile(profile_id:string){
+      //get one profile /display one
+  this.api.getOneProfile(profile_id).subscribe(res=>{
+    console.log(res);
+
+    this.router.navigate(['/profiles',profile_id]);
+
+  })
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   reviews = [
     { imageUrl: 'https://www.logiconme.com/assets/img-temp/400x450/img5.jpg', comment: "Excellent service and great value for money. Will definitely recommend to friends and family!", author: 'John Doe' },

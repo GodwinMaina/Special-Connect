@@ -1,0 +1,50 @@
+
+<app-navbar></app-navbar>
+
+<!-- <div class="profile-container"> -->
+
+  <!-- <div class="profile-photo"> -->
+      <!-- <img [src]="profile.photo" alt="Profile Photo"> -->
+  <!-- </div> -->
+  <!-- <div class="profile-details"> -->
+      <!-- <h2>User Profile</h2> -->
+      <!-- <p><span>Description:</span> {{ profile.description }}</p> -->
+      <!-- <p><span>Education:</span> {{ profile.education }}</p> -->
+      <!-- <p><span>Experience:</span> {{ profile.experience }}</p> -->
+      <!-- <p><span>Hourly Rate:</span> {{ profile.hourlyRate }}</p> -->
+      <!-- <p><span>Languages:</span> {{ profile.languages }}</p> -->
+      <!-- <p><span>Location:</span> {{ profile.location }}</p> -->
+      <!-- <p><span>Role:</span> {{ profile.role }}</p> -->
+      <!-- <p><span>Skills:</span> {{ profile.skills }}</p> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+
+<div class="profile-container"  *ngFor="let profile of profileData; let i = index">
+  <div class="profile-photo">
+      <img [src]="profile.photo" alt="Profile Photo">
+  </div>
+  <button class="messagesp">message</button>
+  
+  <div class="profile-details">
+      <h2>{{profile.firstName}}</h2>
+
+      <div class="profile-column">
+          <p><span>Education:</span> {{ profile.education }}</p>
+          <p><span>Skills:</span> {{ profile.skills }}</p>
+            <p><span>Role:</span> {{ profile.role }}</p>
+          <p><span>Experience:</span> {{ profile.experience }}</p>
+          <p><span>Hourly Rate:</span> {{ profile.hourlyRate }}</p>
+          <p><span>Languages:</span> {{ profile.languages }}</p>
+          <p><span>Location:</span> {{ profile.location }}</p>
+          <p><span>Description:</span> {{ profile.description }}</p>
+      </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
+
+
+

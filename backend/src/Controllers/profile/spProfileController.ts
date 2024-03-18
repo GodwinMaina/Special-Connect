@@ -46,6 +46,7 @@ export const createProfile = async (req: Request, res: Response) => {
                 if (newProfile) {
                     return res.json({
                         message: "New profile created successfully",
+                        specialist_id
                     });
                 } else {
                     return res.json({ error: "An error occurred while creating profile." });
@@ -102,11 +103,36 @@ export const getProfileById = async (req: Request, res: Response) => {
     try {
         const profile_id = req.params.profile_id;
         const pool = await mssql.connect(sqlConfig);
-        const profile = (await pool.request().input("profile_id", mssql.VarChar, profile_id).execute('getProfileById')).recordset;
-        return res.json({ 
-         
-            message:profile 
-        });
+        const query = `
+            SELECT
+                p.profile_id,
+                p.specialist_id,
+                p.photo,
+                p.role,
+                p.experience,
+                p.education,
+                p.location,
+                p.languages,
+                p.skills,
+                p.description,
+                p.hourlyRate,
+                s.firstName,
+                s.email,
+                s.phone
+            FROM
+                Profiles p
+            INNER JOIN
+                Specialist s ON p.specialist_id = s.specialist_id
+            WHERE
+                p.isDeleted = 0;`;
+
+                let message = await pool.request()
+                .input('profile_id', mssql.VarChar, profile_id)
+                .query(query);
+                // let message = await pool.request().query(query);
+                // return res.json({ message: message.recordset });
+
+                return res.json({ message: message.recordset});
 
     } catch (error) {
         console.error("Error fetching profile:", error);
