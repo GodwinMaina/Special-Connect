@@ -14,22 +14,41 @@ export interface postJobInterface {
 export  interface alljobs {
 
   message: [{
-    job_id: string;
-    jobName: string;
-    category: string;
-    description: string;
-    duration: string;
-    budget: string;
-    client_id: string;
-    specialist_id: string;
+    job_id: string
+    jobName: string,
+    category: string,
+    description: string,
+    duration: string,
+    budget: string,
+    client_id: string
+   
 
   }],
 
-   token: [{}],
+ 
 
     error: [{}]
 
 }
+
+
+export  interface onejob {
+
+  message: [{
+    job_id: string,
+    jobName: string,
+    category: string,
+    description: string,
+    duration: string,
+    budget: string,
+    client_id: string
+
+  }],
+
+    error: [{}]
+
+}
+
 
 
 

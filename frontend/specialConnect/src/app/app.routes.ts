@@ -23,10 +23,12 @@ import { AdminUpdateJobsComponent } from './components/admin-update-jobs/admin-u
 import { SpecialistDashboardComponent } from './components/specialist-dashboard/specialist-dashboard.component';
 import { SpecialistUpdateProfileComponent } from './components/specialist-update-profile/specialist-update-profile.component';
 
-import { authGuardGuard } from './auth-guard.guard';
+// import { authGuardGuard } from './auth-guard.guard';
 import { OneProfileComponent } from './components/one-profile/one-profile.component';
 import { AdminViewSpecialistsComponent } from './components/admin-view-specialists/admin-view-specialists.component';
 import { AdminViewClientsComponent } from './components/admin-view-clients/admin-view-clients.component';
+import { OneJobComponent } from './components/one-job/one-job.component';
+import { UpdateJobsComponent } from './components/update-jobs/update-jobs.component';
 
 
 
@@ -42,11 +44,11 @@ export const routes: Routes = [
   { path: 'dashboard/admin', component: AdminDashboardComponent},
   { path: 'dashboard/client', component: ClientDashboardComponent },
   {path: 'dashboard/specialist', component:SpecialistDashboardComponent},
-  {path: 'dashboard/admin/update', component:AdminUpdateJobsComponent,},
-  { path: 'profiles/:profile_id', component: OneProfileComponent },
+  {path: 'dashboard/admin/updateJob/:job_id', component:AdminUpdateJobsComponent},
+  { path: 'profiles/:specialist_id', component:OneProfileComponent },
   {path: 'dashboard/admin/view-Specialists', component:AdminViewSpecialistsComponent},
   {path: 'dashboard/admin/view-Clients', component:AdminViewClientsComponent},
-  // {path: 'dashboard/admin/viewUsers', component:AdminViewUsersComponent,canActivate:[authGuardGuard]},
+  {path: 'jobs/job/:job_id', component:OneJobComponent},
   {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent},
   {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent},
   { path: '**', component: NotFoundComponent }
@@ -54,16 +56,4 @@ export const routes: Routes = [
 
 
 
-
-
-
-
-
-
-  // { path: 'profile/role', component: TitlePageComponent },
-  // { path: 'profile/experience', component: ExperiencePageComponent },
-  // { path: 'profile/education', component: EducationPageComponent },
-  // { path: 'profile/language', component: LanguagePageComponent},
-  // { path: 'profile/skills', component: SkillsPageComponent},
-  // { path: 'profile/description', component: DescriptionComponent },
-  // { path: 'profile/hourlyRate', component: HourlyRateComponent },
+  // {path: 'dashboard/admin/viewUsers', component:AdminViewUsersComponent,canActivate:[authGuardGuard]},

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { allClients, clientRegInterface, oneClient } from '../../interface/clientRegister';
 import { allSpecialists, oneSpecialist, specialistRegInterface } from '../../interface/specialistRegister';
 import { loginInterface, passwordReset } from '../../interface/loginInterface';
-import { alljobs, jobCategory, postJobInterface } from '../../interface/postJobs';
+import { alljobs, jobCategory, onejob, postJobInterface } from '../../interface/postJobs';
 import { getOneProfileInterface, getProfileInterface, profileInterface } from '../../interface/profileInterface';
 
 
@@ -23,7 +23,7 @@ export class AuthService {
 
   //registerSpecialist
   registerSpeciaList(userData:specialistRegInterface){
-    return this.http.post<{ message: string, error: string ,emailError:string,specialist_id:string}>('http://localhost:4000/specialist/register', userData)
+    return this.http.post<{ message: string, error: string ,emailError:string,id:string}>('http://localhost:4000/specialist/register', userData)
   };
 
   //login client/specialist
@@ -31,7 +31,6 @@ export class AuthService {
     const userLogs:loginInterface ={email:email, password:password};
     return this.http.post<{ message: string, error: string,UserType:string,isAdmin:string,token:string}>('http://localhost:4000/auth/login', userLogs);
   };
-
 
 
    //deleteClient
@@ -63,12 +62,12 @@ export class AuthService {
 
   //getAllClients
   getAllClients(){
-    return this.http.get<allClients>('http://localhost:4000/users')
+    return this.http.get<allClients>('http://localhost:4000/client')
   }
 
   //getOneClient
   getOneClient(client_id:string){
-    return this.http.get<oneClient>(`http://localhost:4000/users/${client_id}`)
+    return this.http.get<oneClient>(`http://localhost:4000/client/${client_id}`)
   }
 
    //getAllClients
@@ -84,8 +83,8 @@ export class AuthService {
 
 
 //Jobs authservice
-postJobs(jobData:postJobInterface){
-  return this.http.post<{ message: string, error: string }>('http://localhost:4000/jobs/create', jobData)
+postJobs(client_id:string, jobData:postJobInterface){
+  return this.http.post<{ message: string, error: string }>(`http://localhost:4000/jobs/create/${client_id}`, jobData)
 };
 
 getJobs(){
@@ -106,8 +105,9 @@ deleteJob(job_id:string){
 }
 
 getOneJob(job_id:string){
-  return this.http.get<alljobs>(`http://localhost:4000/jobs/job/${job_id}`)
+  return this.http.get<onejob>(`http://localhost:4000/jobs/job/${job_id}`)
 }
+
 
 getJobsByClient(client_id:string){
   return this.http.get<alljobs>(`http://localhost:4000/jobs/client/${client_id}`)
@@ -128,8 +128,8 @@ getProfiles(){
   return this.http.get<getProfileInterface>('http://localhost:4000/profiles')
 }
 
-getOneProfile(profile_id:string){
-  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/${profile_id}`)
+getOneSpecialistProfile(specialist_id:string){
+  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/${specialist_id}`)
 
 }
 

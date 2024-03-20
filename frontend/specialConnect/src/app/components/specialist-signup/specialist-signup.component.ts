@@ -40,8 +40,10 @@ import { CommonModule } from '@angular/common';
       console.log("3");
 
       console.log(response.message);
-      console.log(response.specialist_id);
+      console.log(response.id);
 
+      localStorage.setItem('specialist_id', response.id);
+      
       if (response.error) {
         this.error = response.error;
 
@@ -54,7 +56,7 @@ import { CommonModule } from '@angular/common';
 
       else {
 
-        localStorage.setItem('specialist_id', response.specialist_id);
+        localStorage.setItem('specialist_id', response.id);
         this.successMessage = response.message;
         this.showSuccessMessage = true;
 

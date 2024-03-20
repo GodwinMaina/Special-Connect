@@ -9,7 +9,6 @@
 
               <div class="aboutUsDesc">
                   <div class="mobileImg">
-
                   </div>
                   <p id="aboutTitle">Find  and  Hire <br>
                   Expert Freelancers<br> </p>
@@ -38,38 +37,61 @@
       </div>
   </div>
 
-  <div id="specialistTitle">
-      <p>TOP Services by Specialist</p>
+  <!-- display Jobs -->
 
-      <P> DISPLAY SERVICES OFFERED</P>
+ <hr>
+
+ <div class="jobs">
+     <p class="meetExpert">CheckOut Jobs Available</p>
+     <div class="job-grid" *ngIf="AllJobs.length > 0">
+       <div class="job-card" *ngFor="let job of AllJobs">
+         <div>
+             <p><b>Job Name:</b> {{ job?.jobName }}</p>
+             <!-- <p><b>Employer Name:</b> {{ job?.employerName }}</p> -->
+             <p><b>category:</b> {{ job?.category }}</p>
+             <p><b>Duration:</b> {{ job?.duration }}</p>
+             <p><b>Description:</b> {{ job?.description }}</p>
+             <!-- <p><b>Start Date:</b> {{ job?.startdate | date }}</p> -->
+             <p><b>Salary:</b> {{ job?.budget }}</p>
+           <div class="button-container">
+             <button class="job-btn"  (click)="oneJob(job.job_id)">View job</button>
+           </div>
+         </div>
+       </div>
+     </div>
  </div>
 
+ <hr>
+
 <div>
+
+
+
 <!-- specialists -->
 <!-- <P>DISPLAY ALL SPECIALISTS</P> -->
 </div>
+
   <div id="specialistTitle">
     <p class="meetExpert">Meet Our Team of Experts</p>
     <div class="sp-container" >
-      <div class="profile-card london" *ngFor="let sp of mySpecialists;  let i = index">
+      <div class="profile-card-london" *ngFor="let sp of mySpecialists;  let i = index">
         <div class="profile-content">
           <img src="{{sp.photo}}" alt="Profile Picture">
-          <button class="hire">Hire me</button>
           <div class="details">
             <p>Name:{{sp.firstName}}</p>
             <p>Role:{{sp.role}}</p>
             <p>Experience:{{sp.experience}}</p>
             <p>Rate:{{sp.hourlyRate}}/hr</p>
-            <button class="hireB" (click)="oneProfile(sp.profile_id)">more info</button>
+            <button class="hire"  (click)="oneProfile(sp.specialist_id)">Hire me</button>
+            <button class="hireB" (click)="oneProfile(sp.specialist_id)">more info</button>
           </div>
         </div>
       </div>
     </div>
     </div>
 
-
+    
   <div id="specialistTitle">
-
     <div class="carousel">
       <p class="meetExpert">REVIEWS From our Clients</p>
   <div class="carousel-inner">
@@ -88,13 +110,6 @@
 
 </div>
 
-
-
-
-
-
-
-
   <div class="getStarted">
       <h3>Ready To Get Started? </h3>
       <p>Hire faster with the country’s  highest rated <br> Specialists</p>
@@ -108,43 +123,7 @@
 
 
 
-
-
-
-
-      <!-- <div class="profile-card paris"> -->
-        <!-- <div class="profile-content"> -->
-          <!-- <img src="profile2.jpg" alt="Profile Picture"> -->
-          <!-- <div class="details"> -->
-            <!-- <h2>Jane Smith</h2> -->
-            <!-- <p>Graphic Designer</p> -->
-            <!-- <p>8 years of experience</p> -->
-            <!-- <p>$60/hour</p> -->
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </div> -->
-
-      <!-- <div class="profile-card tokyo"> -->
-        <!-- <div class="profile-content"> -->
-          <!-- <img src="" alt="Profile Picture"> -->
-          <!-- <div class="details"> -->
-            <!-- <h2>Michael Johnson</h2> -->
-            <!-- <p>Data Scientist</p> -->
-            <!-- <p>3 years of experience</p> -->
-            <!-- <p>$70/hour</p> -->
-          <!-- </div> -->
-        <!-- </div> -->
-
-      <!-- </div> -->
-
-      <!-- Add more profile cards as needed -->
-
-
-
-
-
-
+      
 
 
 

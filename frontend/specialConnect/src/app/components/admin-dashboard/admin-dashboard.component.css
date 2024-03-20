@@ -1,7 +1,7 @@
 .main {
-  width: 100vw;
-  min-height: 100vh;
-  max-height: max-content;
+  /* width: 100vw; */
+  /* min-height: 100vh; */
+  /* max-height: max-content; */
   display: flex;
 }
 
@@ -27,9 +27,9 @@
 .logo-pic {
   height: 50%;
 }
-.menu,.menu2 {
-  height: 30%;
-}
+/* .menu,.menu2 { */
+  /* height: 70%; */
+/* } */
 .menu-list {
   list-style: none;
   height: 100%;
@@ -185,4 +185,76 @@
     display: none;
   }
 
+}
+
+
+
+
+/* table container*/
+.table-div{
+  /* margin-top: 15vh; */
+  width: 90%;
+}
+.table{
+  width: 100%;
+}
+.table th{
+  border: 1px solid white;
+  background-color: #290A5C;
+  color: white;
+}
+.table td{
+  border: 1px solid black;
+}
+.img-table{
+  height: 10vh;
+  width:100%;
+  object-fit: cover;
+}
+.icon{
+  display: flex;
+  justify-content: space-around;
+}
+.edit-icon{
+  color: rgb(133, 8, 8);
+  cursor: pointer;
+}
+.edit-icon:hover{
+  color: red;
+}
+.delete-icon{
+  color: green;
+  cursor: pointer;
+}
+.delete-icon:hover{
+  color: lime;
+}
+
+@media (max-width: 768px) {
+  .landing-txt > h1 {
+    font-size: 16px;
+  }
+  .landing-txt {
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
+  .prod {
+    width: 30vw;
+  }
+  .prod-text {
+    margin-bottom: -100%;
+  }
+  .prod-modal{
+    height: 70%;
+    width: 80%;
+  }
+}
+@media (max-width: 425px) {
+  .prod {
+    width: 40vw;
+  }
+  .prod-modal{
+    height: 60%;
+    width: 90%;
+  }
 }

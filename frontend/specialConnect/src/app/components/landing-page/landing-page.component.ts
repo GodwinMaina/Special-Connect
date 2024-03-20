@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/authServices/auth.service';
 import { CommonModule } from '@angular/common';
 import { getProfileInterface } from '../../interface/profileInterface';
+import { log } from 'console';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,6 +17,8 @@ import { getProfileInterface } from '../../interface/profileInterface';
 export class LandingPageComponent {
 
   mySpecialists:any[]=[]
+  AllJobs:any[]=[]
+  oneJoby:any[]=[]
 
   constructor(private api:AuthService, private router:Router){
 
@@ -27,19 +30,24 @@ export class LandingPageComponent {
 
     })
 
-  }
 
-  oneProfile(profile_id:string){
-      //get one profile /display one
-  this.api.getOneProfile(profile_id).subscribe(res=>{
-    console.log(res);
+  this.api.getJobs().subscribe(res => {
+    console.log('hello fgnghngh');
+    this.AllJobs = res.message;
+    console.log(this.AllJobs);
+  });
 
-    this.router.navigate(['/profiles',profile_id]);
 
-  })
 
   }
+  oneProfile(specialist_id:string){
+    
+    this.router.navigate(['/profiles/',specialist_id]);
+  }
 
+  oneJob (job_id:string) {
+      this.router.navigate(['/jobs/job/',job_id]);
+  }
 
 
 

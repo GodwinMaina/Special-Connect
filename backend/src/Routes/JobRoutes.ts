@@ -6,7 +6,7 @@ const JobRouter = Router();
 
 
 //cretae Job
-JobRouter.post('/create', createJob);
+JobRouter.post('/create/:id', createJob);
 
 //get all Jobs
 JobRouter.get('/alljobs', getJobs);
@@ -30,5 +30,5 @@ JobRouter.get('/client/:client_id', getJobsByClient);
 JobRouter.get('/specialist/:specialist_id', getJobsBySpecialist);
 
 
-
 export default JobRouter;
+

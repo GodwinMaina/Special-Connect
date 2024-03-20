@@ -6,8 +6,8 @@ CREATE TABLE Jobs(
      description TEXT,
      duration VARCHAR(250),
      budget VARCHAR(250),
-    client_id VARCHAR(250),
-    specialist_id VARCHAR(250),
+    client_id VARCHAR(250)
+   -- specialist_id VARCHAR(250)
     FOREIGN KEY (client_id) REFERENCES Clients(client_id),
     -- FOREIGN KEY (specialist_id) REFERENCES Specialist(specialist_id)
 )

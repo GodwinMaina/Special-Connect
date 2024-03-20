@@ -6,10 +6,11 @@ import cors from 'cors';
 import clientRouter from './Routes/clientRoutes';
 import authRouter from './Routes/authRoutes';
 import spRouter from './Routes/specialistRoutes';
-import profileRouter from './Routes/spProfilesRoutes';
+import profileRouter from './Routes/ProfilesRoutes';
 import JobRouter from './Routes/JobRoutes';
 
 import { Server } from "socket.io";
+import appointRouter from './Routes/appointment';
 
 const app = express()
 
@@ -29,6 +30,8 @@ app.use(authRouter);
 app.use('/profiles', profileRouter);
 
 app.use('/jobs', JobRouter);
+
+app.use(appointRouter)
  
 app.use((error: Error, req: Request, res: Response, next: NextFunction)=>{
     res.json({

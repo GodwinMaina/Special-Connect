@@ -8,8 +8,8 @@ import { JobInterface } from '../../Interfaces/jobsInterface';
 // Create Job
 export const createJob = async (req: Request, res: Response) => {
     try {
-        const { jobName, category, description, duration, budget, client_id }: JobInterface = req.body;
-
+        const { jobName, category, description, duration, budget}: JobInterface = req.body;
+        const client_id = req.params.id
         // Validate job data
         const { error } = jobSchema.validate(req.body);
         if (error) {
@@ -22,12 +22,13 @@ export const createJob = async (req: Request, res: Response) => {
 
         await pool.request()
             .input("job_id", mssql.VarChar, job_id)
+            .input("client_id", mssql.VarChar, client_id)
             .input("jobName", mssql.VarChar, jobName)
             .input("category", mssql.VarChar, category)
             .input("description", mssql.Text, description)
             .input("duration", mssql.VarChar, duration)
             .input("budget", mssql.VarChar, budget)
-            .input("client_id", mssql.VarChar, client_id)
+           
             // .input("specialist_id", mssql.VarChar, specialist_id)
             .execute('createJob');
 
@@ -85,7 +86,7 @@ export const getOneJob = async (req: Request, res: Response) => {
 export const updateJob = async (req: Request, res: Response) => {
     try {
         const id  = req.params.job_id;
-        const { jobName, category, description, duration, budget, client_id} : JobInterface = req.body;
+        const { jobName, category, description, duration, budget} = req.body;
 
         // Validate job data
         const { error } = jobSchema.validate(req.body);
@@ -98,10 +99,10 @@ export const updateJob = async (req: Request, res: Response) => {
             .input("job_id", mssql.VarChar, id)
             .input("jobName", mssql.VarChar, jobName)
             .input("category", mssql.VarChar, category)
-            .input("description", mssql.Text, description)
             .input("duration", mssql.VarChar, duration)
             .input("budget", mssql.VarChar, budget)
-            .input("client_id", mssql.VarChar, client_id)
+            .input("description", mssql.Text, description)
+            // .input("client_id", mssql.VarChar, client_id)
             // .input("specialist_id", mssql.VarChar, specialist_id)
             .execute('updateJob');
 

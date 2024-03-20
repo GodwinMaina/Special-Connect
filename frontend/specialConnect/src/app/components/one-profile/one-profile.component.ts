@@ -7,6 +7,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 
 
+
+
 @Component({
   selector: 'app-one-profile',
   standalone: true,
@@ -16,21 +18,29 @@ import { CommonModule } from '@angular/common';
 })
 export class OneProfileComponent {
 
-  profileData:any;
-  profile_id!: string;
+  oneProfile:any[]=[];
+
+  specialist_id!: string;
 
   constructor(public api:AuthService, private router:Router,  private route: ActivatedRoute){
 
-  this.route.params.subscribe(params => {
-    this.profile_id = params['profile_id'];
-    console.log('Product_id:', this.profile_id);
-    this.api.getOneProfile(this.profile_id).subscribe(oneProfile => {
-      this.profileData= oneProfile.message
-      console.log('Profile Data:', this.profileData);
-
+    this.route.params.subscribe(params => {
+      this.specialist_id = params['specialist_id'];
+      console.log('specialist_id:', this.specialist_id);
     });
-  });
+
+  
+  this.api.getOneSpecialistProfile(this.specialist_id).subscribe(response=>{
+    this.oneProfile=response.message;
+    console.log('One profile:', this.oneProfile);
+    
+  })
+
 
 }
-
 }
+
+
+
+
+

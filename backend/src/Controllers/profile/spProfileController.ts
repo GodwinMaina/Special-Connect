@@ -85,9 +85,8 @@ export const getProfiles = async (req: Request, res: Response) => {
             FROM
                 Profiles p
             INNER JOIN
-                Specialist s ON p.specialist_id = s.specialist_id
-            WHERE
-                p.isDeleted = 0;`;
+                Specialist s ON p.specialist_id = s.specialist_id;
+        `;
 
         const allProfiles = await pool.request().query(query);
         return res.json({ message: allProfiles.recordset });
@@ -186,5 +185,25 @@ export const deleteProfile = async (req: Request, res: Response) => {
     } catch (error) {
         console.error("Error deleting profile:", error);
         return res.status(500).json({ error: "An error occurred while deleting profile." });
+    }
+};
+
+
+
+// Get Profile by Specialist ID
+export const getProfileBysp = async (req: Request, res: Response) => {
+    try {
+        const specialist_id = req.params.specialist_id; 
+        const pool = await mssql.connect(sqlConfig);
+        
+        const message = (await pool.request()
+            .input('specialist_id', mssql.VarChar, specialist_id)
+            .execute('getProfileBySpecialistID')).recordset;
+
+        return res.json({ message });
+
+    } catch (error) {
+        console.error("Error fetching specialist profile:", error);
+        return res.status(500).json({ error: "An error occurred while fetching profile." });
     }
 };

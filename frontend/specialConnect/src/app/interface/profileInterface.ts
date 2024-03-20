@@ -66,8 +66,7 @@ errror:[{}]
 
 export interface getOneProfileInterface {
 
-  message:
-  [{
+  message: [{
 
   firstName:string,
   lastname:string,
@@ -84,7 +83,8 @@ export interface getOneProfileInterface {
   description: string,
   hourlyRate: string,
   isWelcomed: boolean,
-  isDeleted: boolean
+  isDeleted: boolean,
+  isProfiled:boolean
 
 }]
 

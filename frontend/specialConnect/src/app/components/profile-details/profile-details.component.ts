@@ -58,15 +58,14 @@ export class ProfileDetailsComponent {
     console.log(this.profileForm.value)
 
     this.api.createProfile(this.profileForm.value,specialist_id ).subscribe(response => {
-      console.log(this.profileForm.value.photo);
-      
+     
        console.log(response)
        console.log(response.error);
        console.log(response.message);
 
       if (response.error) {
         this.error = response.error;
-        
+
         setTimeout(() => {
           // this.profileForm.reset();
           this.error = '';

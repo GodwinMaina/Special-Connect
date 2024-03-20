@@ -1,17 +1,17 @@
 ###specialist create profile
-POST http://localhost:4000/profiles/create/3b2cf48e-4957-4749-af61-2b8c73d43b9d
+POST http://localhost:4000/profiles/create/215da6e6-c0e7-4547-8585-ae66bc62ba10
 Content-Type: application/json
 
   { 
-    "photo":"Deleniti ex minim ma",
-    "role": "Web master",
-    "experience": "5 years",
-    "location":"Nairobi",
-    "education": "Degree jkuat cs",
+    "photo":"https://media.licdn.com/dms/image/C4E03AQEGCAh_N5RneA/profile-displayphoto-shrink_800_800/0/1535004932145?e=1716422400&v=beta&t=GRUsw2_dLSGUDrFx0avgAXf46-WGWFU12Bzy_Pl9zvk",
+    "role": "Machine learning ",
+    "experience": "10 years",
+    "location":"Singapore",
+    "education": "Degree Singapore college",
     "languages": "English, French",
-    "skills": "web designer in Figma, web developer in Angular",
-    "description": "lorem ispum 50",
-    "hourlyRate": "$10"
+    "skills": "Mchine learning engineer neural networks and deep learning",
+    "description": "deep learning",
+    "hourlyRate": "$50"
 }
 
 
@@ -21,8 +21,8 @@ Content-Type: application/json
 
 
 ###
-//get profile by id
-GET http://localhost:4000/profiles/fc4be43e-2088-48b8-a038-fa38023aeb37
+//get profile by specialist_id
+GET http://localhost:4000/profiles/e4a419e5-f0b2-440e-8f2a-2a52b0a9a09b
 Content-Type: application/json
 
 

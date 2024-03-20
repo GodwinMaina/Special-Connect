@@ -1,0 +1,9 @@
+
+POST http://localhost:3000/appointments
+Content-Type: application/json
+
+{
+    "client_id": "client-id",
+    "specialist_id": "specialist-id",
+    "startTime": "15:00"
+}

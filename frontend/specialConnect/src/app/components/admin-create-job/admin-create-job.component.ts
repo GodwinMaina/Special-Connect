@@ -1,52 +1,55 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { AuthService } from '../../services/authServices/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-create-job',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent],
+  imports: [CommonModule,ReactiveFormsModule,NavbarComponent,FooterComponent],
   templateUrl: './admin-create-job.component.html',
   styleUrl: './admin-create-job.component.css'
 })
 export class AdminCreateJobComponent {
 
 
-  // productForm!:FormGroup;
+  JobForm!:FormGroup;
 
-  // constructor(public api:AuthServiceService ,private router:Router, private fb:FormBuilder) {
+  constructor(public api:AuthService,private router:Router, private fb:FormBuilder) {
 
+  this.JobForm = this.fb.group({
+    jobName: ['', [Validators.required]],
+    category:['', [Validators.required]],
+    budget:['', [Validators.required]],
+    duration: ['', [Validators.required]],
+    description: ['', [Validators.required]]
 
+  });
+  }
 
-  // this.productForm = this.fb.group({
-  //   name: ['', [Validators.required]],
-  //   description:['', [Validators.required]],
-  //   image:['', [Validators.required]],
-  //   quantity: ['', [Validators.required]],
-  //   price: ['', [Validators.required]],
-  //   category: ['', [Validators.required]]
-  // });
-  // }
+  onSubmit(){
+    if (this.JobForm.valid) {
+      console.log('Job fronted valid ');
 
+      const newJOB = this.JobForm.value;
 
-  // onSubmit(){
-  //   if (this.productForm.valid) {
-  //     console.log('product created successfull');
+      let client_id = localStorage.getItem('clientID') || '';
 
-  //     const newProduct = this.productForm.value;
+      this.api.postJobs(client_id,newJOB).subscribe(response=>{
+        console.log(response.message);
+         console.log(response.error);
+        console.log('JOB sent to backend')
 
-  //     this.api.createProduct(newProduct).subscribe(response=>{
-  //       console.log(response);
-  //       console.log('product sent to backend')
+        setTimeout(() => {
+          this.JobForm.reset()
+          this.router.navigate(['/dashboard/admin'])
+      }, 2000);
 
-  //       setTimeout(() => {
-  //         this.productForm.reset()
-  //         this.router.navigate(['/admin'])
-  //     }, 2000);
-
-
-  //     })
-  //   }
-  // }
+      })
+    }
+  }
 
 }

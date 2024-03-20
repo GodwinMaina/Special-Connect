@@ -75,19 +75,25 @@ export class LoginComponent {
             const type= res.UserType
             const fname= res.firstname
              res.photo
-             let isProfiled = res.isProfiled
+            //  let isProfiled = res.isProfiled
 
              if (res.email='godwin@gmail.com'){
               localStorage.setItem('adminEmail', res.email='godwin@gmail.com')
              }
 
-            const email= res.email
 
+             let clientID=res.client_id
+             localStorage.setItem('clientID',clientID)
+
+            const email= res.email
             const token = res.token
+            
              res.client_id
              res.specialist_id
              const admin = res.isAdmin
              console.log(admin);
+
+
 
              res.phone
             // const isAdmin = res.isAdmin;
