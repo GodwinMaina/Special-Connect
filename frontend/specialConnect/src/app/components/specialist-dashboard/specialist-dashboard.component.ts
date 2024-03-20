@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class SpecialistDashboardComponent {
 
-  
+
   emailAdmin:string=''
   myJobs:any[] = [];
   jobData=''
@@ -32,11 +32,6 @@ constructor() {}
   }
 
 
-  // updateJobs(jobs_id:string ) {
-  //   this.api.updateJob(jobs_id,this.jobData).subscribe(res => {
-  //     console.log(res.message);
-  //     // this.myJobs = res.message;
-  //   });
-  // }
+
 
 }

@@ -81,13 +81,15 @@ export class LoginComponent {
               localStorage.setItem('adminEmail', res.email='godwin@gmail.com')
              }
 
+            let specialistID=res.specialist_id
+            localStorage.setItem('specialistID',specialistID)
 
              let clientID=res.client_id
              localStorage.setItem('clientID',clientID)
 
             const email= res.email
             const token = res.token
-            
+
              res.client_id
              res.specialist_id
              const admin = res.isAdmin

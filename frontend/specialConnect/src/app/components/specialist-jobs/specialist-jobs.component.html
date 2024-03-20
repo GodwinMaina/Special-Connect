@@ -1,0 +1,19 @@
+<div class="job-grid">
+  <div class="job-card-container" *ngFor="let job of AllJobs">
+    <div class="job-card">
+      <div class="job-details">
+        <p><b>Job Name:</b> {{ job.jobName }}</p>
+        <p><b>Category:</b> {{ job.category }}</p>
+        <p><b>Duration:</b> {{ job.duration }}</p>
+        <p><b>Description:</b> {{ job.description }}</p>
+        <p><b>Salary:</b> {{ job.budget }}</p>
+      </div>
+      <div class="action-container">
+        <!-- Add buttons for messaging or booking appointment here -->
+        <button class="message-button" (click)="ApplyJob(job.job_id, job.client_id)">Apply</button>
+        <button class="appointment-button">Book Appointment</button>
+      </div>
+    </div>
+  </div>
+</div>
+

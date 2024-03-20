@@ -29,6 +29,13 @@ import { AdminViewSpecialistsComponent } from './components/admin-view-specialis
 import { AdminViewClientsComponent } from './components/admin-view-clients/admin-view-clients.component';
 import { OneJobComponent } from './components/one-job/one-job.component';
 import { UpdateJobsComponent } from './components/update-jobs/update-jobs.component';
+import { SpecialistJobsComponent } from './components/specialist-jobs/specialist-jobs.component';
+import { SpecialistAppointmentsComponent } from './components/specialist-appointments/specialist-appointments.component';
+import { SpMessagesComponent } from './components/sp-messages/sp-messages.component';
+import { ClientMessagesComponent } from './components/client-messages/client-messages.component';
+import { ClientCreateJobComponent } from './components/client-create-job/client-create-job.component';
+import { ClientBookingsComponent } from './components/client-bookings/client-bookings.component';
+import { ClientJobsComponent } from './components/client-jobs/client-jobs.component';
 
 
 
@@ -49,6 +56,13 @@ export const routes: Routes = [
   {path: 'dashboard/admin/view-Specialists', component:AdminViewSpecialistsComponent},
   {path: 'dashboard/admin/view-Clients', component:AdminViewClientsComponent},
   {path: 'jobs/job/:job_id', component:OneJobComponent},
+  {path: 'dashboard/clientMessages', component:ClientMessagesComponent},
+  {path: 'dashboard/client/createJob', component:ClientCreateJobComponent},
+  {path: 'dashboard/clientJobs', component:ClientJobsComponent},
+  {path: 'dashboard/clientBookings', component:ClientBookingsComponent},
+  {path: 'dashboard/specialist/messages', component:SpMessagesComponent},
+  {path: 'dashboard/specialist/jobs', component:SpecialistJobsComponent},
+  {path: 'dashboard/specialist/appointments', component:SpecialistAppointmentsComponent},
   {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent},
   {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent},
   { path: '**', component: NotFoundComponent }

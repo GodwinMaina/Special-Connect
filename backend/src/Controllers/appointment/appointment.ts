@@ -7,18 +7,18 @@ import { sqlConfig } from "../../Config/sqlConfig";
 
 export const createAppointment = async (req: Request, res: Response) => {
     try {
-        const { client_id, specialist_id, startTime, endTime } = req.body;
+        const { client_id, specialist_id, startTime} = req.body;
 
         const pool = await mssql.connect(sqlConfig);
 
         const query = `
             INSERT INTO Appointments (client_id, specialist_id, startTime)
-            VALUES (@clientId, @specialistId, @startTime);
+            VALUES (@client_id, @specialist_id, @startTime);
         `;
 
         const result = await pool.request()
-            .input("clientId", mssql.VarChar(250), client_id)
-            .input("specialistId", mssql.VarChar(250), specialist_id)
+            .input("client_ID", mssql.VarChar(250), client_id)
+            .input("specialist_ID", mssql.VarChar(250), specialist_id)
             .input("startTime", mssql.DateTime, startTime)
             .query(query);
 

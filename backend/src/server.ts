@@ -11,6 +11,7 @@ import JobRouter from './Routes/JobRoutes';
 
 import { Server } from "socket.io";
 import appointRouter from './Routes/appointment';
+import applicationRouter from './Routes/application';
 
 const app = express()
 
@@ -31,7 +32,12 @@ app.use('/profiles', profileRouter);
 
 app.use('/jobs', JobRouter);
 
+
+app.use('/applications',applicationRouter)
+
 app.use(appointRouter)
+
+
  
 app.use((error: Error, req: Request, res: Response, next: NextFunction)=>{
     res.json({

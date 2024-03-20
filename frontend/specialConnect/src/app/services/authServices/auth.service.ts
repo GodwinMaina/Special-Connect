@@ -5,14 +5,18 @@ import { allSpecialists, oneSpecialist, specialistRegInterface } from '../../int
 import { loginInterface, passwordReset } from '../../interface/loginInterface';
 import { alljobs, jobCategory, onejob, postJobInterface } from '../../interface/postJobs';
 import { getOneProfileInterface, getProfileInterface, profileInterface } from '../../interface/profileInterface';
+import { allApplicationsResponse, applicationInfoResponse, apply } from '../../interface/applicationInterface';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:4000'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
    //......user AuthServiceService........
 
@@ -143,6 +147,29 @@ deleteProfile(profile_id:string){
 }
 
 
+// application services
+createApplication(application: apply){
+  return this.http.post<applicationInfoResponse>(`${this.apiUrl}/applications/apply`, application)
+}
+
+getJobApplications(job_id: string){
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/job/${job_id}`)
+}
+
+getTalentApplications(specialist_id: string){
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/talent/${specialist_id}`)
+}
+
+updateApplication(apply_id: string, application: apply){
+  return this.http.put<applicationInfoResponse>(`${this.apiUrl}/application/${apply_id}`, application)
+
+}
+
+
+deleteApplication(apply_id: string){
+  return this.http.delete<applicationInfoResponse>(`${this.apiUrl}/application/${apply_id}`)
+
+}
 
 SetadminEmails(){
 
@@ -153,7 +180,6 @@ getadminEmails(){
 
   return localStorage.getItem('adminEmail');
 }
-
 
 
 

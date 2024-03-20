@@ -12,7 +12,7 @@
         </div>
         <div class="action-container">
           <!-- Add buttons for messaging or booking appointment here -->
-          <button class="message-button">Message</button>
+          <button class="message-button" (click)="ApplyJob(job.job_id, job.client_id)">Apply</button>
           <button class="appointment-button">Book Appointment</button>
         </div>
       </div>

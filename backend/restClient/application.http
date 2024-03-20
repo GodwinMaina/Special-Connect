@@ -1,11 +1,10 @@
 
-
 ###
-POST http://localhost:4000/appointments
+POST http://localhost:4000/applications/apply
 Content-Type: application/json
 
 {
     "client_id": "1bc55a48-b507-4475-809f-376395ba4445",
     "specialist_id": "215da6e6-c0e7-4547-8585-ae66bc62ba10",
-    "startTime": "2023-03-18T15:30:00"
+    "job_id":"666c79a4-edcc-45b9-9f24-9d346483b020"
 }

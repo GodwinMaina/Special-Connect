@@ -1,0 +1,55 @@
+.jobs {
+  padding: 20px;
+}
+
+.meetExpert {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.job-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.job-card-container {
+  width: 50%;
+  padding: 10px;
+}
+
+.job-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.job-details {
+  margin-bottom: 10px;
+}
+
+.action-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-button,
+.appointment-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.message-button:hover,
+.appointment-button:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .job-card-container {
+    width: 100%;
+  }
+}
