@@ -5,20 +5,24 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/authServices/auth.service';
 import { CommonModule } from '@angular/common';
 import { getProfileInterface } from '../../interface/profileInterface';
-import { log } from 'console';
+
+import { FormsModule } from '@angular/forms';
+import {SearchJobPipe } from '../../pipes/search-job.pipe'
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent,RouterLink, CommonModule],
+  imports: [NavbarComponent,FooterComponent,RouterLink, CommonModule, FormsModule, SearchJobPipe],
   templateUrl: './landing-page.component.html',
-  styleUrl: './landing-page.component.css'
+  styleUrl: './landing-page.component.css',
+ 
 })
 export class LandingPageComponent {
 
   mySpecialists:any[]=[]
   AllJobs:any[]=[]
   oneJoby:any[]=[]
+  filterJob:string=''
 
   constructor(private api:AuthService, private router:Router){
 
@@ -34,7 +38,7 @@ export class LandingPageComponent {
   this.api.getJobs().subscribe(res => {
     console.log('hello fgnghngh');
     this.AllJobs = res.message;
-    console.log(this.AllJobs);
+    console.log( 'JOBS',this.AllJobs);
   });
 
 

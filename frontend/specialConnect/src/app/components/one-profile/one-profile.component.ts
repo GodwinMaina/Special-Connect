@@ -5,6 +5,7 @@ import { getOneProfileInterface } from '../../interface/profileInterface';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { review } from '../../interface/reviews';
 
 
 
@@ -20,6 +21,8 @@ export class OneProfileComponent {
 
   oneProfile:any[]=[];
 
+  review:any[]=[];
+
   specialist_id!: string;
 
   constructor(public api:AuthService, private router:Router,  private route: ActivatedRoute){
@@ -33,6 +36,13 @@ export class OneProfileComponent {
   this.api.getOneSpecialistProfile(this.specialist_id).subscribe(response=>{
     this.oneProfile=response.message;
     console.log('One profile:', this.oneProfile);
+    
+  })
+
+
+  this.api.specialistReviews(this.specialist_id).subscribe(response=>{
+    this.review=response.message;
+    console.log('Review:', this.review);
     
   })
 

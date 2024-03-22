@@ -16,13 +16,13 @@
                 Post Job
             </li>
 
-            <li routerLink="/dashboard/clientJobs">
-              View My Jobs
-          </li>
+            <!-- <li routerLink="/dashboard/clientJobs"> -->
+              <!-- View My Jobs -->
+          <!-- </li> -->
 
-          <li routerLink="/dashboard/clientBookings">
-            View bookings
-        </li>
+          <!-- <li routerLink="/dashboard/clientBookings"> -->
+            <!-- View bookings -->
+        <!-- </li> -->
 
           <li routerLink="/dashboard/clientMessages">
             Messages
@@ -36,7 +36,7 @@
           </ul>
       </div>
 
-      <div class="logout" routerLink="/">
+      <div class="logout" (click)="logOut()">
           <p>
               <!-- <i class="fa-solid fa-right-from-bracket fa-lg"></i> -->
               Logout
@@ -60,7 +60,7 @@
               <h3 class="adminpg"> CLIENT PAGE</h3>
               <div class="account">
                   <!-- <i class="fa-solid fa-user"></i> -->
-                  {{emailAdmin}}
+                  {{clientEmail}}
               </div>
 
           </nav>
@@ -70,7 +70,7 @@
       </div>
 
       <div class="dpJobs">
-        <p>display your jobs</p>
+        <h2 style="  margin-left:3vw;">Jobs you Posted</h2>
 
         <div class="table-div">
           <table  class="table">
@@ -86,19 +86,19 @@
               </tr>
               </thead>
               <tbody>
-              <tr  *ngFor=" let jobs of myJobs;  let i = index">
+              <tr  *ngFor=" let jobs of myJobs;  let i = index;" (click)="getJobApplications(jobs.job_id)">
                 <td>{{i+1}}</td>
                 <!-- <td><img src="{{jobs.jobName}}" alt="" class="img-table"></td> -->
                 <td>{{jobs.jobName}}</td>
                 <td>{{jobs.category}}</td>
                 <td>{{jobs.budget}}</td>
                 <td>{{jobs.duration}}</td>
-                <td>{{jobs.description}}</td>
+                <td>{{jobs.description | titlecase}}</td>
                 <td><div class="icon">
-                  <div class="edit-icon"[routerLink]="['/admin/update-Job',jobs.client_id]">
+                  <div class="edit-icon"  (click)="updateJob(jobs.job_id)" [routerLink]="['/dashboard/client/updateJob', jobs.job_id]">
                       <i class="fa-solid fa-pen-to-square"></i>
                   </div>
-                  <div class="delete-icon" >
+                  <div (click)="deleteJob(jobs.job_id)"  class="delete-icon" >
                       <i class="fa-solid fa-trash"></i>
                   </div>
                 </div>
@@ -110,17 +110,48 @@
           </table>
       </div>
 
+      <!-- view application? -->
+
+      
+        <div><h4 style=" margin-left:3vw; margin-top: 30px; color: blue; font-size:20px;"> click a Job to see Applicants below</h4></div>
+
+        <table class="job-table" *ngIf="applications.length > 0" >
+          <thead>
+            <tr>
+              <th>Job Name</th>
+              <th>Applicant</th>
+              <th>Email</th>
+              <!-- <th>role</th> -->
+              <!-- <th>experience</th> -->
+              <!-- <th>charges</th> -->
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let application of applications">
+              <td>{{ application?.jobName }}</td>
+              <td>{{ application?.firstname }} {{ application?.lastname }}</td>
+              <td>{{ application?.email }}</td>
+              <!-- <td>{{ application?.phone }}</td> -->
+              <!-- <td>{{ application?.hourlyRate }}</td> -->
+              <!-- <td>{{ application?.status }}</td> -->
+              <!-- <td>{{ application?.status }}</td> -->
+              <td>
+                <button>Accept</button>
+                <button>Decline</button>
+
+              </td>
+          </tr>
+          </tbody>
+      </table>
+
+</div>
 
 
 
+      <!-- view application? -->
 
 
-
-
-
-
-
-       </div>
 
   </div>
   <div class="modal-bg">

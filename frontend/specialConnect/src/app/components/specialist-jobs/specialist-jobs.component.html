@@ -1,19 +1,107 @@
-<div class="job-grid">
-  <div class="job-card-container" *ngFor="let job of AllJobs">
-    <div class="job-card">
-      <div class="job-details">
-        <p><b>Job Name:</b> {{ job.jobName }}</p>
-        <p><b>Category:</b> {{ job.category }}</p>
-        <p><b>Duration:</b> {{ job.duration }}</p>
-        <p><b>Description:</b> {{ job.description }}</p>
-        <p><b>Salary:</b> {{ job.budget }}</p>
-      </div>
-      <div class="action-container">
-        <!-- Add buttons for messaging or booking appointment here -->
-        <button class="message-button" (click)="ApplyJob(job.job_id, job.client_id)">Apply</button>
-        <button class="appointment-button">Book Appointment</button>
-      </div>
-    </div>
-  </div>
+<!-- <div class="job-grid"> -->
+  <!-- <div class="job-card-container" *ngFor="let job of AllJobs"> -->
+    <!-- <div class="job-card"> -->
+      <!-- <div class="job-details"> -->
+        <!-- <p><b>Job Name:</b> {{ job.jobName }}</p> -->
+        <!-- <p><b>Category:</b> {{ job.category }}</p> -->
+        <!-- <p><b>Duration:</b> {{ job.duration }}</p> -->
+        <!-- <p><b>Description:</b> {{ job.description }}</p> -->
+        <!-- <p><b>Salary:</b> {{ job.budget }}</p> -->
+      <!-- </div> -->
+      <!-- <div class="action-container"> -->
+        <!-- <!~~ Add buttons for messaging or booking appointment here ~~> -->
+        <!-- <button class="message-button" (click)="ApplyJob(job.job_id, job.client_id)">Apply</button> -->
+        <!-- <button class="appointment-button">Book Appointment</button> -->
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+<app-navbar></app-navbar>
+
+<div class="spJobs">
+
+<div class="main">JOBS TO APPLY</div>
+
+<div class="error-message">{{ error }}</div>
+<div class="success-message">{{ success }}</div>
+
+<div class="table-div">
+  <table  class="table">
+  <thead>
+
+      <tr>
+          <th>ID</th>
+          <th>jobName</th>
+          <th>Category</th>
+          <th>Budget</th>
+          <th>Duration</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+          <!-- <th>status</th> -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let job of AllJobs; let i = index">
+        <td>{{i+1}}</td>
+        <!-- <td><img src="{{jobs.jobName}}" alt="" class="img-table"></td> -->
+        <td>{{job.jobName}}</td>
+        <td>{{job.category}}</td>
+        <td>{{job.budget}}</td>
+        <td>{{job.duration}}</td>
+        <td>{{job.description}}</td>
+        <td *ngIf="job.status !== 'Applied'" class="appointment-button" (click)="ApplyJob(job.job_id, job.client_id)">Apply</td>
+        <!-- Empty cell for applied jobs -->
+        <td  class="applied-button" *ngIf="job.status === 'Applied'">
+          <span>Applied</span>
+        </td>
+        <td>Cancel</td>
+        </tr>
+        </tbody>
+
+  </table>
 </div>
 
+
+<div class="main">Your Applied Jobs</div>
+
+
+<div class="table-div">
+  <table  class="table">
+  <thead>
+
+      <tr>
+          <th>ID</th>
+          <th>jobName</th>
+          <th>Category</th>
+          <th>Budget</th>
+          <th>Duration</th>
+          <th>Description</th>
+          <th>Client:Email</th>
+          <th>phone</th>
+          <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let apply of applications; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{apply.jobName}}</td>
+        <td>{{apply.category}}</td>
+        <td>{{apply.budget}}</td>
+        <td>{{apply.duration}}</td>
+        <td>{{apply.description}}</td>
+        <td>{{apply.email}}</td>
+        <td>{{apply.phone}}</td>
+        <td style="color:green; font-weight: bold;">{{apply.status}}</td>
+
+        </tr>
+        </tbody>
+
+  </table>
+</div>
+
+
+
+</div>

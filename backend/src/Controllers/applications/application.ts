@@ -6,24 +6,27 @@ import { application } from "../../Interfaces/application";
 import { createApplicationSchema } from "../../Validators/applicationSchema";
 
 export const createApplication = async (req: Request, res: Response) => {
+
     try {
         
-        
-
-       
-
         const {error} = createApplicationSchema.validate(req.body)
-
         if(error){
             return res.json({ error: error })
         } 
+
         
         else {
             const pool = await mssql.connect(sqlConfig);
                     
-            const { job_id, client_id, specialist_id }= req.body;
-            const apply_id = v4()            
+            const { job_id, client_id, specialist_id }: application = req.body;
 
+            const existingApplication = await checkExistApplic(job_id, specialist_id);
+            if (existingApplication) {
+                return res.json({ error: "You have already applied for this job" });
+            }
+
+          //if not applied next then apply the job 
+            const apply_id = v4()  
             if(pool.connected){
                 const result = (await pool.request()
                 .input("apply_id", mssql.VarChar, apply_id)
@@ -38,18 +41,42 @@ export const createApplication = async (req: Request, res: Response) => {
                 } else {
                     return res.json({ error: "Failed to create application" })
                 } 
-            }else {
+            }
+            
+            else {
                 return res.json({ error: "Failed to establish database connection" });
             }
+
+
         }
 
     } catch (error) {
         return res.json({ error });
     }
+
 }
 
 
-export const getJobApplications = async (req: Request, res: Response) =>{
+// Function to check if the user has already applied for the specified job
+async function checkExistApplic(job_id: string, talent_id: string): Promise<boolean> {
+    const pool = await mssql.connect(sqlConfig);
+
+    if (pool.connected) {
+        const result = (await pool.request()
+            .input("job_id", mssql.VarChar, job_id)
+            .input("specialist_id", mssql.VarChar, talent_id)
+            .execute('checkExistingApplication')).recordset[0].count;
+
+        // const count = result.recordset[0].count;
+        return result > 0;
+    } else {
+        throw new Error("Failed to establish database connection");
+    }
+}
+
+
+
+export const getJobApplicationsByJobID = async (req: Request, res: Response) =>{
     try {
         const job_id = req.params.job_id;
 
@@ -60,7 +87,7 @@ export const getJobApplications = async (req: Request, res: Response) =>{
             .execute('getJobApplications');
 
         return res.json({
-            applications: result.recordset
+            message: result.recordset
         });
 
     } catch (error) {
@@ -68,18 +95,20 @@ export const getJobApplications = async (req: Request, res: Response) =>{
     }
 }
 
-export const getTalentApplications = async (req: Request, res: Response) => {
+
+
+export const getSpecialistApplications = async (req: Request, res: Response) => {
     try {
-        const { talentId } = req.params;
+        const specialist_id  = req.params.specialist_id;
 
         const pool = await mssql.connect(sqlConfig);
 
-        const result = await pool.request()
-            .input("specialist_id", mssql.VarChar, talentId)
-            .execute('getTalentApplications');
+        let message = (await pool.request()
+            .input("specialist_id", mssql.VarChar, specialist_id)
+            .execute('getSpecialistApplications')).recordset;
 
         return res.json({
-            applications: result.recordset
+            message
         });
     } catch (error) {
         return res.json({ error });
@@ -87,14 +116,15 @@ export const getTalentApplications = async (req: Request, res: Response) => {
 }
 
 
+
 export const updateApplication = async (req: Request, res: Response) => {
     try {
-        const { applicationId, status } = req.body;
+        const { apply_id, status } = req.body;
 
         const pool = await mssql.connect(sqlConfig);
 
         await pool.request()
-            .input("apply_id", mssql.VarChar, applicationId)
+            .input("apply_id", mssql.VarChar, apply_id)
             .input("status", mssql.VarChar, status)
             .execute('updateApplication');
 
@@ -105,14 +135,15 @@ export const updateApplication = async (req: Request, res: Response) => {
 }
 
 
+
 export const deleteApplication = async (req: Request, res: Response) => {
     try {
-        const { applicationId } = req.params;
+        const { apply_id } = req.params;
 
         const pool = await mssql.connect(sqlConfig);
 
         await pool.request()
-            .input("apply_id", mssql.VarChar, applicationId)
+            .input("apply_id", mssql.VarChar, apply_id)
             .execute('deleteApplication');
 
         return res.json({ message: 'Application deleted successfully' });

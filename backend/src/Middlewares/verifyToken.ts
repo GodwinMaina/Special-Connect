@@ -9,6 +9,8 @@ export interface ExtendedUserRequest extends Request{
     info?: loginUserDetails
 }
 
+
+
 export const verifyToken = (req:ExtendedUserRequest, res: Response, next: NextFunction) =>{
     try {
         const token = req.headers['token'] as string
@@ -22,6 +24,8 @@ export const verifyToken = (req:ExtendedUserRequest, res: Response, next: NextFu
         const data = jwt.verify(token,  SECRET) as loginUserDetails
 
         req.info = data
+
+        
         
         
     } catch (error) {

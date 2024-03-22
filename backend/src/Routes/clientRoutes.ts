@@ -1,5 +1,6 @@
 import{Router} from "express";
 import { deleteClient, getAllClients, getOneClient, registerClient, updateClient } from "../Controllers/Users/clientController";
+import { verifyToken } from "../Middlewares/verifyToken";
 
 
 
@@ -14,14 +15,14 @@ clientRouter.post('/register', registerClient);
 clientRouter.get('/', getAllClients);
 
 // getOneClient
-clientRouter.get('/:client_id', getOneClient);
+clientRouter.get('/:client_id',verifyToken, getOneClient);
 
 //update client 
-clientRouter.put('/update/:client_id', updateClient);
+clientRouter.put('/update/:client_id',verifyToken, updateClient);
 
 
 // delete client by id
-clientRouter.delete('/delete/:client_id', deleteClient);
+clientRouter.delete('/delete/:client_id',verifyToken, deleteClient);
 
 
 

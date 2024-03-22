@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/authServices/auth.service';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -12,13 +13,41 @@ import { RouterLink } from '@angular/router';
 export class ClientDashboardComponent {
 
 
-
-
   emailAdmin:string=''
   myJobs:any[] = [];
   jobData=''
+  applications:any[] = [];
 
-constructor() {}
+  clientEmail=''
+
+constructor(private router:Router, private api:AuthService) {
+
+
+let client_id = localStorage.getItem('clientID') || '';
+console.log(client_id);
+
+  this.api.getJobsByClient(client_id).subscribe((res)=>{
+    if(res.message){
+      this.myJobs = res.message
+    }
+  })
+
+
+  this.clientEmail = localStorage.getItem('EMAIL') || '';
+
+}
+
+
+getJobApplications(job_id: string){
+  this.api.getJobApplications(job_id).subscribe((res)=>{
+    if(res.message){
+      this.applications = res.message
+      console.log(this.applications);
+
+    }
+  })
+}
+
 
 
   showModalMenuAdmin() {
@@ -34,12 +63,38 @@ constructor() {}
   }
 
 
-  // updateJobs(jobs_id:string ) {
-  //   this.api.updateJob(jobs_id,this.jobData).subscribe(res => {
-  //     console.log(res.message);
-  //     // this.myJobs = res.message;
-  //   });
-  // }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+
+  }
+
+
+  deleteJob(job_id: string): void {
+    this.api.deleteJob(job_id).subscribe(
+      response => {
+        console.log(response);
+        this.api.getJobs().subscribe( response=> {
+          this.myJobs=response.message
+          console.log(this.myJobs)
+        })
+      },
+      error => {
+        console.error('Error deleting Job:', error);
+      }
+    );
+  }
+
+
+
+
+  updateJob(job_id: string): void {
+    this.router.navigate(['/dashboard/client/updateJob/', job_id]);
+}
+
+
+
 
 
 

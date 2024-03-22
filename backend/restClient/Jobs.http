@@ -3,6 +3,7 @@
 # Create a new job
 POST http://localhost:4000/jobs/create/1bc55a48-b507-4475-809f-376395ba4445
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 {
     "jobName": "Software Developer",
@@ -17,6 +18,7 @@ Content-Type: application/json
 GET http://localhost:4000/jobs/alljobs
 Content-Type: application/json
 
+
 ###
 # Get jobs by category (e.g., IT)
 GET http://localhost:4000/jobs/careTaker
@@ -24,13 +26,14 @@ Content-Type: application/json
 
 ###
 # Get a specific job by job_id
-GET http://localhost:4000/jobs/job/dead3464-0575-4be6-a5a3-e4d9659d5b7e
+GET http://localhost:4000/jobs/ad963c03-8394-4904-a7e5-75b7f3bad3b5
 Content-Type: application/json
 
 ###
 # Update a job by job_id
 PUT http://localhost:4000/ad963c03-8394-4904-a7e5-75b7f3bad3b5
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 {
     "jobName": "Updated Software Developer",
@@ -45,14 +48,17 @@ Content-Type: application/json
 # Delete a job by job_id
 DELETE http://localhost:4000/jobs/delete/7c7b749a-3141-4a42-bbc4-c38dcd61ed2f
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 ###
 # Get jobs by client id
 GET http://localhost:4000/jobs/client/51c11b05-377e-4228-8c3a-0c0c0d55d25c
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 ###
 
 # Get jobs by specialist id
 GET http://localhost:4000/jobs/specialist/3905546b-255a-4067-90f4-a53a380a62e6
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E

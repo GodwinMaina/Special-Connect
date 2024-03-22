@@ -37,9 +37,10 @@ Content-Type: application/json
 ###update Specialist by id
 PUT http://localhost:4000/specialist/update/a7a42618-9778-4449-802c-e3fc94342e62
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 {
-    "firstName": "Update John",
+    "firstName": "Updated John",
     "lastName": "Doe",
     "email": "godwin@gmail.com",
     "password": "password",
@@ -50,14 +51,16 @@ Content-Type: application/json
 ###reset password
 PUT http://localhost:4000/resetPassword
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 {
     "email": "godwin@gmail.com",
-    "password": "1234678"
+    "password": "123456"
 }
 
 
 ###delete Specialist by id
 DELETE  http://localhost:4000/specialist/delete/d684de3c-165c-4a05-94d6-848cd04d4749
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 

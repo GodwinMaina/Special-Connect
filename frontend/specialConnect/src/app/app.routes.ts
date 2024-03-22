@@ -23,7 +23,7 @@ import { AdminUpdateJobsComponent } from './components/admin-update-jobs/admin-u
 import { SpecialistDashboardComponent } from './components/specialist-dashboard/specialist-dashboard.component';
 import { SpecialistUpdateProfileComponent } from './components/specialist-update-profile/specialist-update-profile.component';
 
-// import { authGuardGuard } from './auth-guard.guard';
+import { authGuardGuard } from './auth-guard.guard';
 import { OneProfileComponent } from './components/one-profile/one-profile.component';
 import { AdminViewSpecialistsComponent } from './components/admin-view-specialists/admin-view-specialists.component';
 import { AdminViewClientsComponent } from './components/admin-view-clients/admin-view-clients.component';
@@ -36,6 +36,7 @@ import { ClientMessagesComponent } from './components/client-messages/client-mes
 import { ClientCreateJobComponent } from './components/client-create-job/client-create-job.component';
 import { ClientBookingsComponent } from './components/client-bookings/client-bookings.component';
 import { ClientJobsComponent } from './components/client-jobs/client-jobs.component';
+import { ClientUpdateJobComponent } from './components/client-update-job/client-update-job.component';
 
 
 
@@ -46,25 +47,26 @@ export const routes: Routes = [
   { path: 'auth/login', component:LoginComponent },
   { path: 'specialist-signup', component:SpecialistSignupComponent },
   { path: 'client-signup', component:ClientSignupComponent },
-  { path: 'specialist/createProfile', component:CreateProfileComponent },
-  { path: 'profile', component:ProfileDetailsComponent },
-  { path: 'dashboard/admin', component: AdminDashboardComponent},
-  { path: 'dashboard/client', component: ClientDashboardComponent },
-  {path: 'dashboard/specialist', component:SpecialistDashboardComponent},
-  {path: 'dashboard/admin/updateJob/:job_id', component:AdminUpdateJobsComponent},
+  { path: 'specialist/createProfile', component:CreateProfileComponent, canActivate:[authGuardGuard]},
+  { path: 'profile', component:ProfileDetailsComponent, canActivate:[authGuardGuard] },
+  { path: 'dashboard/admin', component: AdminDashboardComponent,  canActivate:[authGuardGuard]},
+  { path: 'dashboard/client', component: ClientDashboardComponent,  canActivate:[authGuardGuard] },
+  {path: 'dashboard/specialist', component:SpecialistDashboardComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/admin/updateJob/:job_id', component:AdminUpdateJobsComponent, canActivate:[authGuardGuard]},
+  {path: 'dashboard/client/updateJob/:job_id', component:ClientUpdateJobComponent, canActivate:[authGuardGuard]},
   { path: 'profiles/:specialist_id', component:OneProfileComponent },
-  {path: 'dashboard/admin/view-Specialists', component:AdminViewSpecialistsComponent},
-  {path: 'dashboard/admin/view-Clients', component:AdminViewClientsComponent},
-  {path: 'jobs/job/:job_id', component:OneJobComponent},
-  {path: 'dashboard/clientMessages', component:ClientMessagesComponent},
-  {path: 'dashboard/client/createJob', component:ClientCreateJobComponent},
-  {path: 'dashboard/clientJobs', component:ClientJobsComponent},
-  {path: 'dashboard/clientBookings', component:ClientBookingsComponent},
-  {path: 'dashboard/specialist/messages', component:SpMessagesComponent},
-  {path: 'dashboard/specialist/jobs', component:SpecialistJobsComponent},
-  {path: 'dashboard/specialist/appointments', component:SpecialistAppointmentsComponent},
-  {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent},
-  {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent},
+  {path: 'dashboard/admin/view-Specialists', component:AdminViewSpecialistsComponent, canActivate:[authGuardGuard]},
+  {path: 'dashboard/admin/view-Clients', component:AdminViewClientsComponent, canActivate:[authGuardGuard]},
+  {path: 'jobs/job/:job_id', component:OneJobComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/clientMessages', component:ClientMessagesComponent, canActivate:[authGuardGuard]},
+  {path: 'dashboard/client/createJob', component:ClientCreateJobComponent,canActivate:[authGuardGuard]},
+  {path: 'dashboard/clientJobs', component:ClientJobsComponent, canActivate:[authGuardGuard]},
+  {path: 'dashboard/clientBookings', component:ClientBookingsComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/specialist/messages', component:SpMessagesComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/specialist/jobs', component:SpecialistJobsComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/specialist/appointments', component:SpecialistAppointmentsComponent, canActivate:[authGuardGuard]},
+  {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent,  canActivate:[authGuardGuard]},
+  {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent,canActivate:[authGuardGuard]},
   { path: '**', component: NotFoundComponent }
 ];
 

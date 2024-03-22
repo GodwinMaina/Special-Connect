@@ -77,9 +77,12 @@ export class LoginComponent {
              res.photo
             //  let isProfiled = res.isProfiled
 
-             if (res.email='godwin@gmail.com'){
-              localStorage.setItem('adminEmail', res.email='godwin@gmail.com')
-             }
+            //  if (res.email='godwin@gmail.com'){
+            //   localStorage.setItem('adminEmail', res.email='godwin@gmail.com')
+            //  }
+
+            let email = res.email
+            localStorage.setItem('EMAIL',email)
 
             let specialistID=res.specialist_id
             localStorage.setItem('specialistID',specialistID)
@@ -87,8 +90,9 @@ export class LoginComponent {
              let clientID=res.client_id
              localStorage.setItem('clientID',clientID)
 
-            const email= res.email
+            // const email= res.email
             const token = res.token
+            localStorage.setItem('token',token)
 
              res.client_id
              res.specialist_id

@@ -19,8 +19,7 @@ export class AdminDashboardComponent {
 
 constructor(private api:AuthService, private router:Router) {
 
-  this.emailAdmin= this.api.getadminEmails() || '';
-
+  this.emailAdmin= localStorage.getItem('EMAIL') || '';
   this.api.getJobs().subscribe(res => {
     console.log(res.message);
     console.log('admin jobs');
@@ -65,4 +64,17 @@ constructor(private api:AuthService, private router:Router) {
   }
 
 
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+
   }
+
+
+
+
+
+
+
+}

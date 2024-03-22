@@ -16,8 +16,8 @@ Content-Type: application/json
  Content-Type: application/json
 
  {
-    "email": "tester@gmail.com",
-    "password": "1234678"
+    "email": "kingangiduncan47@gmail.com",
+    "password": "123456"
     
 }
 
@@ -26,6 +26,7 @@ Content-Type: application/json
 ###Get All Client
 GET http://localhost:4000/client
 Content-Type: application/json
+
 
 ###Get one client by id
 GET http://localhost:4000/client/ae09c572-d94f-44eb-b3ba-c3b8e45e54c6
@@ -36,6 +37,7 @@ Content-Type: application/json
 ###update client by id
 PUT http://localhost:4000/client/update/51c11b05-377e-4228-8c3a-0c0c0d55d25c
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
  {
     "firstName": "updated",
@@ -49,6 +51,7 @@ Content-Type: application/json
 ###reset password
 PUT http://localhost:4000/resetPassword
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 {
     "email": "dan0@gmail.com",
@@ -59,4 +62,5 @@ Content-Type: application/json
 ###delete client by id
 DELETE  http://localhost:4000/client/delete/df1d52fc-cd1b-4735-b678-1b468d54f513
 Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 

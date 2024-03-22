@@ -3,14 +3,14 @@
 
 -- Send Message Procedure
 CREATE OR ALTER PROCEDURE SendMessage
+     @message_id VARCHAR(250),
     @client_id VARCHAR(250),
     @specialist_id VARCHAR(250),
-    @job_id VARCHAR(250),
-    @TextMessage NVARCHAR(MAX)
+    @messagetxt NVARCHAR(MAX)
 AS
 BEGIN
-    INSERT INTO Messages (client_id, specialist_id, job_id, TextMessage)
-    VALUES (@client_id, @specialist_id, @job_id, @TextMessage);
+    INSERT INTO Messages (message_id,client_id, specialist_id, messagetxt)
+    VALUES (@message_id,@client_id, @specialist_id, @messagetxt);
 END;
 GO
 

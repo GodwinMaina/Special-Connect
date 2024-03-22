@@ -1,1 +1,52 @@
-<p>client-create-job works!</p>
+<app-navbar></app-navbar>
+<div class="main">
+    <div class="login-div">
+
+        <form class="form" [formGroup]="JobForm" (ngSubmit)="onSubmit()">
+            <div class="login-title">
+                <h1>Post Job</h1>
+
+            </div>
+            <div class="email">
+                <label for="">Job Name</label><br>
+                <input type="text" class="email-input" name="jobName" formControlName="jobName" placeholder="name of the Job">
+            </div>
+
+            <div class="email">
+              <label for="">Category of product</label><br>
+              <select name="" id="" class="password" name="category" formControlName="category">
+                  <option value="web development">web development</option>
+                  <option value="Android development">Android development</option>
+                  <option value="care giver">care giver</option>
+                  <option value="Data analysis">Data analysis</option>
+                  <option value="Machine Learning">Machine Learning</option>
+                  <option value="Technical Writing">Technical Writing</option>
+              </select>
+          </div>
+
+            <div class="email">
+              <label for="">Budget</label><br>
+              <input type="text" class="password" name="budget" placeholder="enter budget" formControlName="budget">
+          </div>
+
+
+
+            <div class="email">
+              <label for="">duration</label><br>
+              <input name="quantity" formControlName="duration" placeholder="duration in  days or week/weeks" id="" cols="30" rows="10" class="password">
+          </div>
+
+          <div class="email">
+            <label for="">Description</label><br>
+            <textarea name="description" formControlName="description"  placeholder="note some description" id="" cols="30" rows="10" class="password"></textarea>
+        </div>
+
+
+          <div class="email">
+            <button type="submit" class="login-btn">Post</button>
+        </div>
+
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

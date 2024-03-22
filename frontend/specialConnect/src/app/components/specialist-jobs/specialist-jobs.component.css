@@ -43,6 +43,16 @@
   cursor: pointer;
 }
 
+.applied-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: orange;
+  color: #fff;
+  cursor: pointer;
+
+}
+
 .message-button:hover,
 .appointment-button:hover {
   background-color: #0056b3;
@@ -52,4 +62,134 @@
   .job-card-container {
     width: 100%;
   }
+}
+
+
+
+
+/* table container*/
+.table-div{
+  margin-top: 1vh;
+  margin-left: 4vh;
+  width: 90%;
+
+}
+.table{
+  width: 100%;
+
+}
+.table th{
+  border: 1px solid white;
+  background-color: #290A5C;
+  color: white;
+}
+.table td{
+  border: 1px solid black;
+}
+.img-table{
+  height: 10vh;
+  width:100%;
+  object-fit: cover;
+}
+.icon{
+  display: flex;
+  justify-content: space-around;
+}
+.edit-icon{
+  color: rgb(133, 8, 8);
+  cursor: pointer;
+}
+.edit-icon:hover{
+  color: red;
+}
+.delete-icon{
+  color: green;
+  cursor: pointer;
+}
+.delete-icon:hover{
+  color: lime;
+}
+
+@media (max-width: 768px) {
+  .landing-txt > h1 {
+    font-size: 16px;
+  }
+  .landing-txt {
+    margin-right: 0%;
+    margin-bottom: 0%;
+  }
+  .prod {
+    width: 30vw;
+  }
+  .prod-text {
+    margin-bottom: -100%;
+  }
+  .prod-modal{
+    height: 70%;
+    width: 80%;
+  }
+}
+@media (max-width: 425px) {
+  .prod {
+    width: 40vw;
+  }
+  .prod-modal{
+    height: 60%;
+    width: 90%;
+  }
+}
+
+
+.custom-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #f0ad4e;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+
+.error-message {
+  color: red;
+display: flex;
+justify-content: center;
+  margin-top: 20px;
+  font-weight: bold;
+
+}
+
+
+.main {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 10px;
+  padding-top: 10px;
+  margin-top:7vh;
+  margin-bottom:10px;
+  border-radius: 5px;
+}
+
+.spJobs
+{
+  min-height: 140vh;
+
+}
+
+
+.success-message
+{
+  color: green;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-weight: bold;
 }

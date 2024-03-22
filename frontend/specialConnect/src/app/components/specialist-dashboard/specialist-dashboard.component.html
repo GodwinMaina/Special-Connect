@@ -31,7 +31,7 @@
           </ul>
       </div>
 
-      <div class="logout" routerLink="/">
+      <div class="logout" (click)="logOut()">
           <p>
               <i class="fa-solid fa-right-from-bracket fa-lg"></i>
               Logout
@@ -55,7 +55,7 @@
               <h3 class="adminpg">Specialist PAGE</h3>
               <div class="account">
                   <!-- <i class="fa-solid fa-user"></i> -->
-                  {{emailAdmin}}
+                  {{specialistEmail}}
               </div>
 
           </nav>
@@ -64,60 +64,93 @@
           <!-- <router-outlet></router-outlet> -->
       </div>
 
-      <div class="dpJobs">
-        <p>My jobs</p>
+      <!-- >>>>>>>>>?????? dashboard content -->
 
-        <div class="table-div">
-          <table  class="table">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>jobName</th>
-                  <th>Category</th>
-                  <th>Budget</th>
-                  <th>Duration</th>
-                  <th>Description</th>
-                  <th>Action</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr  *ngFor=" let jobs of myJobs;  let i = index">
-                <td>{{i+1}}</td>
-                <!-- <td><img src="{{jobs.jobName}}" alt="" class="img-table"></td> -->
-                <td>{{jobs.jobName}}</td>
-                <td>{{jobs.category}}</td>
-                <td>{{jobs.budget}}</td>
-                <td>{{jobs.duration}}</td>
-                <td>{{jobs.description}}</td>
-                <td><div class="icon">
-                  <div class="edit-icon"[routerLink]="['/admin/update-Job',jobs.client_id]">
-                      <i class="fa-solid fa-pen-to-square"></i>
-                  </div>
-                  <div class="delete-icon" >
-                      <i class="fa-solid fa-trash"></i>
-                  </div>
-                </div>
-                </td>
-
-                </tr>
-                </tbody>
-
-          </table>
-      </div>
+     <div class="dashboard-welcome">
+    <h1>Welcome to Your Dashboard</h1>
+    <p>Manage your profile easily and apply for jobs effortlessly</p>
+   </div>
 
 
+   <!-- <div class="card-table"> -->
+    <!-- <div class="card-row"> -->
+        <!-- <div class="card" *ngFor="let prof of profileData"> -->
+            <!-- <img [src]="prof.photo" alt="Profile Photo" class="photo"> -->
+            <!-- <div class="details"> -->
+                <!-- <h2 class="name">{{ prof.firstName }}</h2> -->
+                <!-- <p class="info"><b>Description:</b> {{ prof.description }}</p> -->
+                <!-- <p class="info"><b>Location:</b> {{ prof.location }}</p> -->
+                <!-- <p class="info"><b>Languages:</b> {{ prof.languages }}</p> -->
+                <!-- <p class="info"><b>Experience:</b> {{ prof.experience }}</p> -->
+                <!-- <p class="info"><b>Education:</b> {{ prof.education }}</p> -->
+                <!-- <p class="info"><b>Hourly Rate:</b> {{ prof.hourlyRate }}</p> -->
+                <!-- <button (click)="editProfile(prof)">Edit</button> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
+<!-- </div> -->
+
+ <!-- <div><p>your profile</p></div> -->
+<div class="main">
+    <div *ngFor="let sp of profileData" class="employer-container">
+        <div class="image-container">
+          <img [src]="sp.photo" alt="Employer Logo">
+        </div>
+        <div class="details-container">
+          <p><strong>Role:</strong> {{ sp.role }}</p>
+          <p><strong>Experience:</strong> {{ sp.experience }}</p>
+          <p><strong>Education:</strong> {{ sp.education }}</p>
+          <p><strong>Languages</strong> {{ sp.languages }}</p>
+          <p><strong>Skills:</strong> {{ sp.skills }}</p>
+          <!-- <p><strong>description:</strong> {{ sp.description }}</p> -->
+          <p><strong>hourlyRate:</strong> {{ sp.hourlyRate }}</p>
+          <div class="button-container">
+            <!-- <button class="edit-btn" (click)="editProfile(sp)">Edit</button> -->
+        </div>
+        </div>
+    </div>
+
+    <!-- >>>>>>>>>?????? -->
 
 
 
 
 
 
+    <!-- rr????????????????????????????? -->
+
+
+<!-- Edit form -->
+<!-- <div *ngIf="editProfileForm"> -->
+  <!-- <h2>Edit Profile</h2> -->
+  <!-- <form [formGroup]="editProfileForm" (ngSubmit)="updateProfile()"> -->
+    <!-- <label>First Name:</label> -->
+    <!-- <input type="text" formControlName="firstName"> -->
+    <!-- <label>Last Name:</label> -->
+    <!-- <input type="text" formControlName="lastName"> -->
+    <!-- <label>Description:</label> -->
+    <!-- <textarea formControlName="description"></textarea> -->
+    <!-- <label>Location:</label> -->
+    <!-- <input type="text" formControlName="location"> -->
+    <!-- <label>Languages:</label> -->
+    <!-- <input type="text" formControlName="languages"> -->
+    <!-- <label>Experience:</label> -->
+    <!-- <input type="number" formControlName="experience"> -->
+    <!-- <label>Education:</label> -->
+    <!-- <input type="text" formControlName="education"> -->
+    <!-- <label>Hourly Rate:</label> -->
+    <!-- <input type="number" formControlName="hourlyRate"> -->
+    <!-- <button type="submit">Update</button> -->
+  <!-- </form> -->
+<!-- </div> -->
 
 
 
-       </div>
+    <!-- 12??????????????????????????????? -->
 
   </div>
+
+
   <div class="modal-bg">
       <div class="modal">
           <div class="menu2">
@@ -130,7 +163,7 @@
                       <i class="fa-solid fa-gear fa-lg"></i>
                       Settings
                   </li>
-                  <li routerLink="/">
+                  <li (click)="logOut()">
                       <i class="fa-solid fa-right-from-bracket fa-lg"></i>
                       Logout
                   </li>

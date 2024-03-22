@@ -25,7 +25,7 @@ export class OneJobComponent {
 
       this.api.getOneJob(this.job_id).subscribe(res => {
         this.AllJobs = res.message;
-        console.log('One Job Data:', this.AllJobs);
+        console.log('One Job Data:', this.AllJobs[0]);
       });
 
     }

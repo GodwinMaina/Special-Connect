@@ -6,6 +6,7 @@ import { loginInterface, passwordReset } from '../../interface/loginInterface';
 import { alljobs, jobCategory, onejob, postJobInterface } from '../../interface/postJobs';
 import { getOneProfileInterface, getProfileInterface, profileInterface } from '../../interface/profileInterface';
 import { allApplicationsResponse, applicationInfoResponse, apply } from '../../interface/applicationInterface';
+import { allReviewsResponse, review, reviewInfoResponse } from '../../interface/reviews';
 
 
 @Injectable({
@@ -153,21 +154,21 @@ createApplication(application: apply){
 }
 
 getJobApplications(job_id: string){
-  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/job/${job_id}`)
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/job/${job_id}`)
 }
 
-getTalentApplications(specialist_id: string){
-  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/application/talent/${specialist_id}`)
+getSpecialistApplications(specialist_id: string){
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/specialist/${specialist_id}`)
 }
 
 updateApplication(apply_id: string, application: apply){
-  return this.http.put<applicationInfoResponse>(`${this.apiUrl}/application/${apply_id}`, application)
+  return this.http.put<applicationInfoResponse>(`${this.apiUrl}/applications/${apply_id}`, application)
 
 }
 
 
 deleteApplication(apply_id: string){
-  return this.http.delete<applicationInfoResponse>(`${this.apiUrl}/application/${apply_id}`)
+  return this.http.delete<applicationInfoResponse>(`${this.apiUrl}/applications/${apply_id}`)
 
 }
 
@@ -181,6 +182,15 @@ getadminEmails(){
   return localStorage.getItem('adminEmail');
 }
 
+
+ // reviews services
+ sendReview(review: review){
+  return this.http.post<reviewInfoResponse>(`${this.apiUrl}/review`, review)
+}
+
+specialistReviews(specialist_id: string){
+  return this.http.get<allReviewsResponse>(`${this.apiUrl}/reviews/${specialist_id}`)
+}
 
 
 

@@ -22,7 +22,7 @@
                           <p id="aboutUsTextMobile">With a team of experts dedicated to your success.  where every interaction is a step towards success."</p>
 
                           <div class="search">
-                            <input type="text" name="search" id="searchField" placeholder="What skill are you looking for?">
+                            <input type="text" name="search" id="searchField" placeholder="What skill are you looking for?" [(ngModel)]=" filterJob">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                               </svg>
@@ -44,15 +44,13 @@
  <div class="jobs">
      <p class="meetExpert">CheckOut Jobs Available</p>
      <div class="job-grid" *ngIf="AllJobs.length > 0">
-       <div class="job-card" *ngFor="let job of AllJobs">
+       <div class="job-card" *ngFor="let job of AllJobs | filter:filterJob">
          <div>
-             <p><b>Job Name:</b> {{ job?.jobName }}</p>
-             <!-- <p><b>Employer Name:</b> {{ job?.employerName }}</p> -->
-             <p><b>category:</b> {{ job?.category }}</p>
-             <p><b>Duration:</b> {{ job?.duration }}</p>
-             <p><b>Description:</b> {{ job?.description }}</p>
-             <!-- <p><b>Start Date:</b> {{ job?.startdate | date }}</p> -->
-             <p><b>Salary:</b> {{ job?.budget }}</p>
+             <p><b>Job Name:</b> {{ job.jobName }}</p>
+             <p><b>category:</b> {{ job.category }}</p>
+             <p><b>Duration:</b> {{ job.duration }}</p>
+             <p><b>Description:</b> {{ job.description }}</p>
+             <p><b>Salary:</b> {{ job.budget }}</p>
            <div class="button-container">
              <button class="job-btn"  (click)="oneJob(job.job_id)">View job</button>
            </div>

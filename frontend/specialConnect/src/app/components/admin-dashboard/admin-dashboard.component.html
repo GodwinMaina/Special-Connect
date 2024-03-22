@@ -32,9 +32,9 @@
           </ul>
       </div>
 
-      <div class="logout" routerLink="/">
+      <div class="logout" (click)="logOut()">
           <p>
-              <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+              <i    class="fa-solid fa-right-from-bracket fa-lg"></i>
               Logout
           </p>
       </div>
@@ -61,7 +61,7 @@
           </nav>
       </div>
 
-      
+
       <div class="main-content">
       </div>
 
@@ -112,10 +112,6 @@
 
 
 
-
-
-
-
        </div>
 
   </div>
@@ -131,7 +127,7 @@
                       <i class="fa-solid fa-gear fa-lg"></i>
                       Settings
                   </li>
-                  <li routerLink="/">
+                  <li (click)="logOut()">
                       <i class="fa-solid fa-right-from-bracket fa-lg"></i>
                       Logout
                   </li>

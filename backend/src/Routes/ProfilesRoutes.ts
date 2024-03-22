@@ -1,11 +1,12 @@
 import{Router} from "express";
 import { createProfile, deleteProfile, getProfileById, getProfileBysp, getProfiles, updateProfile } from "../Controllers/profile/spProfileController";
+import { verifyToken } from "../Middlewares/verifyToken";
 
 
 const profileRouter = Router();
 
 //create profile
-profileRouter.post('/create/:id',createProfile);
+profileRouter.post('/create/:id',verifyToken, createProfile);
 
 profileRouter.get('/',getProfiles);
 
@@ -13,9 +14,9 @@ profileRouter.get('/',getProfiles);
 
 // profileRouter.put('/update/:profile_id',updateProfile);
 
-profileRouter.delete('/delete/:profile_id',deleteProfile);
+profileRouter.delete('/delete/:profile_id',verifyToken, deleteProfile);
 
-profileRouter.get('/:specialist_id',getProfileBysp);
+profileRouter.get('/:specialist_id',verifyToken,getProfileBysp);
 
 
 

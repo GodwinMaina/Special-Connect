@@ -1,0 +1,52 @@
+
+### send message
+POST http://localhost:4000/messages
+Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
+
+{
+    "client_id": "1bc55a48-b507-4475-809f-376395ba4445",
+    "specialist_id": "215da6e6-c0e7-4547-8585-ae66bc62ba10",
+    "messagetxt":"hello how are you doing the job",
+    "timestamp":"2022-03-18T14:30:00"
+}
+
+###  get message for specialist
+GET http://localhost:4000/messages/specialist/215da6e6-c0e7-4547-8585-ae66bc62ba10
+Content-Type: application/json
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
+
+### get message for client
+GET http://localhost:4000/messages/client/1bc55a48-b507-4475-809f-376395ba4445
+Content-Type: application/json
+
+
+### get message for both client and specialist
+GET http://localhost:4000/message/session/specialist/215da6e6-c0e7-4547-8585-ae66bc62ba10/client/215da6e6-c0e7-4547-8585-ae66bc62ba10
+Content-Type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 
+PUT http://localhost:3000/message/ /status
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IlRhbGVudCIsInRhbGVudElkIjoiMTg0YmNmNWYtZGU5ZS00NWNkLWFhYzctMTk0MGJkMDAyYjMwIiwicHJvZmlsZUltZyI6ImV4YW1wbGUuY29tL2ltYWdlLmpwZyIsImZpcnN0bmFtZSI6IkpvaG4iLCJsYXN0bmFtZSI6IkRvZSIsImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsImluZHVzdHJ5SWQiOiI4ZmU4OGI0ZC01MGQ2LTQ1NDMtYjA4NC1mMWE1Nzk2ODI4MzEiLCJzcGVjaWFsaXR5IjoiTGFuZHNjYXBlIFBob3RvZ3JhcGh5IiwidGFsZW50V2FsbGV0Ijoiam9obmRvZS5ldGgiLCJsb2NhdGlvbiI6IkxvcyBBbmdlbGVzLCBVU0EiLCJwaG9uZSI6IisxIDEyMy00NTYtNzg5MCIsImlzV2VsY29tZWQiOm51bGwsImlzVmVyaWZpZWQiOm51bGwsImlhdCI6MTcxMDg0NTcyMywiZXhwIjoxNzEwODgxNzIzfQ.G8LwFIxuGhb38rGJ_FZrzg2Jt50UUkoUMGPlV8ij_YQ
+
+{
+    "status": "READ"
+}
+
+Done.Status?Fixed!

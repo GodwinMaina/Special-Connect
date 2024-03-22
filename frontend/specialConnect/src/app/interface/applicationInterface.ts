@@ -13,13 +13,22 @@ export interface applicationInfoResponse{
 }
 
 export interface allApplicationsResponse{
-  applications:[{
+
+  message:[{
       apply_id: string,
-  job_id: string,
-  specialist_id: string,
-  client_id: string
-  status: string,
-  timestamp: Date
+     job_id: string,
+     jobName:string,
+     category: string,
+     budget: string,
+     duration: string,
+     firstName: string,
+    specialist_id: string,
+    client_id: string
+    status: string,
+
+  // timestamp: Date
   }]
+
+
   error: string
 }

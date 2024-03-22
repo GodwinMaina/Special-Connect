@@ -1,12 +1,17 @@
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
 import mssql from 'mssql'
+import dotenv from 'dotenv'
+
+dotenv.config();
+
 import jwt from 'jsonwebtoken'
 import { sqlConfig } from "../../Config/sqlConfig";
 import { loginUserSchema } from "../../Validators/loginUserSchema";
 import { ExtendedUserRequest } from "../../Middlewares/verifyToken";
 
-const SECRET = "abracadbrahexpho"
+
+const  SECRET = process.env.SECRET as string;
 
 export const loginUser = async (req: Request, res: Response)=>{
     try {
@@ -59,7 +64,7 @@ export const loginUser = async (req: Request, res: Response)=>{
 
         }else{
             return res.json({
-                error: "User not found/Email "
+                error: "User/Email not found/Email "
             })
         }
         
@@ -126,8 +131,8 @@ export const resetPassword = async (req: Request, res: Response) => {
         }
 
     } catch (error) {
-        return res.status(501).json({
-            error: 'error catch block'
+        return res.json({
+            error: 'error in catch block'
         });
     }
 };

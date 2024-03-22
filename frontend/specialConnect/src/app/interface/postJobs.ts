@@ -12,6 +12,12 @@ export interface postJobInterface {
 
 
 export  interface alljobs {
+jobName: any;
+category: any;
+duration: any;
+description: any;
+budget: any;
+job_id: string;
 
   message: [{
     job_id: string
