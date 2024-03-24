@@ -66,7 +66,7 @@ export class AdminUpdateJobsComponent {
     )    
     setTimeout(() => {
       this.JobForm.reset()
-      this.router.navigate(['/dashboard/client/'])
+      this.router.navigate(['/dashboard/admin/'])
   }, 2000);
   }
 

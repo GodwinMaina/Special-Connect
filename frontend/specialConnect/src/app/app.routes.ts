@@ -37,6 +37,8 @@ import { ClientCreateJobComponent } from './components/client-create-job/client-
 import { ClientBookingsComponent } from './components/client-bookings/client-bookings.component';
 import { ClientJobsComponent } from './components/client-jobs/client-jobs.component';
 import { ClientUpdateJobComponent } from './components/client-update-job/client-update-job.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 
 
 
@@ -67,6 +69,8 @@ export const routes: Routes = [
   {path: 'dashboard/specialist/appointments', component:SpecialistAppointmentsComponent, canActivate:[authGuardGuard]},
   {path: 'dashboard/admin/createJob', component:AdminCreateJobComponent,  canActivate:[authGuardGuard]},
   {path: 'dashboard/specialist/updateProfile', component:SpecialistUpdateProfileComponent,canActivate:[authGuardGuard]},
+  {path: 'setting/resetPassword', component:ChangePasswordComponent},
+  {path: 'update/profile/:profile_id', component:UpdateProfileComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

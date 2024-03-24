@@ -5,11 +5,11 @@ POST http://localhost:4000/specialist/register
 Content-Type: application/json
 
  {
-    "firstName":"HEX",
-    "lastName": "ALLAN",
-    "email": "HXALLAN@gmail.com",
-    "password": "123456",
-    "phone": "078904560"
+    "firstName":"NICKSON",
+    "lastName": "MWANGI",
+    "email": "NICMWANGI@gmail.com",
+    "password": "12345678",
+    "phone": "012345560"
 }
 
 

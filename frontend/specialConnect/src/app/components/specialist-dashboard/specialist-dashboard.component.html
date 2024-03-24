@@ -24,7 +24,7 @@
             view Jobs
          </li>
 
-            <li routerLink="/dashboard/specialist/jobs">
+            <li routerLink="/setting/resetPassword">
                   <!-- <i class="fa-solid fa-gear fa-lg"></i> -->
                   Settings
             </li>
@@ -91,7 +91,8 @@
 <!-- </div> -->
 
  <!-- <div><p>your profile</p></div> -->
-<div class="main">
+<div class="mainz">
+  <div class="profiloz">
     <div *ngFor="let sp of profileData" class="employer-container">
         <div class="image-container">
           <img [src]="sp.photo" alt="Employer Logo">
@@ -102,7 +103,8 @@
           <p><strong>Education:</strong> {{ sp.education }}</p>
           <p><strong>Languages</strong> {{ sp.languages }}</p>
           <p><strong>Skills:</strong> {{ sp.skills }}</p>
-          <!-- <p><strong>description:</strong> {{ sp.description }}</p> -->
+          <p><strong>Location:</strong> {{ sp.location }}</p>
+          <p><strong>description:</strong> {{ sp.description }}</p>
           <p><strong>hourlyRate:</strong> {{ sp.hourlyRate }}</p>
           <div class="button-container">
             <!-- <button class="edit-btn" (click)="editProfile(sp)">Edit</button> -->
@@ -110,6 +112,12 @@
         </div>
     </div>
 
+  </div>
+
+  <div  *ngFor="let sp of profileData" class="apdataz">
+     <button  (click)="updateProfile(sp.profile_id)" [routerLink]="['/update/profile', sp.profile_id]">Edit</button>
+
+  </div>
     <!-- >>>>>>>>>?????? -->
 
 

@@ -99,7 +99,7 @@ export const registerSpecialist = async (req: Request, res: Response) => {
  
 //getAllSpecialist
 export const getAllSpecialists = async (req: Request, res: Response) => {
-
+0
     try {  
         const pool = await mssql.connect(sqlConfig);
         let allSpecialists = (await pool.request().execute('getAllSpecialist')).recordset
@@ -118,9 +118,9 @@ export const getAllSpecialists = async (req: Request, res: Response) => {
 export const getOneSpecialist = async (req: Request, res: Response) => {
 
     try {
-        const id = req.params.specialist_id
+        const specialist_id = req.params.specialist_id
         const pool = await mssql.connect(sqlConfig)
-        let specialist = (await pool.request().input("specialist_id", id).execute('getOneSP')).recordset
+        let specialist = (await pool.request().input("specialist_id", specialist_id).execute('getOneSP')).recordset
         return res.json({
             specialist
         })
@@ -179,6 +179,7 @@ export const updateSpecialist = async (req: Request, res: Response) => {
     }
 };
 
+
 //deleteUser
 export const deleteSpecialist = async (req: Request, res: Response) => {
 
@@ -209,5 +210,7 @@ export const deleteSpecialist = async (req: Request, res: Response) => {
     } catch (error) {
         return res.json({error})
     }
+
+    
 };
-   
+console.log(typeof 1)

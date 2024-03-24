@@ -5,7 +5,7 @@ export interface clientRegInterface {
   lastName: string;
   email: string;
   password: string;
-  phone: number;
+  phone: String;
   // isAdmin: boolean;
   // isWelcomed: boolean;
   // isDeleted: boolean;

@@ -1,0 +1,66 @@
+
+
+<app-navbar></app-navbar>
+<div class="container">
+
+  <h2>Update Profile</h2>
+<form  [formGroup]="JobForm"  (ngSubmit)="updateProfile(profile_id)">
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="photo">Photo URL:</label>
+      <input type="text" id="photo" name="photo" placeholder="Enter photo URL" formControlName="photo" required >
+    </div>
+    <div class="form-group">
+      <label for="education">Education:</label>
+      <input type="text" id="education" name="education" placeholder="Enter education eg bachelor degree" formControlName="education" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="languages">Languages:</label>
+      <input type="text" id="languages" name="languages" placeholder="Enter languages eg. French , spanish"   formControlName="languages" required>
+    </div>
+    <div class="form-group">
+      <label for="skills">Skills:</label>
+      <input type="text" id="skills" name="skills" placeholder="Enter skills eg software development" formControlName="skills" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <select id="role" name="role" required formControlName="role">
+        <option value="" disabled selected>Select role</option>
+        <option value="Web developer">Web developer</option>
+        <option value="Android engineer">Android engineer</option>
+        <option value="Caregiver">Caregiver</option>
+        <option value="Tech writer">Tech writer</option>
+        <option value="Data analyst">Data analyst</option>
+        <option value="Machine learning engineer">Machine learning engineer</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="experience">Experience:</label>
+      <input type="text" id="experience" name="experience" placeholder="Enter experience eg 3 yrs" required formControlName="experience">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" placeholder="Enter location eg Nairobi" formControlName="location" required>
+    </div>
+    <div class="form-group">
+      <label for="hourlyRate">Hourly Rate:</label>
+      <input type="text" id="hourlyRate" name="hourlyRate" placeholder="Enter hourly rate eg 10$" formControlName="hourlyRate" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" placeholder="Enter a small description about you" formControlName="description" required></textarea>
+    </div>
+  </div>
+  <button type="submit">Update</button>
+</form>
+</div>
+<app-footer></app-footer>

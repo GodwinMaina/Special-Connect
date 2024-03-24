@@ -27,3 +27,12 @@ ALTER TABLE Jobs
 ADD profile_id VARCHAR(250)
 ALTER TABLE Jobs
 ADD CONSTRAINT FK_Jobs_Profiles FOREIGN KEY (profile_id) REFERENCES Profiles(profile_id);
+
+
+ALTER TABLE Jobs
+ADD  isDeleted BIT DEFAULT 0
+
+
+UPDATE Jobs
+SET isDeleted=0
+

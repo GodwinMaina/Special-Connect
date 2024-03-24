@@ -73,8 +73,8 @@ export const getOneJob = async (req: Request, res: Response) => {
     try {
         const id  = req.params.job_id;
         const pool = await mssql.connect(sqlConfig)
-        let oneJob = (await pool.request().input("job_id", mssql.VarChar, id).execute('getOneJob')).recordset
-        return res.json({ message:oneJob })
+        let message = (await pool.request().input("job_id", mssql.VarChar, id).execute('getOneJob')).recordset
+        return res.json({ message})
 
     } catch (error) {
         console.error("Error fetching job by id:", error);

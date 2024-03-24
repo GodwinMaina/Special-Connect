@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { apply } from '../../interface/applicationInterface';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { log } from 'console';
+
 
 @Component({
   selector: 'app-specialist-jobs',

@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/authServices/auth.service';
 import { Token } from '@angular/compiler';
-import { log } from 'console';
-// import { AuthServiceService } from '../../services/auth-service.service';
-// import { UserIDService } from '../../services/user-id.service';
 
 
 @Component({

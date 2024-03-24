@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { allClients, clientRegInterface, oneClient } from '../../interface/clientRegister';
-import { allSpecialists, oneSpecialist, specialistRegInterface } from '../../interface/specialistRegister';
+import { allSpecialists, oneSpecialist, specialistInterface, specialistRegInterface } from '../../interface/specialistRegister';
 import { loginInterface, passwordReset } from '../../interface/loginInterface';
 import { alljobs, jobCategory, onejob, postJobInterface } from '../../interface/postJobs';
-import { getOneProfileInterface, getProfileInterface, profileInterface } from '../../interface/profileInterface';
+import { getOneProfileInterface, getProfileInterface, profileInterface, profInterface } from '../../interface/profileInterface';
 import { allApplicationsResponse, applicationInfoResponse, apply } from '../../interface/applicationInterface';
 import { allReviewsResponse, review, reviewInfoResponse } from '../../interface/reviews';
 
@@ -14,6 +14,8 @@ import { allReviewsResponse, review, reviewInfoResponse } from '../../interface/
 })
 export class AuthService {
   private apiUrl = 'http://localhost:4000'
+
+  token = localStorage.getItem('token') as string
 
   constructor(private http: HttpClient) {
 
@@ -27,7 +29,7 @@ export class AuthService {
   };
 
   //registerSpecialist
-  registerSpeciaList(userData:specialistRegInterface){
+  registerSpeciaList(userData:specialistInterface){
     return this.http.post<{ message: string, error: string ,emailError:string,id:string}>('http://localhost:4000/specialist/register', userData)
   };
 
@@ -36,6 +38,18 @@ export class AuthService {
     const userLogs:loginInterface ={email:email, password:password};
     return this.http.post<{ message: string, error: string,UserType:string,isAdmin:string,token:string}>('http://localhost:4000/auth/login', userLogs);
   };
+
+
+  readToken(token:string){
+    return this.http.get<{info:{client_id:string, specialist_id:string, firstName:string, email: string, UserType:string}}>('http://localhost:4000/auth/checkdetails', {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'token': token
+      })
+    })
+  }
+
+
 
 
    //deleteClient
@@ -56,12 +70,12 @@ export class AuthService {
 
   //update client === editing
   updateClient(client_id:string, userUpdate:clientRegInterface){
-    return this.http.put<{message:string, error:string}>(`http://localhost:4000/users/update/${client_id}`, userUpdate)
+    return this.http.put<{message:string, error:string}>(`http://localhost:4000/client/update/${client_id}`, userUpdate)
   };
 
 
   //update specialist === editing
-  updateSpecialist(specialist_id:string, userUpdate:specialistRegInterface){
+  updateSpecialist(specialist_id:string, userUpdate:specialistInterface){
     return this.http.put<{message:string, error:string}>(`http://localhost:4000/specialist/update/${specialist_id}`, userUpdate)
   };
 
@@ -89,11 +103,22 @@ export class AuthService {
 
 //Jobs authservice
 postJobs(client_id:string, jobData:postJobInterface){
-  return this.http.post<{ message: string, error: string }>(`http://localhost:4000/jobs/create/${client_id}`, jobData)
+  return this.http.post<{ message: string, error: string }>(`http://localhost:4000/jobs/create/${client_id}`, jobData, {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.token
+    })
+  })
 };
 
 getJobs(){
   return this.http.get<alljobs>('http://localhost:4000/jobs/alljobs')
+  //   headers: new HttpHeaders({
+  //     'Content-type': 'application/json',
+  //     'token': this.token
+  //   })
+  // })
+
 }
 
 getJobCategory(category:string){
@@ -102,11 +127,22 @@ getJobCategory(category:string){
 
 
 updateJob(job_id:string, jobUpdate:postJobInterface){
-  return this.http.put<{message:string, error:string}>(`http://localhost:4000/jobs/update/${job_id}`, jobUpdate)
+  return this.http.put<{message:string, error:string}>(`http://localhost:4000/jobs/update/${job_id}`, jobUpdate, {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.token
+    })
+  })
 }
 
 deleteJob(job_id:string){
   return this.http.delete<{message:string, error:string}>(`http://localhost:4000/jobs/delete/${job_id}`)
+  //, {
+  //   headers: new HttpHeaders({
+  //     'Content-type': 'application/json',
+  //     'token': this.token
+  //   })
+  // })
 }
 
 getOneJob(job_id:string){
@@ -115,7 +151,12 @@ getOneJob(job_id:string){
 
 
 getJobsByClient(client_id:string){
-  return this.http.get<alljobs>(`http://localhost:4000/jobs/client/${client_id}`)
+  return this.http.get<alljobs>(`http://localhost:4000/jobs/client/${client_id}`, {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.token
+    })
+  })
 }
 
 
@@ -125,7 +166,7 @@ getJobsBySpecialist(specialist_id:string){
 
 
 //profiles services
-createProfile(profileData:profileInterface, specialist_id:string ){
+createProfile(profileData:profInterface, specialist_id:string ){
   return this.http.post<{ message: string, error: string }>(`http://localhost:4000/profiles/create/${specialist_id}`, profileData)
 }
 
@@ -134,11 +175,15 @@ getProfiles(){
 }
 
 getOneSpecialistProfile(specialist_id:string){
-  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/${specialist_id}`)
+  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/profile/${specialist_id}`)
 
 }
 
-updateProfile(profile_id:string, profileUpdate:profileInterface){
+getOneProfileById(profile_id:string){
+  return this.http.get<getOneProfileInterface>(`http://localhost:4000/profiles/${profile_id}`)
+}
+
+updateProfile(profile_id:string, profileUpdate:profInterface){
   return this.http.put<{message:string, error:string}>(`http://localhost:4000/profiles/update/${profile_id}`, profileUpdate)
 }
 
@@ -154,11 +199,22 @@ createApplication(application: apply){
 }
 
 getJobApplications(job_id: string){
-  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/job/${job_id}`)
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/job/${job_id}`, {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.token
+    })
+  })
+
 }
 
 getSpecialistApplications(specialist_id: string){
-  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/specialist/${specialist_id}`)
+  return this.http.get<allApplicationsResponse>(`${this.apiUrl}/applications/specialist/${specialist_id}`, {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'token': this.token
+    })
+  })
 }
 
 updateApplication(apply_id: string, application: apply){

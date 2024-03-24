@@ -7,7 +7,7 @@ export interface postJobInterface {
   duration: string;
   budget: string;
   client_id: string;
-  specialist_id: string;
+  // specialist_id: string;
 }
 
 

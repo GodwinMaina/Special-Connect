@@ -2,5 +2,7 @@
 CREATE OR ALTER PROCEDURE getAllJobs
 AS
 BEGIN
-    SELECT * FROM Jobs
+    SELECT * FROM Jobs WHERE IsDeleted = 0;
 END
+
+

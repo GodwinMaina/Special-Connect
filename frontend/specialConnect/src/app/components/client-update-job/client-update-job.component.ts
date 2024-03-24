@@ -6,6 +6,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../../services/authServices/auth.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { postJobInterface } from '../../interface/postJobs';
 
 @Component({
   selector: 'app-client-update-job',
@@ -17,7 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ClientUpdateJobComponent {
 
   JobForm!: FormGroup;
-  productData: any;
+  productData: postJobInterface = {} as postJobInterface;
   job_id!: string;
 
 
@@ -39,16 +40,16 @@ export class ClientUpdateJobComponent {
       this.job_id = params['job_id'];
       console.log('job_id:', this.job_id); 
   
-      this.api.getOneJob(this.job_id).subscribe(data => {
-        this.productData = data.message[0];
-        console.log('Product Data:', this.productData);
+      this.api.getOneJob(this.job_id).subscribe(res => {
+        this.productData = res.message[0];
+        console.log(this.productData);
         
         // Populate the form with the retrieved product data
         this.JobForm.patchValue({
           // product_id: this.productData.product_id,
           jobName: this.productData.jobName, 
           category: this.productData.category,
-          budget: this.productData. budget,
+          budget: this.productData.budget,
           duration: this.productData.duration,
           description: this.productData.description
         });

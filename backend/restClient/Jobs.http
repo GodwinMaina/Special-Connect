@@ -18,7 +18,6 @@ token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWV
 GET http://localhost:4000/jobs/alljobs
 Content-Type: application/json
 
-
 ###
 # Get jobs by category (e.g., IT)
 GET http://localhost:4000/jobs/careTaker
@@ -26,9 +25,9 @@ Content-Type: application/json
 
 ###
 # Get a specific job by job_id
-GET http://localhost:4000/jobs/ad963c03-8394-4904-a7e5-75b7f3bad3b5
+GET http://localhost:4000/jobs/job/666c79a4-edcc-45b9-9f24-9d346483b020
 Content-Type: application/json
-
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTEyODY5MzAsImV4cCI6MTcxMTQxMzUzMH0.OC8pAri5yr1km3r8UDuETMkcXxo-HmS30yP1Ke2pEm0
 ###
 # Update a job by job_id
 PUT http://localhost:4000/ad963c03-8394-4904-a7e5-75b7f3bad3b5
@@ -46,9 +45,8 @@ token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWV
 
 ###
 # Delete a job by job_id
-DELETE http://localhost:4000/jobs/delete/7c7b749a-3141-4a42-bbc4-c38dcd61ed2f
+DELETE http://localhost:4000/jobs/delete/ad963c03-8394-4904-a7e5-75b7f3bad3b5
 Content-Type: application/json
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyVHlwZSI6IkNsaWVudCIsImNsaWVudF9pZCI6Ijk3MWQxZDI1LTBlNWItNGY4Ny1hMzYzLTRmZTdiYmYxNTJkOCIsImZpcnN0TmFtZSI6ImNsaWVudCIsImxhc3ROYW1lIjoibWFpbmEiLCJlbWFpbCI6ImtpbmdhbmdpZHVuY2FuNDdAZ21haWwuY29tIiwicGhvbmUiOiIwNzIzNDU2MDAxIiwiaXNBZG1pbiI6ZmFsc2UsImlzV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTExMDY2MjAsImV4cCI6MTcxMTIzMzIyMH0.nV3b5aUX2ZQvT3HdZUE1pBRuXmWaZNRn5mwx1DwMS1E
 
 ###
 # Get jobs by client id

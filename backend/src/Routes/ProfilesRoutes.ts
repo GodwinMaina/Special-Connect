@@ -6,17 +6,17 @@ import { verifyToken } from "../Middlewares/verifyToken";
 const profileRouter = Router();
 
 //create profile
-profileRouter.post('/create/:id',verifyToken, createProfile);
+profileRouter.post('/create/:id',createProfile);
 
 profileRouter.get('/',getProfiles);
 
-// profileRouter.get('/:profile_id',getProfileById);
+profileRouter.get('/:profile_id',getProfileById);
 
-// profileRouter.put('/update/:profile_id',updateProfile);
+profileRouter.put('/update/:profile_id',updateProfile);
 
-profileRouter.delete('/delete/:profile_id',verifyToken, deleteProfile);
+profileRouter.delete('/delete/:profile_id',deleteProfile);
 
-profileRouter.get('/:specialist_id',verifyToken,getProfileBysp);
+profileRouter.get('/profile/:specialist_id',getProfileBysp);
 
 
 

@@ -30,7 +30,7 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  
+
   "include":[
     "src/**/*"
   ],

@@ -25,7 +25,7 @@ export const createProfile = async (req: Request, res: Response) => {
             else {
                 const id = v4();
                 const pool = await mssql.connect(sqlConfig)
-
+ 
                 const newProfile= (await pool.request()
                 .input("profile_id", mssql.VarChar, id)
                 .input("specialist_id", mssql.VarChar, specialist_id)  

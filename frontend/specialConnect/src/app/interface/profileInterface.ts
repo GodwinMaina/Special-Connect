@@ -19,7 +19,7 @@ export interface profileInterface {
 
 
 
-export interface profileInterface {
+export interface profInterface {
   // profile_id: string;
   // specialist_id: string;
   photo:string;

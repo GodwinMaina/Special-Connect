@@ -188,5 +188,8 @@ display: inline;
 display: block;
 }
 
+.logonSearch img{
+  display: none;
+}
 
 }

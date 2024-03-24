@@ -20,20 +20,29 @@ export class ClientDashboardComponent {
 
   clientEmail=''
 
+
+  client_id = localStorage.getItem('clientID') || '';
+
+
+
+
+
+
 constructor(private router:Router, private api:AuthService) {
 
+  this.clientEmail = localStorage.getItem('EMAIL') || '';
+  console.log(this.client_id);
+this.getClientsJobs();
 
-let client_id = localStorage.getItem('clientID') || '';
-console.log(client_id);
+}
 
-  this.api.getJobsByClient(client_id).subscribe((res)=>{
+
+getClientsJobs(){
+  this.api.getJobsByClient(this.client_id).subscribe((res)=>{
     if(res.message){
       this.myJobs = res.message
     }
   })
-
-
-  this.clientEmail = localStorage.getItem('EMAIL') || '';
 
 }
 
@@ -75,15 +84,17 @@ getJobApplications(job_id: string){
     this.api.deleteJob(job_id).subscribe(
       response => {
         console.log(response);
-        this.api.getJobs().subscribe( response=> {
-          this.myJobs=response.message
-          console.log(this.myJobs)
-        })
+        // this.api.getJobs().subscribe( response=> {
+        //   this.myJobs=response.message
+        //   console.log(this.myJobs)
+        // })
       },
       error => {
         console.error('Error deleting Job:', error);
       }
     );
+
+    this.getClientsJobs()
   }
 
 

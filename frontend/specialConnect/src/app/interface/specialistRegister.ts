@@ -11,6 +11,14 @@ export interface specialistDetails{
 }
 
 
+export interface specialistInterface{
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone:string;
+}
+
 
 export interface specialistRegInterface{
 
