@@ -8,10 +8,10 @@ const reviewRouter = Router();
 
 
 //cretae review to specialist
-reviewRouter.post('/',verifyToken,createReview );
+reviewRouter.post('/',createReview );
 
 //get specialist reviews by specialist_id
-reviewRouter.get('/:specialist_id',verifyToken ,getSpecialistReviews);
+reviewRouter.get('/:specialist_id',getSpecialistReviews);
 
 
 

@@ -28,7 +28,7 @@ JobRouter.delete('/delete/:job_id', deleteJob);
 JobRouter.get('/client/:client_id', getJobsByClient);
 
 //get JOB by specialist id
-JobRouter.get('/specialist/:specialist_id',verifyToken, getJobsBySpecialist);
+JobRouter.get('/specialist/:specialist_id', getJobsBySpecialist);
 
 
 export default JobRouter;

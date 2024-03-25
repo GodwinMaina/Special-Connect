@@ -7,10 +7,10 @@ const appointRouter = Router();
 
 
 //send appointment ===> client send to specialist
-appointRouter.post('/appointments',verifyToken, createAppointment);
+appointRouter.post('/appointments', createAppointment);
 
 //recieve appointment ==> specialist receive from client
-appointRouter.get('/appointments',verifyToken, createAppointment);
+appointRouter.get('/appointments', createAppointment);
 
 
 export default appointRouter;

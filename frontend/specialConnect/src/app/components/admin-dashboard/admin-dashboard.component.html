@@ -12,7 +12,7 @@
                   Dashboard
               </li>
 
-              <li routerLink="/dashboard/admin/createJob">
+              <li data-cy="postJob"  routerLink="/dashboard/admin/createJob">
                 Post Job
             </li>
 
@@ -32,7 +32,7 @@
           </ul>
       </div>
 
-      <div class="logout" (click)="logOut()">
+      <div data-cy="logout" class="logout" (click)="logOut()">
           <p>
               <i    class="fa-solid fa-right-from-bracket fa-lg"></i>
               Logout

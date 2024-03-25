@@ -4,6 +4,7 @@ import { v4 } from 'uuid';
 import { sqlConfig } from '../../Config/sqlConfig';
 import { jobSchema } from '../../Validators/jobsValidators';
 import { JobInterface } from '../../Interfaces/jobsInterface';
+import { error } from 'console';
 
 // Create Job
 export const createJob = async (req: Request, res: Response) => {
@@ -61,12 +62,18 @@ export const getJobsByCategory = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig);
         const result = await pool.request().input("category", mssql.VarChar, category).execute('getJobsByCategory');
         const jobCategory = result.recordset;
-        return res.json({ message:jobCategory });
+
+        if (jobCategory.length === 0) {
+            return res.json({ error: "No jobs found for the category: " + category });
+        } else {
+            return res.json({ message: jobCategory });
+        }
     } catch (error) {
         console.error("Error fetching jobs by category:", error);
         return res.status(500).json({ error: "An error occurred while fetching jobs by category." });
     }
 };
+
 
 // Get one Job by id
 export const getOneJob = async (req: Request, res: Response) => {

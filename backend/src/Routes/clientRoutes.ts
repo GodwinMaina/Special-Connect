@@ -15,14 +15,14 @@ clientRouter.post('/register', registerClient);
 clientRouter.get('/', getAllClients);
 
 // getOneClient
-clientRouter.get('/:client_id',verifyToken, getOneClient);
+clientRouter.get('/:client_id', getOneClient);
 
 //update client 
-clientRouter.put('/update/:client_id',verifyToken, updateClient);
+clientRouter.put('/update/:client_id', updateClient);
 
 
 // delete client by id
-clientRouter.delete('/delete/:client_id',verifyToken, deleteClient);
+clientRouter.delete('/delete/:client_id', deleteClient);
 
 
 

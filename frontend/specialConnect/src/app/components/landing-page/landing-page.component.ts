@@ -7,22 +7,27 @@ import { CommonModule } from '@angular/common';
 import { getProfileInterface } from '../../interface/profileInterface';
 
 import { FormsModule } from '@angular/forms';
-import {SearchJobPipe } from '../../pipes/search-job.pipe'
+// import {SearchJobPipe } from '../../pipes/search-job.pipe'
+import { log } from 'console';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent,RouterLink, CommonModule, FormsModule, SearchJobPipe],
+  imports: [NavbarComponent,FooterComponent,RouterLink, CommonModule, FormsModule],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css',
- 
+
 })
+
 export class LandingPageComponent {
 
   mySpecialists:any[]=[]
   AllJobs:any[]=[]
   oneJoby:any[]=[]
   filterJob:string=''
+  category:string=''
+  matchedJobs: any[] = []
+  nojob:any[]=[]
 
   constructor(private api:AuthService, private router:Router){
 
@@ -34,18 +39,29 @@ export class LandingPageComponent {
 
     })
 
+this.allJobs()
+this.searchJobs(this.filterJob)
+
+if(this.filterJob===''){
+  this.allJobs()
+}
+
+
+  }
+
+  allJobs(){
 
   this.api.getJobs().subscribe(res => {
     console.log('hello fgnghngh');
     this.AllJobs = res.message;
     console.log( 'JOBS',this.AllJobs);
+    // this.searchJobs(this.filterJob)
   });
-
-
-
   }
+
+
   oneProfile(specialist_id:string){
-    
+
     this.router.navigate(['/profiles/',specialist_id]);
   }
 
@@ -54,27 +70,28 @@ export class LandingPageComponent {
   }
 
 
+  searchJobs(filterJob: string): void {
+    console.log(filterJob)
+    this.api.getJobCategory(this.filterJob).subscribe(
+      (res) => {
+        console.log(res.message);
+        this.AllJobs=res.message
+       this.nojob=res.error
+        console.log(this.nojob);
+      },
+
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+
+    setTimeout(() => {
+      this.nojob = [];
+    }, 3000)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
 
 
   reviews = [

@@ -19,6 +19,9 @@ export class ProfileDetailsComponent {
   error: string = '';
   showSuccessMessage:boolean = false;
 
+  imgUrl: string | null = null;
+  imageUpload:any[] = []
+
   constructor(private fb:FormBuilder, private api:AuthService, private router:Router,) {
 
     this.profileForm = this.fb.group({
@@ -37,28 +40,15 @@ export class ProfileDetailsComponent {
 
 
   onSubmit() {
-    // console.log(this.profileForm.value)
 
   if(this.profileForm.valid) {
-
-    // const profileData:any={
-    //   photo: this.profileForm.value.photo,
-    //   role: this.profileForm.value.role,
-    //   experience: this.profileForm.value.experience,
-    //   education: this.profileForm.value.education,
-    //   location: this.profileForm.value.location,
-    //   languages: this.profileForm.value.languages,
-    //   skills: this.profileForm.value.skills,
-    //   description: this.profileForm.value.description,
-    //   hourlyRate: this.profileForm.value.hourlyRate
-    // }
 
     let specialist_id= localStorage.getItem('specialist_id') || '';
     this.profileForm.value
     console.log(this.profileForm.value)
 
     this.api.createProfile(this.profileForm.value,specialist_id ).subscribe(response => {
-     
+
        console.log(response)
        console.log(response.error);
        console.log(response.message);
@@ -92,4 +82,67 @@ export class ProfileDetailsComponent {
   }
 
   }
+
+
+
+
+
+
+async uploadImage(event: any){
+
+  const target = event.target
+  const files = target.files
+  if(files){
+      console.log(files)
+      const formData = new FormData()
+      formData.append("file", files[0])
+      formData.append("upload_preset", "specialConnect")
+      formData.append("cloud_name", "dza7h16qh")
+
+        console.log(formData);
+
+        await fetch('https://api.cloudinary.com/v1_1/dza7h16qh/image/upload', {
+          method: "POST",
+          body: formData
+        }).then(
+          (res:any) => {
+            console.log(res);
+
+            return res.json()
+          },
+
+        ).then(data=>{
+          console.log("this is the URL",data.url);
+          this.profileForm.get('photo')?.setValue(data.url)
+          return data.url = this.imgUrl;
+
+        }
+        );
+
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+//
+
+//specialConnect
+
+//dza7h16qh

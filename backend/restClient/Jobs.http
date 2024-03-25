@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 # Get jobs by category (e.g., IT)
-GET http://localhost:4000/jobs/careTaker
+GET http://localhost:4000/jobs/web development
 Content-Type: application/json
 
 ###

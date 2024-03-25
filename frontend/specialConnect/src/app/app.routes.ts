@@ -1,13 +1,6 @@
 
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-// import { TitlePageComponent } from './components/profile/title-page/title-page.component';
-// import { ExperiencePageComponent } from './components/profile/experience-page/experience-page.component';
-// import { EducationPageComponent } from './components/profile/education-page/education-page.component';
-// import { LanguagePageComponent } from './components/profile/language-page/language-page.component';
-// import { SkillsPageComponent } from './components/profile/skills-page/skills-page.component';
-// import { DescriptionComponent } from './components/profile/description/description.component';
-// import { HourlyRateComponent } from './components/profile/hourly-rate/hourly-rate.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SpecialistSignupComponent } from './components/specialist-signup/specialist-signup.component';
@@ -28,7 +21,7 @@ import { OneProfileComponent } from './components/one-profile/one-profile.compon
 import { AdminViewSpecialistsComponent } from './components/admin-view-specialists/admin-view-specialists.component';
 import { AdminViewClientsComponent } from './components/admin-view-clients/admin-view-clients.component';
 import { OneJobComponent } from './components/one-job/one-job.component';
-import { UpdateJobsComponent } from './components/update-jobs/update-jobs.component';
+// import { UpdateJobsComponent } from './components/update-jobs/update-jobs.component';
 import { SpecialistJobsComponent } from './components/specialist-jobs/specialist-jobs.component';
 import { SpecialistAppointmentsComponent } from './components/specialist-appointments/specialist-appointments.component';
 import { SpMessagesComponent } from './components/sp-messages/sp-messages.component';
@@ -50,7 +43,7 @@ export const routes: Routes = [
   { path: 'specialist-signup', component:SpecialistSignupComponent },
   { path: 'client-signup', component:ClientSignupComponent },
   { path: 'specialist/createProfile', component:CreateProfileComponent, canActivate:[authGuardGuard]},
-  { path: 'profile', component:ProfileDetailsComponent, canActivate:[authGuardGuard] },
+  { path: 'profile', component:ProfileDetailsComponent  },
   { path: 'dashboard/admin', component: AdminDashboardComponent,  canActivate:[authGuardGuard]},
   { path: 'dashboard/client', component: ClientDashboardComponent,  canActivate:[authGuardGuard] },
   {path: 'dashboard/specialist', component:SpecialistDashboardComponent,  canActivate:[authGuardGuard]},

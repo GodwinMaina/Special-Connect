@@ -26,8 +26,6 @@ export const verifyToken = (req:ExtendedUserRequest, res: Response, next: NextFu
         req.info = data
 
         
-        
-        
     } catch (error) {
         return res.json({
             error: error

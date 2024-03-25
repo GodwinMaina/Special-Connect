@@ -42,6 +42,7 @@ export class OneProfileComponent {
 
   this.api.specialistReviews(this.specialist_id).subscribe(response=>{
     this.review=response.message;
+    this.review = response.message
     console.log('Review:', this.review);
     
   })

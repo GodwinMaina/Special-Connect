@@ -9,12 +9,12 @@
             </div>
             <div class="email">
                 <label for="">Job Name</label><br>
-                <input type="text" class="email-input" name="jobName" formControlName="jobName" placeholder="name of the Job">
+                <input data-cy="jobName" type="text" class="email-input" name="jobName" formControlName="jobName" placeholder="name of the Job">
             </div>
 
             <div class="email">
               <label for="">Category of product</label><br>
-              <select name="" id="" class="password" name="category" formControlName="category">
+              <select data-cy="category" name="" id="" class="password" name="category" formControlName="category">
                   <option value="web development">web development</option>
                   <option value="Android development">Android development</option>
                   <option value="care giver">care giver</option>
@@ -26,24 +26,24 @@
 
             <div class="email">
               <label for="">Budget</label><br>
-              <input type="text" class="password" name="budget" placeholder="enter budget" formControlName="budget">
+              <input data-cy="budget" type="text" class="password" name="budget" placeholder="enter budget" formControlName="budget">
           </div>
 
 
 
             <div class="email">
               <label for="">duration</label><br>
-              <input name="quantity" formControlName="duration" placeholder="duration in  days or week/weeks" id="" cols="30" rows="10" class="password">
+              <input data-cy="duration" type="text" name="quantity" formControlName="duration" placeholder="duration in  days or week/weeks" id="" cols="30" rows="10" class="password">
           </div>
 
           <div class="email">
             <label for="">Description</label><br>
-            <textarea name="description" formControlName="description"  placeholder="note some description" id="" cols="30" rows="10" class="password"></textarea>
+            <textarea data-cy="description" name="description" formControlName="description"  placeholder="note some description" id="" cols="30" rows="10" class="password"></textarea>
         </div>
 
 
           <div class="email">
-            <button type="submit" class="login-btn">Post</button>
+            <button data-cy="btnAdminPost" type="submit" class="login-btn">Post</button>
         </div>
 
         </form>

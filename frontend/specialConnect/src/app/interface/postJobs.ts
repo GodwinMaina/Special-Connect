@@ -27,11 +27,11 @@ job_id: string;
     duration: string,
     budget: string,
     client_id: string
-   
+
 
   }],
 
- 
+
 
     error: [{}]
 
@@ -60,6 +60,7 @@ export  interface onejob {
 
 export  interface jobCategory {
 
+
   message: [{
     job_id: string;
     jobName: string;
@@ -72,7 +73,6 @@ export  interface jobCategory {
 
   }],
 
-   token: [{}],
 
     error: [{}]
 
