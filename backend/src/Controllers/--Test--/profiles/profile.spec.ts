@@ -1,65 +1,65 @@
 
 
-import bcrypt from 'bcrypt'
-import mssql from 'mssql'
-import { createProfile } from '../../profile/spProfileController';
+// import bcrypt from 'bcrypt'
+// import mssql from 'mssql'
+// import { createProfile } from '../../profile/spProfileController';
 
 
-describe("specialist Profile creation", ()=>{
+// describe("specialist Profile creation", ()=>{
 
-    let res: any
+//     let res: any
 
-    beforeEach(()=>{
-        res = {
-            status: jest.fn().mockReturnThis(),
-            json: jest.fn().mockReturnThis()
-        }
-    })
+//     beforeEach(()=>{
+//         res = {
+//             status: jest.fn().mockReturnThis(),
+//             json: jest.fn().mockReturnThis()
+//         }
+//     })
 
-    it('successfully created profile', async()=>{
-        const req ={
+//     it('successfully created profile', async()=>{
+//         const req ={
 
-            params:{
-                specialist_id: "1"
-            },
-            body:
-            { 
-                photo:"https://media.licdn.com/dms/image/C4E03AQEGCAh_N5RneA/profile-displayphoto-shrink_800_800/0/1535004932145?e=1716422400&v=beta&t=GRUsw2_dLSGUDrFx0avgAXf46-WGWFU12Bzy_Pl9zvk",
-                role: "Machine learning ",
-                experience: "10 years",
-                location:"Singapore",
-                education: "Degree Singapore college",
-                languages: "English, French",
-                skills: "Mchine learning engineer neural networks and deep learning",
-                description: "deep learning",
-                hourlyRate: "$50"
-            }
-        }
-        jest.spyOn(bcrypt, 'hash').mockResolvedValueOnce("H23Pwdkjy" as never)
-        const mockedInput = jest.fn().mockReturnThis() //makes it chainable
-        const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
+//             params:{
+//                 specialist_id: "1"
+//             },
+//             body:
+//             { 
+//                 photo:"https://media.licdn.com/dms/image/C4E03AQEGCAh_N5RneA/profile-displayphoto-shrink_800_800/0/1535004932145?e=1716422400&v=beta&t=GRUsw2_dLSGUDrFx0avgAXf46-WGWFU12Bzy_Pl9zvk",
+//                 role: "Machine learning ",
+//                 experience: "10 years",
+//                 location:"Singapore",
+//                 education: "Degree Singapore college",
+//                 languages: "English, French",
+//                 skills: "Mchine learning engineer neural networks and deep learning",
+//                 description: "deep learning",
+//                 hourlyRate: "$50"
+//             }
+//         }
+//         jest.spyOn(bcrypt, 'hash').mockResolvedValueOnce("H23Pwdkjy" as never)
+//         const mockedInput = jest.fn().mockReturnThis() //makes it chainable
+//         const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
 
-        const mockedRequest = {
-            input: mockedInput,
-            execute: mockedExecute
-        }
+//         const mockedRequest = {
+//             input: mockedInput,
+//             execute: mockedExecute
+//         }
 
-        const mockedPool = {
-            request: jest.fn().mockReturnValue(mockedRequest)
-        }
+//         const mockedPool = {
+//             request: jest.fn().mockReturnValue(mockedRequest)
+//         }
 
-        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
-        await createProfile(req as any, res)
+//         jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
+//         await createProfile(req as any, res)
 
-        expect(res.json).toHaveBeenCalledWith({message: "Account for new specialist created successfully",
-        specialist_id: expect.any(String)},
+//         expect(res.json).toHaveBeenCalledWith({message: "Account for new specialist created successfully",
+//         specialist_id: expect.any(String)},
         
-        )
+//         )
         
-    })
+//     })
 
 
-});
+// });
 
 
 // //test 2

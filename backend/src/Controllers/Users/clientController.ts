@@ -44,7 +44,7 @@ export const registerClient = async (req: Request, res: Response) => {
                 console.log(newClient);
 
                 if (newClient) {
-                    return res.json({
+                    return res.status(201).json({
                         message: "Account for new Client created successfully",
                     });
                 } else {

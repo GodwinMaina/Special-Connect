@@ -16,7 +16,7 @@ export const createApplication = async (req: Request, res: Response) => {
 
         
         else {
-            const pool = await mssql.connect(sqlConfig);
+          
                     
             const { job_id, client_id, specialist_id }: application = req.body;
 
@@ -27,6 +27,7 @@ export const createApplication = async (req: Request, res: Response) => {
 
           //if not applied next then apply the job 
             const apply_id = v4()  
+            const pool = await mssql.connect(sqlConfig);
             if(pool.connected){
                 const result = (await pool.request()
                 .input("apply_id", mssql.VarChar, apply_id)

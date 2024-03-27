@@ -40,6 +40,7 @@ export class LandingPageComponent {
     })
 
 this.allJobs()
+this.run()
 this.searchJobs(this.filterJob)
 
 if(this.filterJob===''){
@@ -49,6 +50,12 @@ if(this.filterJob===''){
 
   }
 
+  run(){
+    if(this.filterJob===''){
+      this.allJobs()
+    }
+
+  }
   allJobs(){
 
   this.api.getJobs().subscribe(res => {

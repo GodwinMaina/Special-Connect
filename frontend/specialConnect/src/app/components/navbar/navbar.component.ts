@@ -30,15 +30,15 @@ export class NavbarComponent implements  OnDestroy {
       if (event instanceof NavigationEnd) {
         this.isLoggedIn =
           this.router.url !== '/admin' &&
-          this.router.url !== '/admin/create-products' &&
-          this.router.url !== '/admin/update-products' &&
+          this.router.url !== '/dashboard/admin' &&
+          this.router.url !== '/admin/update' &&
           this.router.url !== '/admin/view-users' &&
           this.router.url !== '/settings' &&
           this.router.url !== '/users';
         this.isNotLoggedIn =
           this.router.url !== '/' &&
           this.router.url !== '/auth/login' &&
-          this.router.url !== '/register' &&
+          this.router.url !== '/signup' &&
           this.router.url !== '/settings' &&
           this.router.url !== '/cart' &&
           this.router.url !== '/**';

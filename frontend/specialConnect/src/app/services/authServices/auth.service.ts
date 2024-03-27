@@ -7,6 +7,7 @@ import { alljobs, jobCategory, onejob, postJobInterface } from '../../interface/
 import { getOneProfileInterface, getProfileInterface, profileInterface, profInterface } from '../../interface/profileInterface';
 import { allApplicationsResponse, applicationInfoResponse, apply } from '../../interface/applicationInterface';
 import { allReviewsResponse, review, reviewInfoResponse } from '../../interface/reviews';
+import { userDetailsResponse } from '../../interface/detailsResponse';
 
 
 @Injectable({
@@ -40,16 +41,23 @@ export class AuthService {
   };
 
 
-  readToken(token:string){
-    return this.http.get<{info:{client_id:string, specialist_id:string, firstName:string, email: string, UserType:string}}>('http://localhost:4000/auth/checkdetails', {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'token': token
-      })
+  // readToken(token:string){
+  //   return this.http.get<{info:{client_id:string, specialist_id:string, firstName:string, email: string, UserType:string}}>('http://localhost:4000/auth/checkdetails', {
+  //     headers: new HttpHeaders({
+  //       'Content-type': 'application/json',
+  //       'token': token
+  //     })
+  //   })
+  // }
+
+
+  checkUserDetails(token: string){
+    return this.http.get<userDetailsResponse>('http://localhost:4000/auth/checkdetails', {
+      headers: {
+        token
+      }
     })
   }
-
-
 
 
    //deleteClient

@@ -8,12 +8,12 @@ const applicationRouter = Router();
 //send appointment
 applicationRouter.post('/apply', createApplication)
 
-applicationRouter.put('/:apply_id', verifyToken,updateApplication)
+applicationRouter.put('/:apply_id',updateApplication)
 
-applicationRouter.delete('/:apply_id',verifyToken, deleteApplication)
+applicationRouter.delete('/:apply_id', deleteApplication)
 
-applicationRouter.get('/job/:job_id',verifyToken, getJobApplicationsByJobID)
+applicationRouter.get('/job/:job_id', getJobApplicationsByJobID)
 
-applicationRouter.get('/specialist/:specialist_id',verifyToken, getSpecialistApplications)
+applicationRouter.get('/specialist/:specialist_id', getSpecialistApplications)
 
 export default applicationRouter;

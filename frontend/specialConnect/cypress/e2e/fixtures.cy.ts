@@ -73,7 +73,6 @@ describe('working with fixture data to login', ()=>{
 
 
 //admin post jobs
-
 describe('working with fixture data to post job admin', () => {
   it('iterates through login2 data and tries to login', () => {
     cy.visit('/auth/login');
@@ -104,3 +103,7 @@ describe('working with fixture data to post job admin', () => {
     });
   });
 });
+
+
+
+// specialist  create Profile

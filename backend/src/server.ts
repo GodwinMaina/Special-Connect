@@ -40,14 +40,11 @@ app.use('/profiles', profileRouter);
 
 app.use('/jobs', JobRouter);
 
-
 app.use('/applications',applicationRouter)
 
 app.use(appointRouter)
 
-
 app.use( '/reviews',reviewRouter)
-
 
 app.use('/messages', messageRouter)
 

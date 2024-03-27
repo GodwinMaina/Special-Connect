@@ -85,6 +85,7 @@ export const checkUserDetails = async(req: ExtendedUserRequest, res: Response)=>
 }
 
 
+
 export const resetPassword = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
